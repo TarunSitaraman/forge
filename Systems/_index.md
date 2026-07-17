@@ -23,6 +23,9 @@ Established subfolders:
   planning (not generic advice).
 - [`Project-System/`](Project-System) — the one notebook template every
   new project scaffolds from.
+- [`Docs/`](Docs) — one authoritative engineering reference manual per
+  technology (Azure, Databricks, Docker, Git, LangChain, RAG, Vector
+  Databases) — not scattered notes.
 
 New subfolders are created per domain as they earn their place. Don't
 pre-create empty domain folders — create one when the second reusable

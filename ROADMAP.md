@@ -14,12 +14,21 @@ Nothing here is added preemptively.
       (see `Systems/Playbooks/`).
 - [x] Templates — 16 production-quality reusable document templates
       (see `Systems/Templates/`).
+- [x] Competitive Programming module — skill-growth trackers + 10
+      coaching prompts (see `Systems/Competitive-Programming/`).
+- [x] Career module — 10 actionable trackers/checklists + 9 coaching
+      prompts (see `Systems/Career/`).
+- [x] Project System — one engineering-notebook template every project
+      scaffolds from (see `Systems/Project-System/`).
+- [x] Docs module — 7 authoritative technology reference manuals (Azure,
+      Databricks, Docker, Git, LangChain, RAG, Vector Databases) (see
+      `Systems/Docs/`).
 
 ## Next
 
-- [ ] Project scaffold template (`Systems/templates/project-readme.md`)
-      so starting a new `Projects/` entry takes one command, not a blank
-      page.
+- [ ] Resources module — curated (not exhaustive) external resources per
+      domain, each with a stated reason it earns its place (see
+      `Systems/Resources/`, in progress).
 - [ ] Decision record template standardized across `Systems/`.
 - [ ] Minimal Dataview queries (if adopted) for "active projects" and
       "stale Inbox items" — evaluated against the minimal-plugins

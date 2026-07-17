@@ -21,3 +21,13 @@ detectable.
 Does not belong here: opinions, decisions, or anything that required
 judgment to produce — that's a `Systems/` decision record, not
 `Reference/`.
+
+**Relationship to `Systems/Docs/`:** a technology significant enough to
+warrant a full authoritative manual (mental model, architecture,
+cheatsheet, interview questions) belongs in
+[`Systems/Docs/`](../Systems/Docs) as one comprehensive file. `Reference/`
+is for smaller, personal, often project-triggered notes — a specific
+gotcha, a config snippet, a quick lookup — that haven't (yet) grown into
+a full `Systems/Docs/` entry. If a `Reference/` note grows large enough to
+need its own Mental Model / Architecture / Interview Questions structure,
+graduate it into `Systems/Docs/` instead of letting it keep expanding here.
