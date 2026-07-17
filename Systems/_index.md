@@ -21,6 +21,8 @@ Established subfolders:
 - [`Career/`](Career) — actionable trackers/checklists for resume,
   LinkedIn, portfolio, networking, interviews, salary, and career
   planning (not generic advice).
+- [`Project-System/`](Project-System) — the one notebook template every
+  new project scaffolds from.
 
 New subfolders are created per domain as they earn their place. Don't
 pre-create empty domain folders — create one when the second reusable

@@ -17,9 +17,11 @@ unknown already validated — in hours, not days.
 - A scope-cut plan for the deadline
 
 ## Steps
-1. Write the one-sentence pitch and the definition of done. If you can't
-   state either in one sentence, the project isn't scoped yet — stop and
-   fix that first.
+1. Copy `Systems/Project-System/project-notebook.md` into
+   `Projects/<name>/notebook.md` — this is the one file the project lives
+   in from here on. Write the one-sentence pitch and the definition of
+   done in its Overview section. If you can't state either in one
+   sentence, the project isn't scoped yet — stop and fix that first.
 2. Identify the riskiest technical unknown and spike it in isolation
    (a throwaway script, not production code) before building anything
    else.
