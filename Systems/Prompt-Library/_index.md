@@ -33,7 +33,7 @@ non-blocking verdict" is.
 | [`Career/`](Career) | Resume impact, promotion cases |
 | [`Interview/`](Interview) | Behavioral stories, mock technical interviews, interviewer question banks |
 | [`Hackathons/`](Hackathons) | Idea triage, execution timelines |
-| [`Competitive-Programming/`](Competitive-Programming) | Pattern recognition, implementation checklists |
+| [`Competitive-Programming/`](Competitive-Programming) | Hint-only coaching, post-solution analysis, complexity/code review, weakness-finding, interview variants — see also `Systems/Competitive-Programming/` for the tracker module these support |
 | [`Project-Planning/`](Project-Planning) | Scope cuts, dependency/risk mapping |
 | [`Decision-Making/`](Decision-Making) | Tradeoff matrices, pre-mortems |
 | [`Prompt-Engineering/`](Prompt-Engineering) | Prompt failure diagnosis, system prompt review, injection hardening |

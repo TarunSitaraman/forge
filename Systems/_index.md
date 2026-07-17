@@ -8,13 +8,16 @@ architecture pattern, a hard-won decision record, a deployment checklist,
 an elite prompt — it lives here, not buried inside a single project
 folder.
 
-Three established subfolders:
+Established subfolders:
 - [`Prompt-Library/`](Prompt-Library) — elite, operating-procedure-grade
   prompts organized by domain.
 - [`Playbooks/`](Playbooks) — reusable engineering workflows with goals,
   steps, checklists, and a Mermaid diagram each.
 - [`Templates/`](Templates) — production-quality, reusable Markdown
   document templates.
+- [`Competitive-Programming/`](Competitive-Programming) — trackers and
+  coaching prompts for becoming a better problem solver (not algorithm
+  notes).
 
 New subfolders are created per domain as they earn their place. Don't
 pre-create empty domain folders — create one when the second reusable
