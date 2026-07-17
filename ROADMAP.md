@@ -5,27 +5,27 @@ Nothing here is added preemptively.
 
 ## Now
 
-- [x] Core structure: `Inbox/`, `Projects/`, `Systems/`, `Reference/`,
-      `Archive/`.
+- [x] Core structure: `Inbox/`, `Projects/`, `Technologies/`, `Courses/`,
+      `Career/`, `Resources/`, `Reference/`, `Archive/`.
 - [x] Conventions, workflow, and onboarding documented.
 - [x] Elite Prompt Library — 79 operating-procedure-grade prompts across
-      28 categories (see `Systems/Prompt-Library/`).
+      28 categories (see `Technologies/Prompt-Library/`).
 - [x] Playbooks — 18 execution-focused workflows for recurring efforts
-      (see `Systems/Playbooks/`).
+      (see `Technologies/Playbooks/`).
 - [x] Templates — 21 production-quality reusable document templates
-      (see `Systems/Templates/`).
+      (see `Technologies/Templates/`).
 - [x] Competitive Programming module — 8 skill-growth trackers + 10
-      coaching prompts (see `Systems/Competitive-Programming/`).
+      coaching prompts (see `Courses/Competitive-Programming/`).
 - [x] Career module — 10 actionable trackers/checklists + 9 coaching
-      prompts (see `Systems/Career/`).
+      prompts (see `Career/`).
 - [x] Project System — one engineering-notebook template every project
-      scaffolds from (see `Systems/Project-System/`).
+      scaffolds from (see `Technologies/Project-System/`).
 - [x] Docs module — 10 authoritative technology reference manuals (Azure,
       Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs,
-      Prompt Engineering, Markdown) (see `Systems/Docs/`).
+      Prompt Engineering, Markdown) (see `Technologies/Docs/`).
 - [x] Resources module — curated (not exhaustive) external resources
       across 11 categories, each with a stated reason it earns its place
-      (see `Systems/Resources/`).
+      (see `Resources/`).
 - [x] Decision record templates standardized — a full ADR
       (`design-decision-record.md`) plus a lightweight running
       `decision-log.md` for smaller decisions.

@@ -16,7 +16,7 @@ copy of what to configure on a fresh vault open.*
 
 None by default. Forge starts with zero community plugins. Add one only
 when it removes real friction from navigation or capture, and record the
-decision in `Systems/` (a decision record: what friction it solves, what
+decision in `Technologies/` (a decision record: what friction it solves, what
 it costs).
 
 Do not install: task managers, daily-note automation, database/table

@@ -9,11 +9,10 @@ by discipline, not tooling — follow them even when no one's checking.
   `Service Mesh Migration.md`. Lowercase, hyphen-separated, no dates in
   filenames unless the file *is* dated content (e.g. a changelog entry).
 - **Folders:** `PascalCase` for top-level structural folders (`Projects`,
-  `Systems`), `kebab-case` for everything created inside them (project
-  folders, system folders).
+  `Technologies`, `Courses`, `Career`, `Resources`, `Reference`, `Archive`), `kebab-case` for everything created inside them (project folders, technology folders).
 - **Project folders:** `Projects/<kebab-case-project-name>/`. Each
   project folder contains at minimum a `README.md` stating goal, status,
-  and links to related `Systems/`/`Reference/` material.
+  and links to related `Technologies/`, `Career/`, `Courses/`, or `Reference/` material.
 - **No version suffixes.** No `-v2`, `-final`, `-old` in filenames — Git
   history is the version control. If a file is superseded, replace it or
   move the old one to `Archive/`.
@@ -43,7 +42,7 @@ second filing system. Keep the tag vocabulary small and stable.
 - `#status/active`, `#status/blocked`, `#status/done` — project state,
   used only in `Projects/`.
 - `#type/pattern`, `#type/decision`, `#type/checklist` — content shape,
-  used only in `Systems/`.
+  used in `Technologies/`, `Career/`, `Courses/`, and `Resources/`.
 - `#stack/<technology>` — e.g. `#stack/kubernetes`, `#stack/postgres` —
   applied anywhere a file is stack-specific, to find everything touching
   a technology regardless of folder.

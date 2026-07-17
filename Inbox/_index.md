@@ -9,7 +9,7 @@ keep it fast.
 
 **Rule:** nothing lives here longer than a week. During weekly
 maintenance (see `WORKFLOW.md`), every item is filed into `Projects/`,
-`Systems/`, `Reference/`, or deleted.
+`Technologies/`, `Courses/`, `Career/`, `Resources/`, `Reference/`, or deleted.
 
 Does not belong here: anything you already know the home for — file it
 directly instead of routing it through Inbox out of habit.

@@ -11,5 +11,5 @@ actually happened, not a tidied retrospective.
 arrived via `git mv` from `Projects/`.
 
 If an archived project's pattern turns out to be reusable, extract it
-into `Systems/` explicitly — don't leave people trying to reuse things
+into `Technologies/` explicitly — don't leave people trying to reuse things
 by digging through the archive.
