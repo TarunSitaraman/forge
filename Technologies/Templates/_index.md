@@ -30,6 +30,10 @@ delete the guidance you don't need.*
 | [`portfolio-project.md`](portfolio-project.md) | Writing up a project for a portfolio |
 | [`deployment-checklist.md`](deployment-checklist.md) | A repeatable pre/during/post-deployment checklist |
 | [`risk-register.md`](risk-register.md) | A living log of project risks, reviewed on a cadence |
+| [`knowledge-pack-project.md`](knowledge-pack-project.md) | Comprehensive project snapshot: status, decisions, dependencies, risks, metrics |
+| [`knowledge-pack-technology.md`](knowledge-pack-technology.md) | Technology domain reference: mental model, architecture, config, pitfalls, interview questions |
+| [`knowledge-pack-course.md`](knowledge-pack-course.md) | Learning module: goal, progression, concepts, projects, assessment |
+| [`knowledge-pack-research-topic.md`](knowledge-pack-research-topic.md) | Research topic: question, findings, implications, applications, gaps |
 
 ## How to use a template
 

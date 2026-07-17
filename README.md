@@ -89,7 +89,7 @@ its own `_index.md` — this table is the map; follow a link to go deeper.
 |---|---|
 | [`Prompt-Library/`](Technologies/Prompt-Library) | 79 operating-procedure-grade AI prompts across 28 categories |
 | [`Playbooks/`](Technologies/Playbooks) | 18 execution workflows for recurring efforts, each with a Mermaid diagram |
-| [`Templates/`](Technologies/Templates) | 21 production-quality, reusable Markdown document templates |
+| [`Templates/`](Technologies/Templates) | 25 production-quality, reusable Markdown document templates |
 | [`Docs/`](Technologies/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs, Prompt Engineering, Markdown |
 | [`Project-System/`](Technologies/Project-System) | The one engineering-notebook template every new project scaffolds from |
 
