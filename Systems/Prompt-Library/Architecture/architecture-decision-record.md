@@ -43,7 +43,7 @@ exactly what missing information would resolve it.
 ## Related prompts
 - [[system-design-interview-style]]
 - [[pr-review-senior-engineer]]
-- [[tradeoff-decision-matrix]]
+- [[decision-tradeoff-matrix]]
 
 ## Tips
 - Give real constraints, not aspirational ones ("must scale to 10M users" when you have 10K) — the ADR quality depends on honest constraints.

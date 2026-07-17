@@ -52,24 +52,38 @@ thinking becomes reusable engineering material.
 forge/
 ├── README.md            You are here.
 ├── START_HERE.md         Onboarding + daily entry point.
-├── CONVENTIONS.md         Naming, Markdown, and tagging rules.
-├── WORKFLOW.md            Git workflow for using Forge day to day.
-├── ROADMAP.md             Where Forge is headed.
-├── .obsidian-config/      Minimal, version-controlled Obsidian setup.
-├── Inbox/                 Unsorted capture. Must be emptied on a cadence.
-├── Projects/              Active build work. One folder per project.
-├── Systems/               Reusable engineering systems: patterns,
-│                          architectures, decisions, checklists.
-│   ├── Prompt-Library/    Elite, operating-procedure-grade AI prompts.
-│   ├── Playbooks/         Execution workflows for recurring efforts.
-│   └── Templates/         Production-quality reusable document templates.
-├── Reference/             Durable technical reference material.
-└── Archive/               Completed or dead projects, kept for record.
+├── CONVENTIONS.md        Naming, Markdown, and tagging rules.
+├── WORKFLOW.md           Git workflow for using Forge day to day.
+├── ROADMAP.md            Where Forge is headed.
+├── .obsidian-config/     Minimal, version-controlled Obsidian setup.
+├── Inbox/                Unsorted capture. Must be emptied on a cadence.
+├── Projects/             Active build work. One folder per project.
+├── Systems/              Reusable engineering systems — see the module
+│                         table below.
+├── Reference/            Durable technical reference material — smaller
+│                         and more personal than Systems/Docs/.
+└── Archive/              Completed or dead projects, kept for record.
 ```
 
 Each folder contains an `_index.md` explaining its purpose, scope, and
 what does *not* belong there. Read `_index.md` before adding a file to
 any folder you're unfamiliar with.
+
+## Systems modules
+
+`Systems/` is where reusable engineering material lives. Each module has
+its own `_index.md` — this table is the map; follow a link to go deeper.
+
+| Module | What it is |
+|---|---|
+| [`Prompt-Library/`](Systems/Prompt-Library) | 67 operating-procedure-grade AI prompts across 22 categories |
+| [`Playbooks/`](Systems/Playbooks) | 15 execution workflows for recurring efforts, each with a Mermaid diagram |
+| [`Templates/`](Systems/Templates) | 16 production-quality, reusable Markdown document templates |
+| [`Competitive-Programming/`](Systems/Competitive-Programming) | Trackers + coaching prompts for becoming a better problem solver — not algorithm notes |
+| [`Career/`](Systems/Career) | Actionable trackers/checklists for resume, LinkedIn, portfolio, networking, interviews, salary, and career planning |
+| [`Project-System/`](Systems/Project-System) | The one engineering-notebook template every new project scaffolds from |
+| [`Docs/`](Systems/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases |
+| [`Resources/`](Systems/Resources) | Curated (not exhaustive) external resources — docs, repos, channels, courses, blogs, papers |
 
 ## Getting started
 
