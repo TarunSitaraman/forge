@@ -41,6 +41,7 @@ Output the rewritten email only.
 
 ## Related prompts
 - [[dense-prose-tightening]]
+- [[difficult-conversation-email]]
 
 ## Tips
 - State your actual recommendation when asking for a decision — "thoughts?" emails get deprioritized; "I recommend X, let me know if you disagree" gets answered.

@@ -41,6 +41,7 @@ tradeoff — these are zero-risk to fix and should be called out first.
 ## Related prompts
 - [[azure-resource-review]]
 - [[decision-tradeoff-matrix]]
+- [[multi-cloud-migration-plan]]
 
 ## Tips
 - Paste the actual billing breakdown, even roughly — cost audits on vague descriptions produce vague savings.

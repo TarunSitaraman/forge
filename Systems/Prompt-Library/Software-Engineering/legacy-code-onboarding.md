@@ -37,6 +37,8 @@ Produce:
 ## Related prompts
 - [[root-cause-five-whys]]
 - [[architecture-decision-record]]
+- [[technical-doc-outline-from-code]]
+- [[flaky-test-diagnosis]]
 
 ## Tips
 - Feed in the actual file tree, not a description — structure reveals architecture better than prose.

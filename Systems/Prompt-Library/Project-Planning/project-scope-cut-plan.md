@@ -45,6 +45,7 @@ Output the classification and cut order as a simple ranked list.
 ## Related prompts
 - [[decision-tradeoff-matrix]]
 - [[hackathon-execution-timeline]]
+- [[dependency-risk-mapping]]
 
 ## Tips
 - Decide the cut order before the pressure hits — decisions made in a crunch are worse than decisions made with a clear head.

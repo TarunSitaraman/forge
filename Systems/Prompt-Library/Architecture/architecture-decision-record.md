@@ -44,6 +44,7 @@ exactly what missing information would resolve it.
 - [[system-design-interview-style]]
 - [[pr-review-senior-engineer]]
 - [[decision-tradeoff-matrix]]
+- [[data-model-normalization-review]]
 
 ## Tips
 - Give real constraints, not aspirational ones ("must scale to 10M users" when you have 10K) — the ADR quality depends on honest constraints.

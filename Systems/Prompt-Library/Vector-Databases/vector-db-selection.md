@@ -48,6 +48,7 @@ Reason through:
 - [[chunking-strategy-design]]
 - [[rag-architecture-review]]
 - [[architecture-decision-record]]
+- [[embedding-model-evaluation]]
 
 ## Tips
 - State real corpus size and QPS — vector DB tradeoffs only become meaningful at specific scale thresholds, not in the abstract.

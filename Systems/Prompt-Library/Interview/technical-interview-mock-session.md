@@ -42,6 +42,8 @@ Start by giving me the problem. Wait for my response before continuing.
 ## Related prompts
 - [[system-design-interview-style]]
 - [[interview-story-structuring]]
+- [[interview-question-bank-generator]] — the interviewer's-side counterpart to this
+- [[cp-interview-variant]] — for reframing a competitive-programming pattern into interview form
 
 ## Tips
 - Ask explicitly for calibrated-to-level feedback — generic positive feedback doesn't tell you whether you'd actually pass at your target level.

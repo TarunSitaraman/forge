@@ -41,6 +41,8 @@ real number filled in before they're ready to use.
 
 ## Related prompts
 - [[interview-story-structuring]]
+- [[linkedin-profile-rewrite]]
+- [[portfolio-narrative-review]]
 
 ## Tips
 - Never let the model fabricate a number — insist it flags unknowns instead of guessing plausibly.

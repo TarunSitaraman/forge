@@ -45,6 +45,7 @@ Give a clear go/no-go, not just tradeoffs.
 ## Related prompts
 - [[prompt-eval-harness-design]]
 - [[rag-architecture-review]]
+- [[prompt-injection-hardening]]
 
 ## Tips
 - State the cost of a wrong output honestly — it's the single biggest driver of how much verification the feature needs.

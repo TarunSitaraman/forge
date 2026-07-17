@@ -40,6 +40,7 @@ prioritized list of the top 2-3 gaps to close before the review cycle.
 
 ## Related prompts
 - [[resume-bullet-impact-rewrite]]
+- [[career-plan-prompt]]
 
 ## Tips
 - Use the real rubric if one exists — vague "expectations" produce a vague case that's easy for a committee to discount.
