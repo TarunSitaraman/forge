@@ -30,7 +30,7 @@ non-blocking verdict" is.
 | [`Presentations/`](Presentations) | Narrative arc, demo scripting |
 | [`System-Design/`](System-Design) | Design walkthroughs, API contracts, data modeling |
 | [`Documentation/`](Documentation) | Runbooks, doc outlines from real codebases |
-| [`Career/`](Career) | Resume impact, promotion cases |
+| [`Career/`](Career) | Resume, LinkedIn, portfolio, networking, cold emails, salary research, offer comparison, career planning — see also `Systems/Career/` for the tracker module these support |
 | [`Interview/`](Interview) | Behavioral stories, mock technical interviews, interviewer question banks |
 | [`Hackathons/`](Hackathons) | Idea triage, execution timelines |
 | [`Competitive-Programming/`](Competitive-Programming) | Hint-only coaching, post-solution analysis, complexity/code review, weakness-finding, interview variants — see also `Systems/Competitive-Programming/` for the tracker module these support |

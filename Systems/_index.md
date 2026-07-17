@@ -18,6 +18,9 @@ Established subfolders:
 - [`Competitive-Programming/`](Competitive-Programming) — trackers and
   coaching prompts for becoming a better problem solver (not algorithm
   notes).
+- [`Career/`](Career) — actionable trackers/checklists for resume,
+  LinkedIn, portfolio, networking, interviews, salary, and career
+  planning (not generic advice).
 
 New subfolders are created per domain as they earn their place. Don't
 pre-create empty domain folders — create one when the second reusable
