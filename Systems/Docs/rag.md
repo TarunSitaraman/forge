@@ -183,5 +183,7 @@ recall_at_k = fraction_where(correct_chunk_id in retrieved_ids[:k])
 - `Systems/Prompt-Library/RAG/rag-architecture-review.md` and
   `chunking-strategy-design.md` for the diagnostic and design prompts
   that operationalize this document.
+- `Systems/Docs/llms.md` for the underlying model behavior RAG is
+  compensating for (no persistent memory, parametric knowledge limits).
 - `Systems/Docs/vector-databases.md` for the retrieval backend this
   architecture depends on.

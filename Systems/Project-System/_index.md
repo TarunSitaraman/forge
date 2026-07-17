@@ -16,7 +16,10 @@ instead of scattered across chat history and forgotten context.*
    scoped yet.
 3. Update Timeline, Risks, and Lessons Learned continuously, not
    retroactively — their entire value is in being current.
-4. Fill in Retrospective, Future Improvements, and Portfolio Entry once
+4. Keep Testing and Documentation honest as the project evolves — both
+   are meant to reflect current reality (what's actually tested, whether
+   docs are stale), not a one-time aspiration written at kickoff.
+5. Fill in Retrospective, Future Improvements, and Portfolio Entry once
    the project reaches a natural end point or major milestone.
 
 ## Why one file, not many
@@ -36,6 +39,9 @@ genuinely outgrows a summary.
 - **Demo scripting:** `Systems/Prompt-Library/Presentations/demo-script-design.md`
 - **Portfolio write-up:** `Systems/Templates/portfolio-project.md`
 - **Risk analysis:** `Systems/Prompt-Library/Decision-Making/premortem-analysis.md`
+- **Deployment process:** `Systems/Playbooks/deployment.md` and `Systems/Templates/deployment-checklist.md`
+- **Retrospective (standalone, e.g. a team sprint retro):** `Systems/Templates/retrospective.md`
+- **Documentation reference:** `Systems/Templates/readme.md` and `Systems/Templates/api-documentation.md`
 
 The notebook is the hub; these are the spokes you reach for only when a
 section needs more depth than a summary.

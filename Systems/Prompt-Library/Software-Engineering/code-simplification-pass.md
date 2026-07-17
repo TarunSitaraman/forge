@@ -45,6 +45,8 @@ Output:
 ## Related prompts
 - [[pr-review-senior-engineer]]
 - [[architecture-decision-record]]
+- [[refactor-legacy-function]] — for restructuring under a safety net, not just simplifying working code
+- [[extract-reusable-abstraction]]
 
 ## Tips
 - Always state the invariant explicitly — "must not change behavior" is too vague on its own; name the specific contract.

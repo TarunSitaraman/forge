@@ -43,6 +43,7 @@ recommendation.
 ## Related prompts
 - [[azure-resource-review]]
 - [[production-incident-triage]]
+- [[dockerfile-review]] — if the pipeline builds a container image
 
 ## Tips
 - Paste the real YAML — pipeline hardening issues are specific to exact steps and permission blocks, not generalizable from a description.

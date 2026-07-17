@@ -73,3 +73,7 @@ structured pass.}
   if the feature actually worked.
 - Keep "alternatives considered" honest — include at least one real
   alternative, not a strawman that makes the proposal look inevitable.
+
+## Related Templates
+- [`feature-specification.md`](feature-specification.md) — the build-ready follow-on once this proposal is approved
+- [`design-decision-record.md`](design-decision-record.md) — for a significant technical decision made in the course of building this

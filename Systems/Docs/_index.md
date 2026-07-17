@@ -17,13 +17,24 @@ note, or an appendix.*
 | LangChain | [`langchain.md`](langchain.md) |
 | RAG | [`rag.md`](rag.md) |
 | Vector Databases | [`vector-databases.md`](vector-databases.md) |
+| LLMs | [`llms.md`](llms.md) |
+| Prompt Engineering | [`prompt-engineering.md`](prompt-engineering.md) |
+| Markdown | [`markdown.md`](markdown.md) |
 
 ## Structure every doc follows
 
-Overview → Mental Model → Architecture (with Mermaid diagrams) → Common
-Workflows → Common Mistakes → Best Practices → Cheatsheet → Interview
-Questions → Useful Links → Further Reading. Skim any doc top to bottom
-to go from zero to operational in one pass.
+Overview → Mental Model → Architecture (with Mermaid diagrams) → Core
+Concepts → Common Workflows → Common Mistakes → Best Practices →
+Cheatsheet → Interview Questions → Useful Links → Further Reading. Skim
+any doc top to bottom to go from zero to operational in one pass.
+
+*(The first seven docs — Azure through Vector Databases — fold Core
+Concepts into their Mental Model and Architecture sections rather than
+breaking it out separately; LLMs, Prompt Engineering, and Markdown use
+an explicit Core Concepts section because each covers several
+genuinely distinct concepts that don't reduce to one mental-model
+framing. Both are acceptable; use an explicit Core Concepts section
+when a topic doesn't collapse into a single framing.)*
 
 ## Why "Mental Model" is its own section
 

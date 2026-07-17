@@ -76,14 +76,14 @@ its own `_index.md` — this table is the map; follow a link to go deeper.
 
 | Module | What it is |
 |---|---|
-| [`Prompt-Library/`](Systems/Prompt-Library) | 67 operating-procedure-grade AI prompts across 22 categories |
-| [`Playbooks/`](Systems/Playbooks) | 15 execution workflows for recurring efforts, each with a Mermaid diagram |
-| [`Templates/`](Systems/Templates) | 16 production-quality, reusable Markdown document templates |
+| [`Prompt-Library/`](Systems/Prompt-Library) | 79 operating-procedure-grade AI prompts across 28 categories |
+| [`Playbooks/`](Systems/Playbooks) | 18 execution workflows for recurring efforts, each with a Mermaid diagram |
+| [`Templates/`](Systems/Templates) | 21 production-quality, reusable Markdown document templates |
 | [`Competitive-Programming/`](Systems/Competitive-Programming) | Trackers + coaching prompts for becoming a better problem solver — not algorithm notes |
 | [`Career/`](Systems/Career) | Actionable trackers/checklists for resume, LinkedIn, portfolio, networking, interviews, salary, and career planning |
 | [`Project-System/`](Systems/Project-System) | The one engineering-notebook template every new project scaffolds from |
-| [`Docs/`](Systems/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases |
-| [`Resources/`](Systems/Resources) | Curated (not exhaustive) external resources — docs, repos, channels, courses, blogs, papers |
+| [`Docs/`](Systems/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs, Prompt Engineering, Markdown |
+| [`Resources/`](Systems/Resources) | Curated (not exhaustive) external resources across 11 categories — docs, repos, channels, courses, blogs, papers, books, communities |
 
 ## Getting started
 

@@ -64,6 +64,22 @@ project needs more structure than a milestone table.)*
 *(The "why" column matters more than the list itself — a stack chosen
 without a stated reason is a stack no one can evaluate later.)*
 
+## Testing
+
+{What's actually tested and how (unit, integration, manual smoke test),
+and — just as important — what's deliberately NOT tested and why that's
+an acceptable risk at this project's stage. A notebook that's silent on
+testing usually means it didn't happen.}
+
+## Documentation
+
+{Where this project's real documentation lives (README, API docs, an
+architecture doc) and its current state — Draft / Adequate / Stale. Link
+out rather than duplicate; this section just tracks that documentation
+exists and hasn't gone stale, using `Systems/Templates/readme.md` and
+`Systems/Templates/api-documentation.md` as the underlying templates
+where applicable.}
+
 ## Useful prompts
 
 {Link the specific `Systems/Prompt-Library/` entries you've actually

@@ -17,7 +17,8 @@ the specific, concrete reason.
 
 The categories below (Official Documentation, GitHub Repositories,
 YouTube Channels, Courses, Blogs, Cheatsheets, Newsletters, Podcasts,
-Research Papers) exist as structure from day one, but most are seeded
+Research Papers, Books, Communities) exist as structure from day one,
+but most are seeded
 empty or near-empty rather than pre-filled with generic "best of"
 recommendations. Channels, courses, and newsletters change hands, go
 stale, or get discontinued — a curated list is only trustworthy if every
@@ -42,6 +43,8 @@ seed directly — see `official-documentation.md`.
 | [`newsletters.md`](newsletters.md) | Newsletters worth the inbox space |
 | [`podcasts.md`](podcasts.md) | Podcasts worth the commute time |
 | [`research-papers.md`](research-papers.md) | Papers that changed how you think about a problem |
+| [`books.md`](books.md) | Books worth finishing, for a specific idea you still use |
+| [`communities.md`](communities.md) | Communities worth actually participating in, not just lurking |
 
 ## Relationship to `Systems/Docs/`
 

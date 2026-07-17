@@ -13,18 +13,23 @@ delete the guidance you don't need.*
 | [`architecture-document.md`](architecture-document.md) | Documenting a system's design and requirements |
 | [`project-plan.md`](project-plan.md) | Planning scope, dependencies, and checkpoints |
 | [`bug-report.md`](bug-report.md) | Filing a reproducible, actionable bug |
-| [`feature-proposal.md`](feature-proposal.md) | Proposing new work before building it |
+| [`feature-proposal.md`](feature-proposal.md) | Proposing new work before building it — the why/should-we |
+| [`feature-specification.md`](feature-specification.md) | Specifying an approved feature in build-ready detail — the how/what |
 | [`api-documentation.md`](api-documentation.md) | Documenting an API for consumers |
 | [`research-report.md`](research-report.md) | Reporting findings that inform a decision |
 | [`presentation-outline.md`](presentation-outline.md) | Planning a presentation before building slides |
 | [`hackathon-submission.md`](hackathon-submission.md) | Submitting a hackathon project for judging |
 | [`meeting-notes.md`](meeting-notes.md) | Capturing decisions and action items from a meeting |
-| [`design-decision-record.md`](design-decision-record.md) | Recording an architectural/technical decision (ADR) |
+| [`design-decision-record.md`](design-decision-record.md) | Recording one significant architectural/technical decision (full ADR) |
+| [`decision-log.md`](decision-log.md) | A running log of smaller, lower-stakes decisions |
 | [`sprint-planning.md`](sprint-planning.md) | Planning a sprint's committed work and capacity |
 | [`weekly-review.md`](weekly-review.md) | A short weekly status + Forge maintenance check |
+| [`retrospective.md`](retrospective.md) | A team/project retrospective at a natural end point |
 | [`learning-summary.md`](learning-summary.md) | Capturing gotchas after learning something new |
 | [`internship-tracker.md`](internship-tracker.md) | Tracking an internship/job application cycle |
 | [`portfolio-project.md`](portfolio-project.md) | Writing up a project for a portfolio |
+| [`deployment-checklist.md`](deployment-checklist.md) | A repeatable pre/during/post-deployment checklist |
+| [`risk-register.md`](risk-register.md) | A living log of project risks, reviewed on a cadence |
 
 ## How to use a template
 

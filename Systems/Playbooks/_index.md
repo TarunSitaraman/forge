@@ -24,15 +24,23 @@ notes — they're procedures you run.*
 | [`building-an-mvp.md`](building-an-mvp.md) | Scoping and shipping a hypothesis-testing MVP |
 | [`planning-a-semester-project.md`](planning-a-semester-project.md) | Planning a long-running academic project |
 | [`preparing-for-exams.md`](preparing-for-exams.md) | Studying for an exam with limited time |
+| [`deployment.md`](deployment.md) | Shipping a change to production safely and reversibly |
+| [`repository-cleanup.md`](repository-cleanup.md) | Bringing a neglected repo back to a navigable state |
+| [`prompt-creation.md`](prompt-creation.md) | Turning a proven prompt into a real Prompt Library entry |
 
 ## How a playbook is structured
 
-Every playbook has the same seven sections, in this order: **Goal**,
-**Inputs**, **Outputs**, **Steps**, **Checklists**, **AI prompts**,
-**Expected artifacts**, plus a closing **Mermaid workflow** diagram. The
-"AI prompts" section links directly to `Systems/Prompt-Library/` entries
-— playbooks are the execution layer, the Prompt Library is the tool you
-reach for at specific steps.
+Every playbook has, at minimum, these sections: **Goal**, **Inputs**,
+**Outputs**, **Steps** (or **Step-by-step workflow**), **Checklists** (or
+**Checklist**), **AI prompts**, **Expected artifacts** (or
+**Deliverables**), plus a closing **Mermaid workflow** diagram. The three
+most recently added playbooks (`deployment.md`, `repository-cleanup.md`,
+`prompt-creation.md`) also include explicit **Prerequisites** and
+**Common mistakes** sections — a stronger shape worth backporting into
+the earlier fifteen over time, not a competing convention. The "AI
+prompts" section always links directly to `Systems/Prompt-Library/`
+entries — playbooks are the execution layer, the Prompt Library is the
+tool you reach for at specific steps.
 
 ## Adding a playbook
 

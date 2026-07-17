@@ -28,7 +28,8 @@ non-blocking verdict" is.
 | [`Writing/`](Writing) | Prose tightening, technical explanation for non-experts |
 | [`Email/`](Email) | Actionable emails, difficult conversations |
 | [`Presentations/`](Presentations) | Narrative arc, demo scripting |
-| [`System-Design/`](System-Design) | Design walkthroughs, API contracts, data modeling |
+| [`System-Design/`](System-Design) | Design walkthroughs, API contract review, data modeling |
+| [`API-Design/`](API-Design) | Designing a new API from scratch, versioning strategy |
 | [`Documentation/`](Documentation) | Runbooks, doc outlines from real codebases |
 | [`Career/`](Career) | Resume, LinkedIn, portfolio, networking, cold emails, salary research, offer comparison, career planning — see also `Systems/Career/` for the tracker module these support |
 | [`Interview/`](Interview) | Behavioral stories, mock technical interviews, interviewer question banks |
@@ -37,6 +38,11 @@ non-blocking verdict" is.
 | [`Project-Planning/`](Project-Planning) | Scope cuts, dependency/risk mapping |
 | [`Decision-Making/`](Decision-Making) | Tradeoff matrices, pre-mortems |
 | [`Prompt-Engineering/`](Prompt-Engineering) | Prompt failure diagnosis, system prompt review, injection hardening |
+| [`Refactoring/`](Refactoring) | Safe legacy-code refactors, reusable abstraction extraction |
+| [`Performance-Optimization/`](Performance-Optimization) | Bottleneck diagnosis, optimization tradeoff review |
+| [`Docker/`](Docker) | Dockerfile review, container debugging — see also `Systems/Docs/docker.md` |
+| [`Git/`](Git) | Commit history cleanup, merge conflict resolution — see also `Systems/Docs/git.md` |
+| [`Learning/`](Learning) | Mental model building, learning plan generation |
 
 ## Every entry follows the same shape
 

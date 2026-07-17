@@ -206,3 +206,6 @@ for chunk in chain.stream({"text": "..."}):
   source for the composition model described above.
 - `Systems/Docs/rag.md` for the retrieval-side concepts a LangChain RAG
   chain depends on.
+- `Systems/Docs/llms.md` and `Systems/Docs/prompt-engineering.md` for the
+  underlying model behavior and prompting discipline LangChain composes
+  on top of.

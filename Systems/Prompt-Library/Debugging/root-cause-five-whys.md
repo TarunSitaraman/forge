@@ -43,6 +43,8 @@ would resolve the next "why."
 ## Related prompts
 - [[production-incident-triage]]
 - [[legacy-code-onboarding]]
+- [[performance-bottleneck-diagnosis]] — the same evidence-first discipline applied to a slowness complaint
+- [[container-debugging]] — for symptom-class-driven diagnosis inside a container
 
 ## Tips
 - Feed in raw logs, not summaries — summaries already discard the evidence needed for the chain.

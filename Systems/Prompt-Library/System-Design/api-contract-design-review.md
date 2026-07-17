@@ -46,6 +46,8 @@ external contracts cannot.
 ## Related prompts
 - [[architecture-decision-record]]
 - [[service-boundary-analysis]]
+- [[api-design-from-scratch]] — the design-time counterpart to this review
+- [[api-versioning-strategy]]
 
 ## Tips
 - Weight strictness by consumer type — an internal API used by one team can iterate faster than a public contract with unknown consumers.

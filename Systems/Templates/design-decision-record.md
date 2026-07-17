@@ -58,3 +58,7 @@ be reconsidered.}
 - Never delete or heavily edit an ADR after acceptance — if the decision
   changes, write a new ADR that supersedes it, preserving the history of
   why the original choice was made.
+
+## Related Templates
+- [`decision-log.md`](decision-log.md) — for smaller, lower-stakes decisions that don't warrant a full ADR
+- [`feature-proposal.md`](feature-proposal.md)
