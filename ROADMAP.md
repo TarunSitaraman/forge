@@ -24,11 +24,12 @@ Nothing here is added preemptively.
       Databricks, Docker, Git, LangChain, RAG, Vector Databases) (see
       `Systems/Docs/`).
 
+- [x] Resources module — curated (not exhaustive) external resources
+      across 9 categories, each with a stated reason it earns its place
+      (see `Systems/Resources/`).
+
 ## Next
 
-- [ ] Resources module — curated (not exhaustive) external resources per
-      domain, each with a stated reason it earns its place (see
-      `Systems/Resources/`, in progress).
 - [ ] Decision record template standardized across `Systems/`.
 - [ ] Minimal Dataview queries (if adopted) for "active projects" and
       "stale Inbox items" — evaluated against the minimal-plugins

@@ -26,6 +26,9 @@ Established subfolders:
 - [`Docs/`](Docs) — one authoritative engineering reference manual per
   technology (Azure, Databricks, Docker, Git, LangChain, RAG, Vector
   Databases) — not scattered notes.
+- [`Resources/`](Resources) — curated external resources (docs, repos,
+  channels, courses, blogs, newsletters, podcasts, papers), each with a
+  stated reason it earns its place.
 
 New subfolders are created per domain as they earn their place. Don't
 pre-create empty domain folders — create one when the second reusable
