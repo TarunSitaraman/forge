@@ -6,6 +6,8 @@ Each project gets its own folder: `Projects/<kebab-case-name>/`, with at
 minimum a `_index.md` explaining the project's scope, status, and key links.
 Large projects can break content into focused topic documents (e.g., architecture,
 deployment, testing).
+minimum a `README.md` stating the goal, current status, and links to any
+`Technologies/`/`Reference/` material it depends on.
 
 ## Active Projects
 
@@ -27,3 +29,6 @@ Each project should have:
 **Reusable content:** Patterns or decisions that outlive one project go in `Systems/` and get linked from here (don't duplicate).
 
 **Cross-linking:** Link related `Systems/` content (playbooks, templates, reference docs) from project docs. This improves discoverability.
+Does not belong here: reusable patterns or decisions that outlive this
+one project — those go in `Technologies/` and get linked from here instead of
+duplicated.

@@ -7,7 +7,7 @@ one project.*
 A `Reference/` file answers "how does X actually work / what's the
 correct incantation" without narrative or project context. If it reads
 like a story or a log, it's not reference material — it belongs in
-`Projects/` or `Systems/`.
+`Projects/` or `Technologies/`.
 
 Organize by technology/domain as it grows:
 `Reference/<technology>/<topic>.md`. Don't create a subfolder for a
@@ -19,15 +19,15 @@ deprecated flag), date it or link to the source so staleness is
 detectable.
 
 Does not belong here: opinions, decisions, or anything that required
-judgment to produce — that's a `Systems/` decision record, not
+judgment to produce — that's a `Technologies/` decision record, not
 `Reference/`.
 
-**Relationship to `Systems/Docs/`:** a technology significant enough to
+**Relationship to `Technologies/Docs/`:** a technology significant enough to
 warrant a full authoritative manual (mental model, architecture,
 cheatsheet, interview questions) belongs in
-[`Systems/Docs/`](../Systems/Docs) as one comprehensive file. `Reference/`
+[`Technologies/Docs/`](../Technologies/Docs) as one comprehensive file. `Reference/`
 is for smaller, personal, often project-triggered notes — a specific
 gotcha, a config snippet, a quick lookup — that haven't (yet) grown into
-a full `Systems/Docs/` entry. If a `Reference/` note grows large enough to
+a full `Technologies/Docs/` entry. If a `Reference/` note grows large enough to
 need its own Mental Model / Architecture / Interview Questions structure,
-graduate it into `Systems/Docs/` instead of letting it keep expanding here.
+graduate it into `Technologies/Docs/` instead of letting it keep expanding here.

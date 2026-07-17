@@ -6,7 +6,7 @@ thinking and building, not a note revision log.
 ## Branching
 
 - `main` is always in a clean, navigable state.
-- For substantial reorganizations or multi-file additions (a new Systems
+- For substantial reorganizations or multi-file additions (a new Technologies
   entry, a Prompt Library category, a project scaffold), branch:
   `git checkout -b <kebab-case-change-name>`.
 - For quick single-file capture or edits during a build session,
@@ -27,10 +27,10 @@ thinking and building, not a note revision log.
 
 - Solo use: push straight to `main` after a self-review of the diff
   (`git diff --staged`).
-- Collaborative use: open a PR for anything touching `Systems/` or
-  `Reference/`, since those are shared, reusable material other people's
-  work will depend on. `Projects/` and `Inbox/` don't need review — they're
-  yours to move fast in.
+- Collaborative use: open a PR for anything touching `Technologies/`, `Career/`,
+  `Courses/`, `Resources/`, or `Reference/`, since those are shared, reusable
+  material other people's work will depend on. `Projects/` and `Inbox/` don't
+  need review — they're yours to move fast in.
 
 ## Weekly maintenance
 
@@ -44,7 +44,7 @@ thinking and building, not a note revision log.
 ## What not to do
 
 - Don't force-push shared branches.
-- Don't squash away the history of a `Systems/` decision record — the
+- Don't squash away the history of a `Technologies/` decision record — the
   evolution of a decision is often as valuable as the decision itself.
 - Don't let `Inbox/` become a second `main` branch — it's a queue, not
   storage.
