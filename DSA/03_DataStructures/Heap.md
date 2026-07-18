@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/heap]
 canonical: true
-related: [[[Heap]], [[Greedy]], [[Dijkstra]], [[Prim]]]
+related: [[Heap]], [[Greedy]], [[Dijkstra]], [[Prim]
 ---
 # Heap
 
@@ -14,7 +14,10 @@ Nearly complete tree stored in an array that exposes the minimum or maximum prio
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Push candidate
+- Pop best candidate
+- Peek best candidate
+- Heapify an existing list
 
 ## Complexity
 peek O(1), push/pop O(log n), heapify O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.

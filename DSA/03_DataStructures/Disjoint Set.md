@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/disjoint-set]
 canonical: true
-related: [[[Union Find]], [[Kruskal]]]
+related: [[Union Find]], [[Kruskal]
 ---
 # Disjoint Set
 
@@ -14,7 +14,10 @@ Component data structure supporting union and representative lookup.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Find representative
+- Union components
+- Test connectivity
+- Track component size or rank
 
 ## Complexity
 near O(1) amortized find/union with compression and rank/size. Always analyze the operation actually used by the algorithm, not only the headline average case.

@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/binary-search-tree]
 canonical: true
-related: [[[Binary Search]], [[Tree Traversal]]]
+related: [[Binary Search]], [[Tree Traversal]
 ---
 # Binary Search Tree
 
@@ -14,7 +14,10 @@ Ordered binary tree where left subtree keys are smaller and right subtree keys a
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Search by key
+- Insert preserving order
+- Delete with successor or predecessor replacement
+- Traverse in sorted order
 
 ## Complexity
 O(h) search/insert/delete; h can be n if unbalanced. Always analyze the operation actually used by the algorithm, not only the headline average case.

@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/fenwick-tree]
 canonical: true
-related: [[[Prefix Sum]], [[Binary Lifting]]]
+related: [[Prefix Sum]], [[Binary Lifting]
 ---
 # Fenwick Tree
 
@@ -14,7 +14,10 @@ Array-backed tree for prefix aggregates with point updates.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Add delta at index
+- Query prefix aggregate
+- Query range by prefix difference
+- Binary lift over cumulative frequencies
 
 ## Complexity
 update/query O(log n), space O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.

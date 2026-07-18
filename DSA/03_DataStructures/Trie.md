@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/trie]
 canonical: true
-related: [[[Trie]], [[DFS]], [[String Matching]]]
+related: [[Trie]], [[DFS]], [[String Matching]
 ---
 # Trie
 
@@ -14,7 +14,10 @@ Prefix tree whose edges represent characters or tokens.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Insert key by characters
+- Search exact key
+- Search prefix
+- Traverse descendants for completions
 
 ## Complexity
 insert/search O(length), prefix query O(prefix length). Always analyze the operation actually used by the algorithm, not only the headline average case.

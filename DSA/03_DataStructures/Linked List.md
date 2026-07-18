@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/linked-list]
 canonical: true
-related: [[[Fast & Slow Pointers]], [[Two Pointers]], [[Recursion]]]
+related: [[Fast & Slow Pointers]], [[Two Pointers]], [[Recursion]
 ---
 # Linked List
 
@@ -14,7 +14,10 @@ Node-based sequence where each element points to the next, and sometimes previou
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Follow next or previous pointers
+- Insert after a known node
+- Delete by rewiring neighbors
+- Reverse or split by pointer manipulation
 
 ## Complexity
 access O(n), insert/delete after node O(1), search O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.

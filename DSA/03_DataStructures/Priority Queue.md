@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/priority-queue]
 canonical: true
-related: [[[Heap]], [[Greedy]], [[Dijkstra]]]
+related: [[Heap]], [[Greedy]], [[Dijkstra]
 ---
 # Priority Queue
 
@@ -14,7 +14,10 @@ Abstract queue that removes the item with highest priority rather than earliest 
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Insert item with priority
+- Remove best-priority item
+- Break ties deterministically
+- Optionally perform lazy deletion for stale entries
 
 ## Complexity
 implementation-dependent; binary heap push/pop O(log n). Always analyze the operation actually used by the algorithm, not only the headline average case.

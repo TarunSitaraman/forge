@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/avl-tree]
 canonical: true
-related: [[[Binary Search Tree]], [[Tree Traversal]]]
+related: [[Binary Search Tree]], [[Tree Traversal]
 ---
 # AVL Tree
 
@@ -14,7 +14,10 @@ Self-balancing BST maintaining strict height balance through rotations.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Search by key
+- Insert with rotations
+- Delete with rebalancing
+- Maintain node height metadata
 
 ## Complexity
 search/insert/delete O(log n). Always analyze the operation actually used by the algorithm, not only the headline average case.

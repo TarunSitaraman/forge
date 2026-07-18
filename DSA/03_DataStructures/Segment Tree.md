@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/segment-tree]
 canonical: true
-related: [[[Divide and Conquer]], [[Interval Processing]]]
+related: [[Divide and Conquer]], [[Interval Processing]
 ---
 # Segment Tree
 
@@ -14,7 +14,10 @@ Tree over intervals that supports range queries and updates by combining child s
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Build from base array
+- Query range aggregate
+- Update point or range
+- Push lazy tags when supported
 
 ## Complexity
 query/update O(log n), build O(n), space O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.

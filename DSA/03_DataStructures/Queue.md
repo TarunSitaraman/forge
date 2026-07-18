@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/queue]
 canonical: true
-related: [[[BFS]], [[Topological Sort]]]
+related: [[BFS]], [[Topological Sort]
 ---
 # Queue
 
@@ -14,7 +14,10 @@ First-in-first-out collection for processing items in arrival or layer order.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Enqueue at the back
+- Dequeue from the front
+- Peek at the next item
+- Track layer boundaries when needed
 
 ## Complexity
 enqueue/dequeue O(1) with deque. Always analyze the operation actually used by the algorithm, not only the headline average case.

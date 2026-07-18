@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/array]
 canonical: true
-related: [[[Binary Search]], [[Sliding Window]], [[Prefix Sum]], [[Two Pointers]]]
+related: [[Binary Search]], [[Sliding Window]], [[Prefix Sum]], [[Two Pointers]
 ---
 # Array
 
@@ -14,7 +14,10 @@ Contiguous indexed sequence with O(1) random access and strong cache locality.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Read or write by index
+- Append to the end
+- Slice or scan ranges
+- Insert or delete by shifting later elements
 
 ## Complexity
 index lookup O(1), append amortized O(1), insert/delete middle O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.

@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/tree]
 canonical: true
-related: [[[Tree Traversal]], [[DFS]], [[BFS]], [[Binary Lifting]]]
+related: [[Tree Traversal]], [[DFS]], [[BFS]], [[Binary Lifting]
 ---
 # Tree
 
@@ -14,7 +14,10 @@ Connected acyclic graph with hierarchical structure and unique simple paths.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Traverse from root
+- Visit children
+- Compute subtree summaries
+- Answer path or ancestor queries with augmentation
 
 ## Complexity
 traversal O(n), query costs depend on augmentation. Always analyze the operation actually used by the algorithm, not only the headline average case.

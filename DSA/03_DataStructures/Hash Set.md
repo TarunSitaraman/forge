@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/hash-set]
 canonical: true
-related: [[[Hashing]], [[Graph Traversal]], [[Two Pointers]]]
+related: [[Hashing]], [[Graph Traversal]], [[Two Pointers]
 ---
 # Hash Set
 
@@ -14,7 +14,10 @@ Hash-backed membership collection storing unique keys.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Add key
+- Remove key
+- Test membership
+- Deduplicate a stream of values
 
 ## Complexity
 expected add/remove/contains O(1). Always analyze the operation actually used by the algorithm, not only the headline average case.

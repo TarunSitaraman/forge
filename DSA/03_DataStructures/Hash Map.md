@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/hash-map]
 canonical: true
-related: [[[Hashing]], [[Prefix Sum]], [[Sliding Window]]]
+related: [[Hashing]], [[Prefix Sum]], [[Sliding Window]
 ---
 # Hash Map
 
@@ -14,7 +14,10 @@ Associative array mapping keys to values using hash-based lookup.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Insert or update by key
+- Lookup by key
+- Delete by key
+- Iterate keys, values, or pairs
 
 ## Complexity
 expected get/set/delete O(1), worst-case depends on collisions. Always analyze the operation actually used by the algorithm, not only the headline average case.

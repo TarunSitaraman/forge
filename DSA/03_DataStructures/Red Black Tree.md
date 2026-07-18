@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/red-black-tree]
 canonical: true
-related: [[[Binary Search Tree]], [[Tree Traversal]]]
+related: [[Binary Search Tree]], [[Tree Traversal]
 ---
 # Red Black Tree
 
@@ -14,7 +14,10 @@ Self-balancing BST with color invariants that bound height less strictly than AV
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Search by key
+- Insert with recoloring/rotation
+- Delete with fix-up
+- Maintain color and black-height invariants
 
 ## Complexity
 search/insert/delete O(log n). Always analyze the operation actually used by the algorithm, not only the headline average case.

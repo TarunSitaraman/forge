@@ -3,7 +3,7 @@ type: data-structure
 status: stable
 tags: [dsa/data-structure, dsa/graph]
 canonical: true
-related: [[[Graph Traversal]], [[DFS]], [[BFS]], [[Dijkstra]], [[Union Find]]]
+related: [[Graph Traversal]], [[DFS]], [[BFS]], [[Dijkstra]], [[Union Find]
 ---
 # Graph
 
@@ -14,7 +14,10 @@ Vertices connected by edges, directed or undirected, weighted or unweighted.
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
 
 ## Core Operations
-
+- Add vertex or edge
+- Iterate neighbors
+- Track visited state
+- Store weights or directions when required
 
 ## Complexity
 operation costs depend on adjacency representation. Always analyze the operation actually used by the algorithm, not only the headline average case.
