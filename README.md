@@ -65,8 +65,7 @@ forge/
 ├── Projects/               Active build work. One folder per project.
 ├── Technologies/           Reusable technical systems: prompts, templates,
 │                           playbooks, docs, and project scaffolding.
-├── Courses/                Structured learning: skill trackers and coaching
-│                           prompts for deliberate improvement.
+├── Courses/                Structured learning: skill trackers and coaching`n│                           prompts for deliberate improvement.`n├── DSA/                    Canonical algorithms, data structures, templates,`n│                           interview prep, mistakes, and problem writeups.
 ├── Career/                 Career development: actionable tools for resume,
 │                           interviews, salary, and planning.
 ├── Resources/              Curated external resources across 11 categories —
@@ -93,7 +92,7 @@ its own `_index.md` — this table is the map; follow a link to go deeper.
 | [`Docs/`](Technologies/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs, Prompt Engineering, Markdown |
 | [`Project-System/`](Technologies/Project-System) | The one engineering-notebook template every new project scaffolds from |
 
-## Courses module
+## DSA module`n`n`DSA/` is the canonical data structures and algorithms knowledge base: patterns, algorithms, data structures, Python templates, complexity, interviews, mistakes, cheat sheets, and representative problems. Start at [`DSA Home`](DSA/00_Index/DSA%20Home.md).`n`n## Courses module
 
 `Courses/` contains structured learning material for deliberate skill development.
 
@@ -120,3 +119,4 @@ structure are enforced by discipline, not tooling, so consistency is on
 you.
 
 Committing changes? Read [`WORKFLOW.md`](WORKFLOW.md).
+

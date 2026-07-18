@@ -10,7 +10,7 @@ once, then never again.
 | `Inbox/` | Fast capture. Anything unsorted lands here first. | "Have I filed this within a week?" |
 | `Projects/` | Active build work, one folder per project. | "Am I actively executing on this?" |
 | `Technologies/` | Reusable technical systems: prompts, templates, playbooks, docs. | "Will I reuse this on every future project?" |
-| `Courses/` | Structured learning for skill development. | "Is this deliberate skill growth, not a one-off note?" |
+| `Courses/` | Structured learning for skill development. | "Is this deliberate skill growth, not a one-off note?" |`n| `DSA/` | Canonical algorithm and interview knowledge. | "Is this reusable DSA knowledge, not just one contest note?" |
 | `Career/` | Career development: actionable tools and planning. | "Does this help me move my career forward?" |
 | `Resources/` | Curated external resources I've validated and recommend. | "Have I personally used and verified this?" |
 | `Reference/` | Durable technical facts: APIs, configs, gotchas, cheat sheets. | "Is this true regardless of any project?" |
@@ -23,7 +23,7 @@ folder to avoid the decision.
 ## Daily loop
 
 1. **Open `Inbox/`.** Clear anything older than a week — file it into
-   `Projects/`, `Technologies/`, `Courses/`, `Career/`, `Resources/`, `Reference/`, or delete it.
+   `Projects/`, `Technologies/`, `Courses/`, `DSA/`, `Career/`, `Resources/`, `Reference/`, or delete it.
 2. **Open the active project** in `Projects/` you're executing against
    today.
 3. **Capture as you go.** New idea, decision, or reusable pattern? One
@@ -45,3 +45,4 @@ folder to avoid the decision.
 - Naming and Markdown rules: [`CONVENTIONS.md`](CONVENTIONS.md)
 - Git workflow: [`WORKFLOW.md`](WORKFLOW.md)
 - What's coming: [`ROADMAP.md`](ROADMAP.md)
+
