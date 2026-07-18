@@ -1,14 +1,14 @@
 ---
 type: data-structure
 status: stable
-tags: [dsa/data-structure, dsa/segment-tree]
+tags: [dsa/data-structure, dsa/priority-queue]
 canonical: true
-related: [[[Divide and Conquer]], [[Interval Processing]]]
+related: [[[Heap]], [[Greedy]], [[Dijkstra]]]
 ---
-# Segment Tree
+# Priority Queue
 
 ## Overview
-Tree over intervals that supports range queries and updates by combining child summaries.
+Abstract queue that removes the item with highest priority rather than earliest insertion time.
 
 ## Design
 The design should make the supported operations natural and make unsupported operations visibly expensive. A data structure is not just storage; it encodes a contract about access patterns, mutation cost, ordering, and invariants.
@@ -17,13 +17,13 @@ The design should make the supported operations natural and make unsupported ope
 
 
 ## Complexity
-query/update O(log n), build O(n), space O(n). Always analyze the operation actually used by the algorithm, not only the headline average case.
+implementation-dependent; binary heap push/pop O(log n). Always analyze the operation actually used by the algorithm, not only the headline average case.
 
 ## Implementation Notes
 Python code should use built-in structures when they match the contract: list for arrays/stacks, collections.deque for queues/deques, dict and set for hashing, and heapq for heaps. Custom classes are appropriate when the invariant is the main subject, such as [[Disjoint Set]], [[Trie]], [[Fenwick Tree]], or [[Segment Tree]].
 
 ## Use Cases
-Use when range aggregate operations must support updates or lazy propagation.
+Use when priority can change the processing order and full sorting is unavailable or wasteful.
 
 ## Tradeoffs
 The right structure is determined by the dominant operation. Prefer simple built-ins until the problem requires stronger asymptotic guarantees, ordered operations, range aggregation, prefix lookup, or component tracking.
@@ -41,7 +41,7 @@ The right structure is determined by the dominant operation. Prefer simple built
 - [[Mutable Defaults]]
 
 ## Related Patterns
-- [[Divide and Conquer]], [[Interval Processing]]
+- [[Heap]], [[Greedy]], [[Dijkstra]]
 - [[Pattern Index]]
 
 ## Related Algorithms
