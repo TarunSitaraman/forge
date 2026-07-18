@@ -1,26 +1,39 @@
 ---
 type: python-template
-status: draft
+status: stable
 tags: [dsa/template, python]
 canonical: true
 ---
 # Python - Binary Search
 
 ## Purpose
-Reusable interview template for [[Binary Search]].
+Reusable interview-ready Python template for [[Binary Search]].
 
 ## Complexity
-- Time: <fill>
-- Space: <fill>
+- Time: Depends on operation and input size; document per problem.
+- Space: Depends on auxiliary structures; document per problem.
 
 ## Code
 ``python
-# TODO: add interview-ready implementation
+def lower_bound(nums, target):
+    lo, hi = 0, len(nums)
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
 ``
 
 ## Edge Cases
-- <case>
+- Empty input
+- Single-element input
+- Duplicate values or repeated states
+- Disconnected components when graph-shaped
 
 ## Common Mistakes
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
 

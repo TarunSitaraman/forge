@@ -1,26 +1,46 @@
 ---
 type: python-template
-status: draft
+status: stable
 tags: [dsa/template, python]
 canonical: true
 ---
 # Python - BFS
 
 ## Purpose
-Reusable interview template for [[BFS]].
+Reusable interview-ready Python template for [[BFS]].
 
 ## Complexity
-- Time: <fill>
-- Space: <fill>
+- Time: Depends on operation and input size; document per problem.
+- Space: Depends on auxiliary structures; document per problem.
 
 ## Code
 ``python
-# TODO: add interview-ready implementation
+from collections import deque
+
+def bfs(start, neighbors):
+    q = deque([start])
+    seen = {start}
+    order = []
+
+    while q:
+        node = q.popleft()
+        order.append(node)
+        for nxt in neighbors(node):
+            if nxt in seen:
+                continue
+            seen.add(nxt)
+            q.append(nxt)
+    return order
 ``
 
 ## Edge Cases
-- <case>
+- Empty input
+- Single-element input
+- Duplicate values or repeated states
+- Disconnected components when graph-shaped
 
 ## Common Mistakes
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
 

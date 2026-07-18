@@ -1,26 +1,44 @@
 ---
 type: python-template
-status: draft
+status: stable
 tags: [dsa/template, python]
 canonical: true
 ---
 # Python - DFS Iterative
 
 ## Purpose
-Reusable interview template for [[DFS Iterative]].
+Reusable interview-ready Python template for [[DFS Iterative]].
 
 ## Complexity
-- Time: <fill>
-- Space: <fill>
+- Time: Depends on operation and input size; document per problem.
+- Space: Depends on auxiliary structures; document per problem.
 
 ## Code
 ``python
-# TODO: add interview-ready implementation
+def dfs_iterative(start, neighbors):
+    stack = [start]
+    seen = set()
+    order = []
+    while stack:
+        node = stack.pop()
+        if node in seen:
+            continue
+        seen.add(node)
+        order.append(node)
+        for nxt in reversed(list(neighbors(node))):
+            if nxt not in seen:
+                stack.append(nxt)
+    return order
 ``
 
 ## Edge Cases
-- <case>
+- Empty input
+- Single-element input
+- Duplicate values or repeated states
+- Disconnected components when graph-shaped
 
 ## Common Mistakes
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
 

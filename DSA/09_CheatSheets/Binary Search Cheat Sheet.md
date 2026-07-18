@@ -1,23 +1,31 @@
 ---
 type: cheat-sheet
-status: draft
-tags: [dsa/cheat-sheet]
+status: stable
+tags: [dsa/cheat-sheet, dsa/binary-search]
 canonical: true
 ---
 # Binary Search Cheat Sheet
 
 ## Signals
-- <signal>
+- Sorted input
+- Monotonic yes/no predicate
+- Need first, last, minimum feasible, or maximum feasible
 
 ## Core Moves
-- <move>
+- Use half-open range `[lo, hi)` for lower bound
+- Compute `mid = lo + (hi - lo) // 2`
+- Move the boundary that is proven impossible
+- Return the boundary, then validate if needed
 
 ## Complexity
-- <summary>
+- Time: O(log n)
+- Space: O(1)
 
 ## Syntax / Template
-- [[Template Index]]
+- [[Python - Binary Search]]
 
 ## Watch For
-- [[Mistake Template]]
+- [[Wrong Mid Calculation]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
 

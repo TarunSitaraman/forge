@@ -1,26 +1,47 @@
 ---
 type: python-template
-status: draft
+status: stable
 tags: [dsa/template, python]
 canonical: true
 ---
 # Python - Fenwick Tree
 
 ## Purpose
-Reusable interview template for [[Fenwick Tree]].
+Reusable interview-ready Python template for [[Fenwick Tree]].
 
 ## Complexity
-- Time: <fill>
-- Space: <fill>
+- Time: Depends on operation and input size; document per problem.
+- Space: Depends on auxiliary structures; document per problem.
 
 ## Code
 ``python
-# TODO: add interview-ready implementation
+class FenwickTree:
+    def __init__(self, n):
+        self.tree = [0] * (n + 1)
+
+    def add(self, index, delta):
+        i = index + 1
+        while i < len(self.tree):
+            self.tree[i] += delta
+            i += i & -i
+
+    def prefix_sum(self, index):
+        total = 0
+        i = index + 1
+        while i > 0:
+            total += self.tree[i]
+            i -= i & -i
+        return total
 ``
 
 ## Edge Cases
-- <case>
+- Empty input
+- Single-element input
+- Duplicate values or repeated states
+- Disconnected components when graph-shaped
 
 ## Common Mistakes
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
 

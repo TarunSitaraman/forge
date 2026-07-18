@@ -1,26 +1,42 @@
 ---
 type: python-template
-status: draft
+status: stable
 tags: [dsa/template, python]
 canonical: true
 ---
 # Python - Tree Traversal
 
 ## Purpose
-Reusable interview template for [[Tree Traversal]].
+Reusable interview-ready Python template for [[Tree Traversal]].
 
 ## Complexity
-- Time: <fill>
-- Space: <fill>
+- Time: Depends on operation and input size; document per problem.
+- Space: Depends on auxiliary structures; document per problem.
 
 ## Code
 ``python
-# TODO: add interview-ready implementation
+def inorder(root):
+    result = []
+    stack = []
+    node = root
+    while stack or node:
+        while node:
+            stack.append(node)
+            node = node.left
+        node = stack.pop()
+        result.append(node.val)
+        node = node.right
+    return result
 ``
 
 ## Edge Cases
-- <case>
+- Empty input
+- Single-element input
+- Duplicate values or repeated states
+- Disconnected components when graph-shaped
 
 ## Common Mistakes
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
 
