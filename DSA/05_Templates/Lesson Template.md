@@ -7,23 +7,26 @@ canonical: true
 # Lesson Template
 
 ## Purpose
-<Describe what this page is for.>
+Use this template to create a consistent Forge page for this document type.
 
 ## Metadata
-<Use the Forge frontmatter standard from [[Documentation Standards]].>
+Start with YAML frontmatter that follows [[Documentation Standards]]. Include 	ype, status, 	ags, canonical, and elated when the page has meaningful graph links.
 
 ## Context
-<Link related pages such as [[Pattern Index]], [[Algorithm Index]], or [[Template Index]].>
+Link the page to the relevant canonical indexes, such as [[Pattern Index]], [[Algorithm Index]], [[Data Structure Index]], [[Problem Index]], [[Template Index]], [[Interview Roadmap]], or [[Learning Path]].
 
-## Body
-<Add standardized placeholders for this document type.>
+## Body Structure
+Use headings that match the document type. Keep canonical theory in its home page, implementation code in template pages, and solved examples in problem pages.
 
 ## Cross-Links
-- Related: [[Template Index]]
-- Canonical source: <wiki link>
+- Related index: [[Template Index]]
+- Standards: [[Documentation Standards]]
+- Validation: [[Validation Checklist]]
 
 ## Review Checklist
-- [ ] Follows naming conventions
-- [ ] Uses required metadata
-- [ ] Links to canonical sources
+- [ ] Metadata follows the standard
+- [ ] Filename is readable and stable
+- [ ] Canonical links point to the owning page
+- [ ] The page avoids duplicated explanations
+- [ ] Obsidian wiki links resolve
 
