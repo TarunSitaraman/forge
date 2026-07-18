@@ -1,17 +1,17 @@
 ---
 type: pattern
 status: stable
-tags: [dsa/pattern, dsa/graph-traversal]
+tags: [dsa/pattern, dsa/binary-lifting]
 canonical: true
-related: [[[Python - Graph]], [[Python - BFS]], [[Python - DFS Iterative]], [[DFS]], [[BFS]], [[Topological Sort]], [[Union Find]], [[Graphs Cheat Sheet]]]
+related: [[[Python - Binary Lifting]], [[Tree Traversal]], [[Dynamic Programming]], [[Trees Cheat Sheet]]]
 ---
-# Graph Traversal
+# Binary Lifting
 
 ## Intuition
-Systematically visit graph vertices while managing visited state and edge semantics.
+Precompute powers of two jumps to answer ancestor or repeated-transition queries quickly.
 
 ## When To Use
-Components, reachability, shortest unweighted paths, cycle detection, topological constraints.
+LCA, kth ancestor, functional graphs, repeated jumps, range lifting.
 
 ## Theory
 The pattern is useful when the problem exposes structure that can be preserved as an invariant. Identify the state that must remain true after each move, then choose operations that make progress without invalidating that state. A correct solution should explain why no skipped state can contain a better answer.
@@ -23,10 +23,10 @@ The pattern is useful when the problem exposes structure that can be preserved a
 4. Validate the boundary cases where the invariant is easiest to break.
 
 ## Implementation
-Use the canonical implementation link when one exists: [[Python - Graph]], [[Python - BFS]], [[Python - DFS Iterative]]. Keep problem-specific code inside [[Problem Index]] pages and avoid copying full template code here.
+Use the canonical implementation link when one exists: [[Python - Binary Lifting]]. Keep problem-specific code inside [[Problem Index]] pages and avoid copying full template code here.
 
 ## Complexity
-O(V+E) with adjacency lists; state is O(V).
+Preprocessing O(n log n); queries O(log n); space O(n log n).
 
 ## Tradeoffs
 This pattern usually buys asymptotic improvement by using stronger structure. The cost is that correctness depends on preserving the right invariant; if the input does not satisfy the structural assumption, a simpler traversal or dynamic program may be safer.
@@ -38,7 +38,7 @@ This pattern usually buys asymptotic improvement by using stronger structure. Th
 - Inputs that barely satisfy the structural assumption
 
 ## Common Bugs
-[[Missing Visited Set]], [[Infinite Loop]]
+[[Off-by-One]], [[Boundary Errors]]
 
 ## Interview Implications
 Name the invariant early, justify why each move is safe, and test the smallest counterexample you can imagine. Interviewers often vary these problems by changing boundary semantics, asking for first or last valid positions, or adding duplicate values.
@@ -47,7 +47,7 @@ Name the invariant early, justify why each move is safe, and test the smallest c
 Prefer readable state names and explicit boundary checks. In production code, document assumptions about ordering, mutability, and failure behavior because these patterns often look correct even when a precondition silently changed.
 
 ## Related Algorithms
-- [[DFS]], [[BFS]], [[Topological Sort]], [[Union Find]]
+- [[Tree Traversal]], [[Dynamic Programming]]
 - [[Algorithm Index]]
 
 ## Related Data Structures
@@ -57,7 +57,7 @@ Prefer readable state names and explicit boundary checks. In production code, do
 - [[Hash Map]]
 
 ## Python Templates
-- [[Python - Graph]], [[Python - BFS]], [[Python - DFS Iterative]]
+- [[Python - Binary Lifting]]
 
 ## Representative Problems
 - [[Problem Index]]
@@ -68,5 +68,5 @@ Prefer readable state names and explicit boundary checks. In production code, do
 - [[Communicating Thought Process]]
 
 ## Cheat Sheets
-- [[Graphs Cheat Sheet]]
+- [[Trees Cheat Sheet]]
 
