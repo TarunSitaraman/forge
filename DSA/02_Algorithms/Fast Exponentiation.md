@@ -1,14 +1,14 @@
 ---
 type: algorithm
 status: stable
-tags: [dsa/algorithm, dsa/binary-search]
+tags: [dsa/algorithm, dsa/fast-exponentiation]
 canonical: true
-related: [[[Binary Search]], [[Array]]]
+related: [[[Bit Manipulation]], [[Recursion]]]
 ---
-# Binary Search
+# Fast Exponentiation
 
 ## Overview
-Search over a sorted domain or monotonic predicate by halving candidates.
+Computes powers by repeated squaring using binary decomposition of the exponent.
 
 ## Intuition
 The algorithm is useful when the problem exposes a structure that can be repeatedly reduced without losing the desired answer. The implementation should make that reduction explicit through a maintained invariant, ordering rule, or recurrence.
@@ -20,13 +20,13 @@ Define the input domain, the state maintained by the algorithm, and the operatio
 A correctness argument should identify the invariant, prove it holds initially, prove each update preserves it, and show that termination converts the invariant into the desired result. For greedy algorithms, include an exchange argument. For dynamic programs, prove the recurrence covers all valid choices exactly once or intentionally aggregates equivalent states.
 
 ## Complexity
-O(log n) time and O(1) space iteratively.
+O(log exponent) multiplications.
 
 ## Implementation
 Python implementations should prefer clear data structures from the standard library, especially list, dict, set, deque, and heapq. Keep reusable code in [[Template Index]] pages and keep problem-specific adaptations in [[Problem Index]].
 
 ## Applications
-Lower bounds, answer-space search, and ordered lookup.
+Modular power, matrix power, and repeated composition.
 
 ## Edge Cases
 - Empty or minimal input
@@ -40,7 +40,7 @@ Lower bounds, answer-space search, and ordered lookup.
 - [[Missing Visited Set]]
 
 ## Related Patterns
-- [[Binary Search]], [[Array]]
+- [[Bit Manipulation]], [[Recursion]]
 - [[Pattern Index]]
 
 ## Related Data Structures

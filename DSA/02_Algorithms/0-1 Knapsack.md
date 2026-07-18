@@ -1,14 +1,14 @@
 ---
 type: algorithm
 status: stable
-tags: [dsa/algorithm, dsa/binary-search]
+tags: [dsa/algorithm, dsa/0-1-knapsack]
 canonical: true
-related: [[[Binary Search]], [[Array]]]
+related: [[[Dynamic Programming]], [[Memoization]]]
 ---
-# Binary Search
+# 0-1 Knapsack
 
 ## Overview
-Search over a sorted domain or monotonic predicate by halving candidates.
+Dynamic program choosing each item at most once under capacity constraints.
 
 ## Intuition
 The algorithm is useful when the problem exposes a structure that can be repeatedly reduced without losing the desired answer. The implementation should make that reduction explicit through a maintained invariant, ordering rule, or recurrence.
@@ -20,13 +20,13 @@ Define the input domain, the state maintained by the algorithm, and the operatio
 A correctness argument should identify the invariant, prove it holds initially, prove each update preserves it, and show that termination converts the invariant into the desired result. For greedy algorithms, include an exchange argument. For dynamic programs, prove the recurrence covers all valid choices exactly once or intentionally aggregates equivalent states.
 
 ## Complexity
-O(log n) time and O(1) space iteratively.
+O(nW) time and O(W) optimized space.
 
 ## Implementation
 Python implementations should prefer clear data structures from the standard library, especially list, dict, set, deque, and heapq. Keep reusable code in [[Template Index]] pages and keep problem-specific adaptations in [[Problem Index]].
 
 ## Applications
-Lower bounds, answer-space search, and ordered lookup.
+Resource allocation, subset selection, and feasibility variants.
 
 ## Edge Cases
 - Empty or minimal input
@@ -40,7 +40,7 @@ Lower bounds, answer-space search, and ordered lookup.
 - [[Missing Visited Set]]
 
 ## Related Patterns
-- [[Binary Search]], [[Array]]
+- [[Dynamic Programming]], [[Memoization]]
 - [[Pattern Index]]
 
 ## Related Data Structures
