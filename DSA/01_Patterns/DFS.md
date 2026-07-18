@@ -61,7 +61,7 @@ Prefer readable state names and explicit boundary checks. In production code, do
 
 ## Representative Problems
 - [[Problem Index]]
-- [[Binary Search Representative Problems]]
+- [[DFS Representative Problems]]
 
 ## Interview Notes
 - [[Coding Interviews]]
