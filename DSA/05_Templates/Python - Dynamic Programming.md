@@ -1,26 +1,50 @@
 ---
 type: python-template
-status: draft
-tags: [dsa/template, python]
+status: stable
+tags: [dsa/template, python, dsa/dynamic-programming]
 canonical: true
+related: [[Dynamic Programming]]
 ---
 # Python - Dynamic Programming
 
 ## Purpose
-Canonical implementation template for [[Dynamic Programming]].
+Store subproblem answers defined by state and transition.
 
-## Implementation Notes
-This page is reserved for the Phase 4 Python template library expansion. Pattern pages may link here as the canonical implementation home so future code does not get duplicated across concepts.
+## Explanation
+This template captures the reusable implementation shape for [[Dynamic Programming]]. Keep problem-specific naming and validation in the problem page, but preserve the invariant and boundary discipline shown here.
 
 ## Complexity
-Document per operation when the implementation is populated.
+O(states * transitions); space equals retained states.
+
+## Code
+``python
+def coin_change_min(coins, amount):
+    inf = amount + 1
+    dp = [0] + [inf] * amount
+    for total in range(1, amount + 1):
+        for coin in coins:
+            if total >= coin:
+                dp[total] = min(dp[total], dp[total - coin] + 1)
+    return -1 if dp[amount] == inf else dp[amount]
+``
 
 ## Edge Cases
 - Empty input
-- Boundary values
-- Duplicate states
+- Single-element input
+- Duplicate values or repeated states
+- Inclusive versus exclusive boundary semantics
+
+## Modifications
+Switch loop order for combinations versus permutations; compress dimensions only when dependencies permit it.
+
+## Common Interview Variations
+- Return the count instead of the object
+- Return all valid objects instead of the best one
+- Add online updates or streaming input
+- Tighten memory from O(n) to O(1) when dependencies allow it
 
 ## Common Mistakes
-- [[Boundary Errors]]
 - [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Infinite Loop]]
 

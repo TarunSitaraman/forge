@@ -1,26 +1,57 @@
 ---
 type: python-template
-status: draft
-tags: [dsa/template, python]
+status: stable
+tags: [dsa/template, python, dsa/backtracking]
 canonical: true
+related: [[Backtracking]]
 ---
 # Python - Backtracking
 
 ## Purpose
-Canonical implementation template for [[Backtracking]].
+Explore candidates recursively while undoing local choices.
 
-## Implementation Notes
-This page is reserved for the Phase 4 Python template library expansion. Pattern pages may link here as the canonical implementation home so future code does not get duplicated across concepts.
+## Explanation
+This template captures the reusable implementation shape for [[Backtracking]]. Keep problem-specific naming and validation in the problem page, but preserve the invariant and boundary discipline shown here.
 
 ## Complexity
-Document per operation when the implementation is populated.
+Usually exponential; stack space O(depth).
+
+## Code
+``python
+def subsets(nums):
+    result = []
+    path = []
+
+    def search(index):
+        if index == len(nums):
+            result.append(path.copy())
+            return
+        search(index + 1)
+        path.append(nums[index])
+        search(index + 1)
+        path.pop()
+
+    search(0)
+    return result
+``
 
 ## Edge Cases
 - Empty input
-- Boundary values
-- Duplicate states
+- Single-element input
+- Duplicate values or repeated states
+- Inclusive versus exclusive boundary semantics
+
+## Modifications
+Sort first to skip duplicates; add pruning predicates for constraint problems.
+
+## Common Interview Variations
+- Return the count instead of the object
+- Return all valid objects instead of the best one
+- Add online updates or streaming input
+- Tighten memory from O(n) to O(1) when dependencies allow it
 
 ## Common Mistakes
-- [[Boundary Errors]]
 - [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Infinite Loop]]
 
