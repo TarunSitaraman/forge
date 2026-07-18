@@ -1,20 +1,20 @@
 ---
 type: mistake
 status: stable
-tags: [dsa/mistake, dsa/missing-visited-set]
+tags: [dsa/mistake, dsa/incorrect-base-case]
 canonical: true
-related: [[[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]]
+related: [[[Dynamic Programming]], [[Recursion]], [[Backtracking]]]
 ---
-# Missing Visited Set
+# Incorrect Base Case
 
 ## Symptoms
-Graph or grid traversal revisits states, loops forever, or overcounts components.
+Recursive or DP solutions fail on smallest inputs or skip valid solutions.
 
 ## Cause
-The traversal does not record completed or enqueued states at the right time.
+Base cases do not match the recurrence state definition.
 
 ## Fix
-Mark states when they are enqueued or first entered, and define the state identity clearly.
+Define the meaning of each state first, then derive base cases from that meaning.
 
 ## Examples
 - Binary search returning the neighbor instead of the first valid index.
@@ -28,7 +28,7 @@ Mark states when they are enqueued or first entered, and define the state identi
 - [ ] Verify every loop or recursive branch makes progress.
 
 ## Related Patterns
-- [[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]
+- [[Dynamic Programming]], [[Recursion]], [[Backtracking]]
 
 ## Related Problems
 - [[Problem Index]]

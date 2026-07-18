@@ -1,20 +1,20 @@
 ---
 type: mistake
 status: stable
-tags: [dsa/mistake, dsa/missing-visited-set]
+tags: [dsa/mistake, dsa/stale-heap-entry]
 canonical: true
-related: [[[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]]
+related: [[[Heap]], [[Priority Queue]], [[Dijkstra]], [[Prim]]]
 ---
-# Missing Visited Set
+# Stale Heap Entry
 
 ## Symptoms
-Graph or grid traversal revisits states, loops forever, or overcounts components.
+A heap returns an item that is no longer valid for the current state.
 
 ## Cause
-The traversal does not record completed or enqueued states at the right time.
+Python heaps do not support efficient arbitrary deletion or priority decrease.
 
 ## Fix
-Mark states when they are enqueued or first entered, and define the state identity clearly.
+Use lazy deletion with a validity check, or push updated entries and ignore stale ones when popped.
 
 ## Examples
 - Binary search returning the neighbor instead of the first valid index.
@@ -28,7 +28,7 @@ Mark states when they are enqueued or first entered, and define the state identi
 - [ ] Verify every loop or recursive branch makes progress.
 
 ## Related Patterns
-- [[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]
+- [[Heap]], [[Priority Queue]], [[Dijkstra]], [[Prim]]
 
 ## Related Problems
 - [[Problem Index]]

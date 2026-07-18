@@ -1,20 +1,20 @@
 ---
 type: mistake
 status: stable
-tags: [dsa/mistake, dsa/missing-visited-set]
+tags: [dsa/mistake, dsa/duplicate-handling]
 canonical: true
-related: [[[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]]
+related: [[[Two Pointers]], [[Backtracking]], [[Binary Search]], [[Sorting]]]
 ---
-# Missing Visited Set
+# Duplicate Handling
 
 ## Symptoms
-Graph or grid traversal revisits states, loops forever, or overcounts components.
+A solution counts duplicate values or states incorrectly.
 
 ## Cause
-The traversal does not record completed or enqueued states at the right time.
+The algorithm assumes distinct values where equality changes ordering, grouping, or pruning.
 
 ## Fix
-Mark states when they are enqueued or first entered, and define the state identity clearly.
+Decide whether duplicates are separate items or equivalent states, then encode that rule in comparisons and keys.
 
 ## Examples
 - Binary search returning the neighbor instead of the first valid index.
@@ -28,7 +28,7 @@ Mark states when they are enqueued or first entered, and define the state identi
 - [ ] Verify every loop or recursive branch makes progress.
 
 ## Related Patterns
-- [[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]
+- [[Two Pointers]], [[Backtracking]], [[Binary Search]], [[Sorting]]
 
 ## Related Problems
 - [[Problem Index]]

@@ -1,20 +1,20 @@
 ---
 type: mistake
 status: stable
-tags: [dsa/mistake, dsa/missing-visited-set]
+tags: [dsa/mistake, dsa/unstable-invariant]
 canonical: true
-related: [[[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]]
+related: [[[Binary Search]], [[Sliding Window]], [[Greedy]], [[Monotonic Stack]]]
 ---
-# Missing Visited Set
+# Unstable Invariant
 
 ## Symptoms
-Graph or grid traversal revisits states, loops forever, or overcounts components.
+The code appears plausible but a key condition stops being true after updates.
 
 ## Cause
-The traversal does not record completed or enqueued states at the right time.
+The invariant was implied rather than stated, or updates mutate state in the wrong order.
 
 ## Fix
-Mark states when they are enqueued or first entered, and define the state identity clearly.
+Write the invariant in one sentence and verify it after each branch of the algorithm.
 
 ## Examples
 - Binary search returning the neighbor instead of the first valid index.
@@ -28,7 +28,7 @@ Mark states when they are enqueued or first entered, and define the state identi
 - [ ] Verify every loop or recursive branch makes progress.
 
 ## Related Patterns
-- [[DFS]], [[BFS]], [[Graph Traversal]], [[Matrix Traversal]]
+- [[Binary Search]], [[Sliding Window]], [[Greedy]], [[Monotonic Stack]]
 
 ## Related Problems
 - [[Problem Index]]
