@@ -3,29 +3,33 @@ type: cheat-sheet
 status: stable
 tags: [dsa/cheat-sheet, dsa/binary-search]
 canonical: true
+related: [[Pattern Index]], [[Template Index]], [[Complexities Cheat Sheet]]
 ---
 # Binary Search Cheat Sheet
 
 ## Signals
-- Sorted input
-- Monotonic yes/no predicate
-- Need first, last, minimum feasible, or maximum feasible
+Monotonic predicate; half-open ranges; mid = lo + (hi - lo)//2; test first/last valid.
 
 ## Core Moves
-- Use half-open range `[lo, hi)` for lower bound
-- Compute `mid = lo + (hi - lo) // 2`
-- Move the boundary that is proven impossible
-- Return the boundary, then validate if needed
+- Name the invariant or state.
+- Choose the simplest structure that supports the required operations.
+- Keep boundaries explicit.
+- Validate with empty, single, duplicate, and extreme inputs.
 
 ## Complexity
-- Time: O(log n)
-- Space: O(1)
+- State the dominant operation.
+- Include auxiliary space.
+- Use amortized language when operations are paid for across a sequence.
 
-## Syntax / Template
-- [[Python - Binary Search]]
+## Template Links
+- [[Template Index]]
 
 ## Watch For
-- [[Wrong Mid Calculation]]
 - [[Off-by-One]]
 - [[Boundary Errors]]
+- [[Missing Visited Set]]
+- [[Infinite Loop]]
+
+## Canonical Depth
+Use [[Pattern Index]], [[Algorithm Index]], and [[Data Structure Index]] for full explanations.
 

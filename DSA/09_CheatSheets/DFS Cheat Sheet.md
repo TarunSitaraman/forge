@@ -1,23 +1,35 @@
 ---
 type: cheat-sheet
-status: draft
-tags: [dsa/cheat-sheet]
+status: stable
+tags: [dsa/cheat-sheet, dsa/dfs]
 canonical: true
+related: [[Pattern Index]], [[Template Index]], [[Complexities Cheat Sheet]]
 ---
 # DFS Cheat Sheet
 
 ## Signals
-- <signal>
+Stack or recursion; components, cycles, trees, backtracking; guard visited; O(V+E).
 
 ## Core Moves
-- <move>
+- Name the invariant or state.
+- Choose the simplest structure that supports the required operations.
+- Keep boundaries explicit.
+- Validate with empty, single, duplicate, and extreme inputs.
 
 ## Complexity
-- <summary>
+- State the dominant operation.
+- Include auxiliary space.
+- Use amortized language when operations are paid for across a sequence.
 
-## Syntax / Template
+## Template Links
 - [[Template Index]]
 
 ## Watch For
-- [[Mistake Template]]
+- [[Off-by-One]]
+- [[Boundary Errors]]
+- [[Missing Visited Set]]
+- [[Infinite Loop]]
+
+## Canonical Depth
+Use [[Pattern Index]], [[Algorithm Index]], and [[Data Structure Index]] for full explanations.
 
