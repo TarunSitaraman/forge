@@ -1,79 +1,73 @@
 # IBM RAG and Agentic AI Professional Certificate
 
-*Progress tracker for an in-progress Coursera certificate — not a content
-store. Synthesized technical knowledge from this course belongs in and
-gets merged into `Technologies/Docs/` (see mapping below); this folder
-only tracks where you are and what's still ahead.*
+*10-course Coursera certificate covering RAG pipelines, vector databases, multimodal GenAI, and agentic AI systems (LangGraph, CrewAI, AutoGen, BeeAI, MCP).*
 
-## Program
+**Status:** In Progress — 0/10 courses complete.
 
-[IBM RAG and Agentic AI Professional Certificate](https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai)
-— 10 courses, ~8 weeks at ~3 hrs/week, capstone included.
+**Tags:** #status/active #type/course #stack/langchain #stack/langgraph #stack/watsonx #topic/rag #topic/agentic-ai
 
-## Course map → canonical doc
+**Key Constraint:** Technical content merges into `Technologies/Docs/` canonical references (no duplication). This folder tracks curriculum structure, progress, and course-specific implementation notes only.
 
-Each course's durable technical content should be merged into the
-matching `Technologies/Docs/` file as you complete it — never as a new
-file per course. This keeps one authoritative reference per technology
-instead of ten overlapping course-note files.
+## Quick Navigation
 
-| # | Course | Hours | Canonical doc it feeds |
-|---|---|---|---|
-| 1 | Develop Generative AI Applications: Get Started | 10 | [`llms.md`](../../Technologies/Docs/llms.md), [`prompt-engineering.md`](../../Technologies/Docs/prompt-engineering.md), [`langchain.md`](../../Technologies/Docs/langchain.md) |
-| 2 | Build RAG Applications: Get Started | 7 | [`rag.md`](../../Technologies/Docs/rag.md), [`langchain.md`](../../Technologies/Docs/langchain.md) |
-| 3 | Vector Databases for RAG: An Introduction | 9 | [`vector-databases.md`](../../Technologies/Docs/vector-databases.md) |
-| 4 | Advanced RAG with Vector Databases and Retrievers | 8 | [`vector-databases.md`](../../Technologies/Docs/vector-databases.md), [`rag.md`](../../Technologies/Docs/rag.md) |
-| 5 | Build Multimodal Generative AI Applications | 8 | [`llms.md`](../../Technologies/Docs/llms.md) *(new Multimodal section if it earns one — see note below)* |
-| 6 | Fundamentals of Building AI Agents | 11 | [`ai-agents.md`](../../Technologies/Docs/ai-agents.md) |
-| 7 | Agentic AI with LangChain and LangGraph | 11 | [`ai-agents.md`](../../Technologies/Docs/ai-agents.md) |
-| 8 | Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI | 13 | [`ai-agents.md`](../../Technologies/Docs/ai-agents.md) |
-| 9 | Build AI Agents using MCP | 10 | [`ai-agents.md`](../../Technologies/Docs/ai-agents.md) |
-| 10 | RAG and Agentic AI Capstone Project | 14 | Project — track under `Projects/` once started, not here |
+- **[Overview](./01-overview.md)** — What the cert is, why taking it, tech stack, timeline, personal goals
+- **[Curriculum Map](./02-curriculum-map.md)** — All 10 courses, hours, phases, dependencies, canonical doc mapping
+- **[RAG & Vector DB Track](./03-rag-and-vector-db-track.md)** — Courses 1–4 notes, watsonx-specific details, lab checklist
+- **[Multimodal Track](./04-multimodal-track.md)** — Course 5 notes (new ground — no canonical doc yet)
+- **[Agentic AI Track](./05-agentic-ai-track.md)** — Courses 6–9 notes, watsonx-specific details, lab checklist
+- **[Capstone](./06-capstone.md)** — Course 10 requirements, planning, milestones
+- **[Glossary](./07-glossary.md)** — Terms and acronyms encountered across the certificate
+- **[Progress Tracker](./08-progress-tracker.md)** — Per-course, per-lab granular status and hours logged
+- **[Roadmap](./09-roadmap.md)** — What this feeds into after completion (projects, career, further learning)
+- **[Certification Prep](./CERT_PREP.md)** — Interview-style questions this certificate should prepare you to answer
 
-**Note on Course 5 (Multimodal):** no existing doc covers multimodal
-generative AI (image/audio/video models: Whisper, DALL·E, Sora, etc.).
-Don't create a new file for it preemptively — if course 5 content turns
-out to be substantial and reusable, that's when a `multimodal-ai.md`
-earns its place in `Technologies/Docs/`. Until then, log rough notes
-below and decide at that point.
+## Key Metrics
 
-## Progress
+| Aspect | Status |
+|--------|--------|
+| **Courses Complete** | 0 / 10 |
+| **Hours Logged** | 0 / ~109 (estimated total) |
+| **Labs/Notebooks Complete** | 0 / TBD (tracked per-course) |
+| **Capstone Status** | Not started |
+| **Canonical Docs Fed** | `rag.md`, `vector-databases.md`, `langchain.md`, `ai-agents.md` |
+| **New Canonical Docs Pending** | `multimodal-ai.md` (candidate — see [Multimodal Track](./04-multimodal-track.md)) |
 
-| # | Course | Status | Completed | Notes |
-|---|---|---|---|---|
-| 1 | Develop Generative AI Applications: Get Started | Not started | | |
-| 2 | Build RAG Applications: Get Started | Not started | | |
-| 3 | Vector Databases for RAG: An Introduction | Not started | | |
-| 4 | Advanced RAG with Vector Databases and Retrievers | Not started | | |
-| 5 | Build Multimodal Generative AI Applications | Not started | | |
-| 6 | Fundamentals of Building AI Agents | Not started | | |
-| 7 | Agentic AI with LangChain and LangGraph | Not started | | |
-| 8 | Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI | Not started | | |
-| 9 | Build AI Agents using MCP | Not started | | |
-| 10 | RAG and Agentic AI Capstone Project | Not started | | |
+## Curriculum At a Glance
 
-*(Update Status to In Progress / Done as you go. Fill Completed with a
-date. Notes column is for things too minor or too personal to belong in
-the canonical doc — "video 4 glossed over X, had to look up Y elsewhere.")*
+```
+Phase 1: RAG Foundations (Courses 1-4, ~34 hrs)
+  GenAI Apps → RAG Basics → Vector DBs → Advanced RAG/Retrievers
+    ↓
+Phase 2: Multimodal (Course 5, ~8 hrs)
+  Text + Image + Audio + Video integration
+    ↓
+Phase 3: Agentic AI (Courses 6-9, ~45 hrs)
+  Agent Fundamentals → LangGraph → Multi-Agent Frameworks → MCP
+    ↓
+Phase 4: Capstone (Course 10, ~14 hrs)
+  End-to-end Agentic RAG system, real corpus, full stack integration
+```
 
-## How to use this tracker
+**Total:** ~109 hours across 10 courses, ~8 weeks at 3 hrs/week (per Coursera estimate).
 
-1. Starting a course → mark it "In Progress" above.
-2. Learning something genuinely new and reusable → open the matching
-   canonical doc from the table and merge it into the right section
-   (Mental Model, Common Workflows, Common Mistakes, etc.) — don't create
-   a new file or append a dated note.
-3. Finishing a course → mark "Done" with date, jot anything personal
-   (confusing parts, things to revisit) in Notes here, not in the doc.
-4. Finishing the whole certificate → add one entry to
-   `../../Resources/courses.md` per that module's admission rule (only
-   after completion, stating specifically what it taught that
-   self-directed reading wouldn't have).
+## For Future You (Resuming This Course)
 
-## Cross-links
+Start with [Progress Tracker](./08-progress-tracker.md) to see exactly where you left off, then jump to the relevant track doc.
 
-- [[AI Agents]] — primary new canonical doc this course builds
-- [[RAG]] — existing canonical doc, courses 2–4 extend it
-- [[Vector Databases]] — existing canonical doc, courses 3–4 extend it
-- [[LangChain]] — existing canonical doc, courses 1–2 extend it
-- [[Courses]] — parent index
+---
+
+**Source:** [Coursera — IBM RAG and Agentic AI Professional Certificate](https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai)
+
+---
+
+## Related Systems / Reference
+
+**Canonical technical references this course feeds (start here for durable concepts, not this folder):**
+- [`Technologies/Docs/rag.md`](../../Technologies/Docs/rag.md) — RAG mental model, architecture, common mistakes
+- [`Technologies/Docs/vector-databases.md`](../../Technologies/Docs/vector-databases.md) — Vector DB internals and retrieval
+- [`Technologies/Docs/langchain.md`](../../Technologies/Docs/langchain.md) — LangChain composition model
+- [`Technologies/Docs/ai-agents.md`](../../Technologies/Docs/ai-agents.md) — Agent architectures, LangGraph, multi-agent frameworks, MCP
+
+**If you're prepping for interviews on this material:**
+- [`CERT_PREP.md`](./CERT_PREP.md) — Certificate-specific interview prep
+- [`../../Career/technical-interview-prep-checklist.md`](../../Career/technical-interview-prep-checklist.md) — General technical interview prep this feeds into

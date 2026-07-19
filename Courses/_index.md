@@ -7,7 +7,7 @@ Courses contains organized, skill-focused learning material — trackers, coachi
 ## What belongs here
 
 - **Competitive-Programming/** — Skill-growth trackers for problem-solving, mental models for different problem classes (dynamic programming, graphs, strings, etc.), and 10 coaching prompts that help you identify weaknesses and improve. Not algorithm notes; progress trackers. When to use: training to become a better problem solver.
-- **IBM-RAG-and-Agentic-AI/** — Progress tracker for the IBM RAG and Agentic AI Professional Certificate (Coursera, 10 courses). Maps each course to the canonical `Technologies/Docs/` file its content should be merged into, so the certificate contributes to Forge's durable reference rather than a parallel notes pile. Tracks completion status only; technical content lives in `Technologies/Docs/`.
+- **IBM-RAG-and-Agentic-AI/** — Knowledge-pack-style tracker for the IBM RAG and Agentic AI Professional Certificate (Coursera, 10 courses), structured like `Projects/smartresq/` (numbered docs + `_index.md` hub + bonus prep guide), scaled to a curriculum instead of a codebase: overview, curriculum map, per-phase track docs (RAG/vector DB, multimodal, agentic AI), capstone planning, glossary, granular progress tracker, roadmap, and a certification-prep guide. Course-specific implementation notes and lab progress live here; durable RAG/agent theory merges into `Technologies/Docs/` (`rag.md`, `vector-databases.md`, `langchain.md`, `ai-agents.md`) as it's learned — never duplicated in both places.
 
 ## What doesn't belong here
 
