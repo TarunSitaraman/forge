@@ -209,3 +209,6 @@ for chunk in chain.stream({"text": "..."}):
 - `../Docs/llms.md` and `../Docs/prompt-engineering.md` for the
   underlying model behavior and prompting discipline LangChain composes
   on top of.
+- `../Docs/ai-agents.md` for architectural patterns built on top of the
+  basic agent loop described here — ReAct naming, Reflection/Reflexion,
+  LangGraph state machines, multi-agent frameworks, and MCP.

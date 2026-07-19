@@ -16,6 +16,7 @@ note, or an appendix.*
 | Git | [`git.md`](git.md) |
 | LangChain | [`langchain.md`](langchain.md) |
 | RAG | [`rag.md`](rag.md) |
+| AI Agents (Agentic AI) | [`ai-agents.md`](ai-agents.md) |
 | Vector Databases | [`vector-databases.md`](vector-databases.md) |
 | LLMs | [`llms.md`](llms.md) |
 | Prompt Engineering | [`prompt-engineering.md`](prompt-engineering.md) |

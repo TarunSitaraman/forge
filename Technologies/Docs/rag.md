@@ -187,3 +187,6 @@ recall_at_k = fraction_where(correct_chunk_id in retrieved_ids[:k])
   compensating for (no persistent memory, parametric knowledge limits).
 - `../Docs/vector-databases.md` for the retrieval backend this
   architecture depends on.
+- `../Docs/ai-agents.md` for agentic RAG — where an agent decides
+  when and what to retrieve, rather than a fixed retrieve-then-generate
+  pipeline.
