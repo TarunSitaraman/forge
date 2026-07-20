@@ -45,23 +45,31 @@ hold *implementation notes and progress*, not conceptual explanations.
 - `Projects/` — active build work. Each project gets its own
   numbered-doc knowledge pack if it's substantial (see pattern below).
 
-## Known Stale/Legacy Item
+## Known Stale/Legacy Items
 
-`Systems/` at repo root is a **leftover from a prior reorganization** —
-its `_index.md` describes subfolders (`Docs/`, `Playbooks/`,
-`Prompt-Library/`, etc.) that no longer exist under it; that content
-now lives under top-level `Technologies/`. `Projects/smartresq/`'s
-`_index.md` and `INTERVIEW_GUIDE.md` still contain broken
-`../../Systems/Docs/...` links from before the move — they should
-point to `../../Technologies/Docs/...` instead. Not yet fixed; fix
-opportunistically if you're already editing those files, or on request.
+**Fixed this session** (previously flagged here as open issues — now
+resolved, kept as a record of the pattern to watch for):
+`Systems/`'s broken `../../Systems/Docs/...` links in
+`Projects/smartresq/_index.md` were repointed to `Technologies/Docs/...`
+(two entries — Kubernetes.md and PostgreSQL.md — were dropped entirely
+rather than repointed, since no canonical doc for either actually
+exists; don't recreate those links without first creating the docs).
+`README.md` was refreshed with accurate current counts, correct DSA
+subfolder names, and the missing Courses/AI-Agents-doc entries — see
+commit `218793a`. `GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
+`IMPROVEMENTS_SUMMARY.md` (found sitting uncommitted from a prior
+session) were corrected to matching numbers and committed.
 
-`README.md`'s DSA folder numbering (`05_Mistakes`, `06_Cheat_Sheets`)
-is also stale — actual folders are `08_Mistakes` and `09_CheatSheets`.
-Its Courses section only lists Competitive-Programming, missing
-IBM-RAG-and-Agentic-AI. Don't trust README.md's specific counts; verify
-against the filesystem (see current stats below) or update it if you
-have a reason to be in there anyway.
+**Still open:** `Projects/personal-agent/01-overview.md` flags a
+CLAUDE.md-vs-README mode-hours discrepancy *within that project's own
+repo* (not this one) — that's a note for whoever next works on
+`personal-agent`, not a Forge issue to fix here.
+
+**Pattern to watch for generally:** this repo has repeatedly
+accumulated stale numbers/links in README-style files as content grew
+faster than those files were revisited. When touching any top-level
+`.md` file (README, GITHUB_PROFILE, etc.), spot-check its numeric claims
+against the filesystem before trusting them.
 
 ## The "Knowledge Pack" Pattern
 
@@ -71,7 +79,7 @@ deepest content pattern: numbered docs (`01-overview.md` →
 table, at-a-glance diagram, quick nav) and a bonus guide file
 (`INTERVIEW_GUIDE.md`). ~150–300 lines per doc.
 
-This pattern has been adapted twice more:
+This pattern has been adapted three times more:
 - **DSA/** — pattern-level knowledge packs (pattern page + representative
   problems index + detailed problems + interview guide + cheat sheet),
   applied uniformly across all 32 patterns.
@@ -81,6 +89,16 @@ This pattern has been adapted twice more:
   from SmartResQ's ~2500 lines to ~930, since most technical depth
   properly routes out to `Technologies/Docs/` rather than living in the
   course folder itself.
+- **`Projects/personal-agent/`** — full 10-doc pack for an *external*
+  GitHub repo (`TarunSitaraman/personal-agent`), not code living inside
+  this repo. Built by researching the live repo via `gh api`/`gh repo
+  view` (README, CLAUDE.md, package.json, and several source files
+  fetched directly) rather than from memory. Establishes the pattern for
+  documenting external projects: fetch and verify against real source
+  before writing, explicitly flag anything inferred-but-unconfirmed
+  (grep for "unconfirmed" in that pack's `10-roadmap.md` for the
+  convention used), and note discrepancies between that project's own
+  stale docs and its current state rather than silently picking one.
 
 **When asked for this pattern elsewhere:** scale the doc count and
 depth to the subject's actual complexity — don't force exactly 10 docs
@@ -91,10 +109,11 @@ table and quick nav; that's the load-bearing piece for fast retrieval.
 
 **DSA/** (flagship section, all 32 patterns at full baseline coverage):
 - 32 patterns, 32 representative-problem indices, 32 interview guides
-- 70 detailed problem pages (DFS and BFS have 5 each — deepest
-  coverage; most other patterns have 1–3, expansion is ongoing and
-  welcome — prioritize Hashing, Heap, Matrix Traversal, Trie next if
-  picking up this work)
+- 85 detailed problem pages — every pattern now has **at least 2**
+  (previously 19 patterns were stuck at exactly 1); DFS and BFS remain
+  deepest at 5 each. Highest-value further expansion targets: patterns
+  still at 2 (roughly a dozen of them — check file counts before
+  assuming which).
 - 39 cheat sheets (32 pattern-specific + ~7 auxiliary reference sheets
   like Bisect, Complexities, Python Collections)
 - Status docs with full session history:
@@ -102,14 +121,20 @@ table and quick nav; that's the load-bearing piece for fast retrieval.
   `FORGE_SESSION_2_SUMMARY.md`, `FORGE_SESSION_3_FINAL_SUMMARY.md`
 
 **Technologies/Docs/** — 11 canonical references: Azure, Databricks,
-Docker, Git, LangChain, RAG, **AI Agents** (added this session — covers
-ReAct/Reflection/Reflexion, LangGraph, CrewAI/AutoGen/BeeAI, MCP),
-Vector Databases, LLMs, Prompt Engineering, Markdown.
+Docker, Git, LangChain, RAG, AI Agents (covers ReAct/Reflection/
+Reflexion, LangGraph, CrewAI/AutoGen/BeeAI, MCP), Vector Databases,
+LLMs, Prompt Engineering, Markdown.
 
 **Courses/** — Competitive-Programming (skill tracker) and
 IBM-RAG-and-Agentic-AI (11-file knowledge pack, 0/10 courses complete
 as of creation — check `Courses/IBM-RAG-and-Agentic-AI/08-progress-tracker.md`
 for current status before assuming it's still at zero).
+
+**Projects/** — SmartResQ (the original reference implementation of the
+Knowledge Pack pattern) and `personal-agent` (11-file pack documenting
+the external `TarunSitaraman/personal-agent` repo — a WhatsApp-native
+personal AI agent; see that pack's own `10-roadmap.md` for confirmed vs.
+unconfirmed findings from researching the live external repo).
 
 ## Git Workflow Notes
 
