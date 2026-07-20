@@ -1,122 +1,156 @@
 # Forge
 
-**Your searchable engineering brain. Git-first, Obsidian-compatible.**
+**A canonical, production-grade engineering knowledge base. Git-first, Obsidian-compatible, no fluff.**
 
-Forge is not a notes vault. It is not a journal. It is not a place to dump
-half-formed thoughts and hope they compost into something useful later.
+Forge is your searchable engineering brain built on three principles:
 
-Forge exists for one reason: **to make you build things faster** by making 
-the knowledge you need instantly retrievable.
+1. **Canonical** — One authoritative home per concept. No duplicates, no scattered notes.
+2. **Production-grade** — Every explanation, solution, and interview guide meets real-world standards.
+3. **Instantly retrievable** — Built for execution: find what you need *right now*, or learn what you'll execute faster *next time*.
 
-Every file in this repository should either help you execute right now, or
-capture something reusable so you execute faster next time. If a file does
-neither, it doesn't belong here. Organization is built for retrieval, not
-comprehensiveness — a smaller, searchable collection of high-quality material
-beats a sprawling vault of everything.
+Forge is *not* a notes vault, journal, or thought dump. Every file here either helps you execute immediately or captures something reusable for the next time. If a file does neither, it doesn't belong here.
 
 ---
 
-## What Forge is
+## What's Inside: DSA Knowledge Base
 
-- **Git-first.** The repository is the source of truth. History,
-  branches, and diffs are how Forge tracks change — not backlinks, not
-  plugin metadata, not a database.
-- **Obsidian-compatible.** Open the repo as an Obsidian vault and get
-  graph view, quick switcher, and backlinks for free. Obsidian is a
-  *reader/editor* for Forge, not a dependency. Every file must remain
-  fully useful as plain Markdown in any editor, GitHub's file viewer, or
-  `grep`.
-- **Markdown only.** No databases, no proprietary formats, no plugin
-  lock-in for content. Plugins may change; the Markdown must not need
-  them to be readable.
-- **Minimal plugins.** See [`.obsidian-config/`](.obsidian-config) for the
-  short, deliberate list. Every plugin is a liability — it must earn its
-  place by measurably speeding up navigation or capture.
-- **Fast navigation.** A five-folder root, consistent naming, and no
-  nesting deeper than necessary. You should never need to think about
-  *where* something lives.
+The flagship section is a **comprehensive Data Structures and Algorithms knowledge base** built for interview preparation and competitive programming.
+
+### DSA Coverage
+
+| Component | Count |
+|-----------|-------|
+| **Patterns** | 32 (Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming, Graph Traversal, Topological Sort, Union Find, Greedy, Backtracking, Memoization, and more) |
+| **Detailed Problems** | 70+ (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
+| **Pattern-Specific Interview Guides** | 32 (recognition criteria, communication templates, common mistakes) |
+| **Complexity Cheat Sheets** | 32 pattern-specific + auxiliary quick-reference sheets |
+| **Python Templates** | 30 (production-quality implementations) |
+| **Algorithms** | 30 (named, reusable techniques) |
+| **Data Structures** | 18 (operation contracts, invariants, tradeoffs) |
+| **Mistake Encyclopedia** | 12+ common pitfalls with concrete examples |
+
+Every problem page includes: complete problem statement with constraints, why the pattern applies (theory), a commented Python solution, complexity analysis with justification, edge cases, common mistakes, and an interview walkthrough dialogue.
+
+### Quick Start
+
+- **New to DSA?** Start at [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md)
+- **Interview prep?** Use the pattern-specific interview guides and representative problems
+- **Looking for a solution template?** Pattern pages link to well-commented Python code
+- **Stuck on a problem?** Check the representative problems section for your pattern
+
+---
+
+## Design Principles
+
+- **Git-first.** The repository is the source of truth. History, branches, and diffs track change — not backlinks, plugin metadata, or a database.
+- **Obsidian-compatible.** Open as an Obsidian vault for graph view and backlinks, but every file works as plain Markdown in any editor, on GitHub, or via `grep`. Obsidian is optional tooling, not a dependency.
+- **Markdown only.** No databases, proprietary formats, or plugin lock-in. Content survives any tool change.
+- **Minimal plugins.** See [`.obsidian-config/`](.obsidian-config) for the short, deliberate list. Every plugin must earn its place.
+- **Fast navigation.** Simple folder structure, consistent naming, no deep nesting. Finding what you need should be instant.
+- **No bloat.** One canonical home per concept. No duplicates, no orphaned files, no thought dumps. Quality over volume.
 
 ## What Forge is not
 
-- Not a daily journal.
-- Not a place for random note dumping.
-- Not a personal wiki of every thought you've ever had.
+- Not a daily journal or thought dump.
+- Not a personal wiki of every idea you've ever had.
 - Not a task manager or calendar.
-- Not a place where files accumulate without a reason to exist.
+- Not a database of half-formed notes waiting to "compost."
 
-If you want to write freely, write elsewhere. Forge is where finished
-thinking becomes reusable engineering material.
+Forge is where *finished thinking* becomes reusable engineering material. If you want to write freely, write elsewhere.
 
 ---
 
-## Repository structure
+## Repository Structure
 
 Organization is retrieval-first: folders represent where you *find* things based on your current context.
 
 ```
 forge/
 ├── README.md               You are here.
+├── CLAUDE.md                Project context for Claude Code sessions.
 ├── START_HERE.md           Onboarding + daily entry point.
 ├── CONVENTIONS.md          Naming, Markdown, and tagging rules.
 ├── WORKFLOW.md             Git workflow for using Forge day to day.
 ├── ROADMAP.md              Where Forge is headed.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
-├── Inbox/                  Unsorted capture. Must be emptied on a cadence.
+│
+├── DSA/                    Data Structures & Algorithms (flagship section)
+│   ├── 00_Index/           DSA Home, Learning Paths, Quick Reference
+│   ├── 01_Patterns/        32 core patterns (Two Pointers, DFS, DP, etc.)
+│   ├── 02_Algorithms/      30 algorithm implementations
+│   ├── 03_DataStructures/  18 data structure implementations
+│   ├── 04_Problems/        70+ representative problems with solutions
+│   ├── 05_Templates/       Python implementation templates
+│   ├── 06_Complexity/      Time/space complexity reference
+│   ├── 07_Interview/       Pattern-specific interview guides
+│   ├── 08_Mistakes/        Common pitfalls and how to avoid them
+│   └── 09_CheatSheets/     Quick reference guides per pattern
+│
+├── Technologies/           Reusable technical systems
+│   ├── Prompt-Library/     AI prompts organized by domain
+│   ├── Playbooks/          Execution workflows with diagrams
+│   ├── Templates/          Reusable Markdown document templates
+│   ├── Docs/               Authoritative reference manuals (one file per technology)
+│   └── Project-System/     Engineering notebook template
+│
 ├── Projects/               Active build work. One folder per project.
-├── Technologies/           Reusable technical systems: prompts, templates,
-│                           playbooks, docs, and project scaffolding.
-├── Courses/                Structured learning: skill trackers and coaching`n│                           prompts for deliberate improvement.`n├── DSA/                    Canonical algorithms, data structures, templates,`n│                           interview prep, mistakes, and problem writeups.
-├── Career/                 Career development: actionable tools for resume,
-│                           interviews, salary, and planning.
-├── Resources/              Curated external resources across 11 categories —
-│                           docs, repos, courses, blogs, papers, books.
-├── Reference/              Personal technical reference material: API notes,
-│                           config snippets, gotchas.
-└── Archive/                Completed or dead projects, kept for record.
+├── Courses/                Structured learning: progress trackers, not content.
+├── Career/                 Resume, LinkedIn, portfolio, interview, salary tools.
+├── Resources/              Curated external resources across 11 categories.
+├── Reference/              Durable technical facts: API notes, configs, gotchas.
+├── Inbox/                  Unsorted capture. Must be emptied on a cadence.
+└── Archive/                Completed or dead projects.
 ```
 
-Each folder contains an `_index.md` explaining its purpose, scope, and
-what does *not* belong there. Read `_index.md` before adding a file to
-any folder you're unfamiliar with.
+**Each folder has an `_index.md`** explaining its purpose, scope, and what doesn't belong. Read before adding files.
 
-## Technologies module
+## Technologies Module
 
-`Technologies/` is where reusable engineering systems live. Each submodule has
-its own `_index.md` — this table is the map; follow a link to go deeper.
+Reusable engineering systems for building and shipping.
 
-| Module | What it is |
-|---|---|
-| [`Prompt-Library/`](Technologies/Prompt-Library) | 79 operating-procedure-grade AI prompts across 28 categories |
-| [`Playbooks/`](Technologies/Playbooks) | 18 execution workflows for recurring efforts, each with a Mermaid diagram |
-| [`Templates/`](Technologies/Templates) | 25 production-quality, reusable Markdown document templates |
-| [`Docs/`](Technologies/Docs) | One authoritative reference manual per technology — Azure, Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs, Prompt Engineering, Markdown |
-| [`Project-System/`](Technologies/Project-System) | The one engineering-notebook template every new project scaffolds from |
+| Module | Description |
+|--------|-------------|
+| **Prompt-Library/** | AI prompts across many categories (operating-procedure grade) |
+| **Playbooks/** | Execution workflows for recurring tasks, each with a Mermaid diagram |
+| **Templates/** | Production-quality Markdown document templates |
+| **Docs/** | Authoritative reference manuals: Azure, Databricks, Docker, Git, LangChain, RAG, AI Agents, Vector Databases, LLMs, Prompt Engineering, Markdown |
+| **Project-System/** | The engineering-notebook template every project scaffolds from |
 
-## DSA module`n`n`DSA/` is the canonical data structures and algorithms knowledge base: patterns, algorithms, data structures, Python templates, complexity, interviews, mistakes, cheat sheets, and representative problems. Start at [`DSA Home`](DSA/00_Index/DSA%20Home.md).`n`n## Courses module
+## Courses Module
 
-`Courses/` contains structured learning material for deliberate skill development.
+Structured learning for deliberate skill development — progress trackers and course-specific notes, not technical reference material (that lives in `Technologies/Docs/`).
 
 | Module | What it is |
 |---|---|
-| [`Competitive-Programming/`](Courses/Competitive-Programming) | Problem-solving skill trackers and coaching prompts — not algorithm notes, but growth trackers |
+| [`Competitive-Programming/`](Courses/Competitive-Programming) | Problem-solving skill trackers and coaching prompts |
+| [`IBM-RAG-and-Agentic-AI/`](Courses/IBM-RAG-and-Agentic-AI) | Knowledge-pack-style tracker for the IBM RAG and Agentic AI Professional Certificate (10 courses) |
 
-## Career module
+## Career Module
 
-`Career/` contains actionable tools for career development — resume, LinkedIn, portfolio, interviews, salary, and planning.
-See [`Career/_index.md`](Career/_index.md) for the full component list.
+Actionable career development tools: resume, LinkedIn, portfolio, interviews, salary negotiation, and planning.
+See [`Career/_index.md`](Career/_index.md) for details.
 
-## Resources module
+## Resources Module
 
-`Resources/` points outward to curated external resources across 11 categories.
-See [`Resources/_index.md`](Resources/_index.md) for the full category list.
+Curated external resources across 11 categories (docs, repos, courses, blogs, papers, books).
+See [`Resources/_index.md`](Resources/_index.md) for the full index.
 
-## Getting started
+---
 
-New to Forge? Read [`START_HERE.md`](START_HERE.md).
+## Getting Started
 
-Adding content? Read [`CONVENTIONS.md`](CONVENTIONS.md) first — naming and
-structure are enforced by discipline, not tooling, so consistency is on
-you.
+### If you're here for DSA prep:
+1. Start at [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md)
+2. Pick a pattern that matches your current problem
+3. Read the pattern page, study the representative problems, and use the interview guide
 
-Committing changes? Read [`WORKFLOW.md`](WORKFLOW.md).
+### If you're new to Forge:
+1. Read [`START_HERE.md`](START_HERE.md) — your entry point
+2. Read [`CONVENTIONS.md`](CONVENTIONS.md) — naming, structure, and tagging rules
+3. Read [`WORKFLOW.md`](WORKFLOW.md) — how to commit and use Forge day to day
 
+### If you're adding content:
+1. Read [`CONVENTIONS.md`](CONVENTIONS.md) first — consistency is enforced by discipline, not tooling
+2. Find the appropriate folder and read its `_index.md`
+3. Follow the structure and naming conventions for your folder
+4. Commit using the patterns in [`WORKFLOW.md`](WORKFLOW.md)
