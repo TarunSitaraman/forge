@@ -57,4 +57,5 @@ O(V+E) time and O(V+E) space.
 
 ## Related Problems
 - [[Problem Index]]
+- [[Graph Traversal - Course Schedule]] — same problem solved via 3-color DFS instead of Kahn's BFS; useful to know both when an interviewer asks for an alternative approach
 
