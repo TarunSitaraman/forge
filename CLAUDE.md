@@ -89,16 +89,22 @@ This pattern has been adapted three times more:
   from SmartResQ's ~2500 lines to ~930, since most technical depth
   properly routes out to `Technologies/Docs/` rather than living in the
   course folder itself.
-- **`Projects/personal-agent/`** — full 10-doc pack for an *external*
-  GitHub repo (`TarunSitaraman/personal-agent`), not code living inside
-  this repo. Built by researching the live repo via `gh api`/`gh repo
-  view` (README, CLAUDE.md, package.json, and several source files
-  fetched directly) rather than from memory. Establishes the pattern for
-  documenting external projects: fetch and verify against real source
-  before writing, explicitly flag anything inferred-but-unconfirmed
-  (grep for "unconfirmed" in that pack's `10-roadmap.md` for the
-  convention used), and note discrepancies between that project's own
-  stale docs and its current state rather than silently picking one.
+- **`Projects/personal-agent/`, `Projects/quickcover/`,
+  `Projects/macro-platform/`, `Projects/institutional-dashboard/`** —
+  four packs documenting *external* GitHub repos, not code living
+  inside this repo. Built by researching each live repo via `gh api`/
+  `gh repo view` (READMEs, and for personal-agent/macro-platform,
+  several source files fetched/read directly) rather than from memory.
+  This establishes the pattern for documenting external projects: fetch
+  and verify against real source before writing, explicitly flag
+  anything inferred-but-unconfirmed rather than asserting it, and note
+  discrepancies between a project's own stale docs and its current
+  state rather than silently picking one (personal-agent's CLAUDE.md
+  vs README is the clearest example). **Scale the doc count to actual
+  complexity** — personal-agent and QuickCover got ~10 docs each,
+  macro-platform got 8 (research depth was slightly lower), and
+  institutional-dashboard — a much smaller single-server project —
+  deliberately got only 4, with its `_index.md` explicitly stating why.
 
 **When asked for this pattern elsewhere:** scale the doc count and
 depth to the subject's actual complexity — don't force exactly 10 docs
@@ -130,11 +136,22 @@ IBM-RAG-and-Agentic-AI (11-file knowledge pack, 0/10 courses complete
 as of creation — check `Courses/IBM-RAG-and-Agentic-AI/08-progress-tracker.md`
 for current status before assuming it's still at zero).
 
-**Projects/** — SmartResQ (the original reference implementation of the
-Knowledge Pack pattern) and `personal-agent` (11-file pack documenting
-the external `TarunSitaraman/personal-agent` repo — a WhatsApp-native
-personal AI agent; see that pack's own `10-roadmap.md` for confirmed vs.
-unconfirmed findings from researching the live external repo).
+**Projects/** — 5 projects total:
+- `smartresq/` — the original reference implementation of the Knowledge
+  Pack pattern (in-repo project, not externally researched)
+- `personal-agent/` (11 files) — WhatsApp-native personal AI agent
+- `quickcover/` (10 files) — hackathon parametric income-protection
+  platform for gig workers
+- `macro-platform/` (9 files) — agentic macroeconomic data platform
+  with a nine-pillar trust/governance framework
+- `institutional-dashboard/` (5 files) — small personal trading
+  terminal, deliberately the leanest pack of the four externally-
+  researched projects
+
+All four externally-researched packs flag their own confirmed-vs-
+unconfirmed findings (check each pack's `roadmap` doc) rather than
+presenting uniform confidence — trust the flagged caveats over assuming
+everything was independently verified.
 
 ## Git Workflow Notes
 
