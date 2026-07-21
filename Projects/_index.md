@@ -13,6 +13,7 @@ links. Larger projects break content into focused topic documents
 |---------|--------|---------|
 | **[SmartResQ](./smartresq/)** | Ownership Handoff | Emergency dispatch coordination system. Real-time routing of ambulances + hospital pre-notification from patient SOS/wearables. Production-grade code, infrastructure migration in progress. |
 | **[Personal Agent](./personal-agent/)** | Deployed, Active | WhatsApp-native personal AI agent ("Blu") — context-aware second brain with a multi-tier LLM stack, Postgres + pgvector memory, and proactive scheduled briefs/nudges. |
+| **[QuickCover](./quickcover/)** | Hackathon Complete | AI-powered parametric income protection for Q-commerce gig workers — consumer-funded micro-surcharge, automatic weather/outage-triggered payouts, XGBoost pricing + Isolation Forest fraud + GenAI adjudication. |
 
 ## Project Structure
 
