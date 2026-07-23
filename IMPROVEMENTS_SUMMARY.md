@@ -12,7 +12,7 @@
 
 #### After
 - **Lead with DSA** — Hero section immediately shows this is a comprehensive algorithm/interview prep resource
-- **Clear statistics** — 32 patterns, 70+ problems, 32 guides upfront
+- **Clear statistics** — 32 patterns, 85 problems, 32 guides upfront
 - **Better structure** — DSA gets its own prominent section with quick-start links
 - **Improved repo structure** — DSA folder clearly marked as 🎯 MAIN with detailed breakdown
 - **Component table** — Shows what's in DSA with completion status
@@ -26,7 +26,7 @@ Created **GITHUB_PROFILE.md** with:
 
 #### Repository Description (Short)
 ```
-Canonical DSA knowledge base: 32 patterns, 70+ problems, interview guides, 
+Canonical DSA knowledge base: 32 patterns, 85 problems, interview guides, 
 Python templates, and complexity cheat sheets. Production-grade explanations 
 for every algorithm and data structure. Git-first, Obsidian-compatible.
 ```
@@ -76,7 +76,7 @@ Why? First-time visitors want to know *what's in here*, not generic philosophy.
 **New:**
 ```
 • 32 Core Patterns
-• 70+ Representative Problems
+• 85 Representative Problems
 • 32 Pattern-Specific Interview Guides
 • 30+ Python Templates
 • 32 Complexity Cheat Sheets
@@ -207,6 +207,6 @@ Why? Different audiences need different paths. This respects their time.
 If you want to feature Forge on your GitHub profile:
 
 > Building Forge — a production-grade DSA knowledge base for technical interviews. 
-> 32 patterns, 70+ problems, Python templates, interview guides. Git-first, 
+> 32 patterns, 85 problems, Python templates, interview guides. Git-first, 
 > Obsidian-compatible.
 

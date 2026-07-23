@@ -15,7 +15,7 @@ Complete this checklist to finalize your GitHub repository presentation.
 - [ ] Replace description with this:
 
 ```
-Canonical DSA knowledge base: 32 patterns, 70+ problems, interview guides, 
+Canonical DSA knowledge base: 32 patterns, 85 problems, interview guides, 
 Python templates, and complexity cheat sheets. Production-grade explanations 
 for every algorithm and data structure. Git-first, Obsidian-compatible.
 ```
@@ -73,7 +73,7 @@ for every algorithm and data structure. Git-first, Obsidian-compatible.
 
 ```
 Building Forge — a production-grade DSA knowledge base for technical interviews. 
-32 patterns, 70+ problems, Python templates, interview guides.
+32 patterns, 85 problems, Python templates, interview guides.
 ```
 
 - [ ] Add link to Forge repo in **Website** if desired
@@ -94,7 +94,7 @@ Building Forge — a production-grade DSA knowledge base for technical interview
 ### README.md
 - ✅ DSA content now front-and-center (was buried)
 - ✅ Hero message immediately communicates value
-- ✅ Clear statistics (32 patterns, 70+ problems)
+- ✅ Clear statistics (32 patterns, 85 problems)
 - ✅ Better folder structure explanation
 - ✅ Three entry points for different audiences
 - ✅ Removed redundancy and unclear sections

@@ -63,4 +63,6 @@ Start with [Roadmap](./08-roadmap.md). Given the scale of the trust framework re
 - [`Technologies/Docs/ai-agents.md`](../../Technologies/Docs/ai-agents.md) — the AgentOrchestrator here is a textbook ReAct implementation; a strong real-world companion to that doc's architecture section
 - [`Technologies/Docs/rag.md`](../../Technologies/Docs/rag.md) — the Gold-layer pgvector embedding + citation-enforced chatbot is a concrete agentic-RAG implementation
 - [`Technologies/Docs/vector-databases.md`](../../Technologies/Docs/vector-databases.md) — pgvector usage here, worth comparing against `personal-agent`'s pgvector usage for a second real-world reference point
+- [`Technologies/Docs/postgresql.md`](../../Technologies/Docs/postgresql.md) — Postgres reference; the medallion pipeline's storage layer and pgvector host, see [Data Pipeline](./04-data-pipeline.md)
+- [`Technologies/Docs/fastapi.md`](../../Technologies/Docs/fastapi.md) — FastAPI reference; the platform's API layer, see [API & UI](./06-api-and-ui.md)
 - [`Projects/personal-agent/`](../personal-agent/) — sibling project; contrast personal-agent's single-tenant, cost-optimized LLM fallback against this platform's multi-tenant, compliance-optimized architecture

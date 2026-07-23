@@ -64,6 +64,10 @@ Start with [Roadmap](./09-roadmap.md) for the phase-by-phase build log and the "
 
 **If you're working on similar architecture:**
 - [`Technologies/Docs/ai-agents.md`](../../Technologies/Docs/ai-agents.md) — compare QuickCover's GenAI vision-adjudication model against general agent architecture patterns
+- [`Technologies/Docs/postgresql.md`](../../Technologies/Docs/postgresql.md) — Postgres reference; QuickCover's datastore via Supabase, see [Architecture](./02-architecture.md)
+- [`Technologies/Docs/supabase.md`](../../Technologies/Docs/supabase.md) — Supabase reference; auth, Postgres, and RLS policies for the platform
+- [`Technologies/Docs/nodejs-express.md`](../../Technologies/Docs/nodejs-express.md) — Node.js & Express reference; the backend API stack
+- [`Technologies/Docs/react.md`](../../Technologies/Docs/react.md) — React/React Native reference; the driver and consumer mobile apps, see [Mobile App](./05-mobile-app.md)
 - [`Projects/personal-agent/`](../personal-agent/) — sibling project; compare its LLM fallback chain against QuickCover's single-model GenAI adjudication step
 - [`DSA/01_Patterns/`](../../DSA/01_Patterns/) — the XGBoost/Isolation Forest model selection reasoning here is a good real-world companion to algorithmic pattern-recognition thinking, even though ML model selection isn't itself a DSA topic
 

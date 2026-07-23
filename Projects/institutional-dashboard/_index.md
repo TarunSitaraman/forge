@@ -53,5 +53,8 @@ Start with [Roadmap](./04-roadmap.md) — since this project is explicitly WIP, 
 
 ## Related Systems / Reference
 
+- [`Technologies/Docs/nodejs-express.md`](../../Technologies/Docs/nodejs-express.md) — Node.js & Express reference; the single-server backend stack, see [Architecture](./02-architecture.md)
+- [`Technologies/Docs/supabase.md`](../../Technologies/Docs/supabase.md) — Supabase reference; auth and Postgres datastore
+- [`Technologies/Docs/postgresql.md`](../../Technologies/Docs/postgresql.md) — Postgres reference; underlies the Supabase datastore here
 - [`Technologies/Docs/`](../../Technologies/Docs/) — no existing canonical doc covers financial market data APIs or pivot/momentum technical-analysis formulas specifically; if this becomes a recurring domain across future projects, that would be the signal to create one (following the pattern noted in [Personal Agent](../personal-agent/)'s and [Macro Platform](../macro-platform/)'s packs for when a topic earns a standalone reference).
 - [`Projects/macro-platform/`](../macro-platform/) — sibling project in the same domain (market/macro data); contrast this project's single-server simplicity against that platform's multi-tenant, governance-heavy architecture for two very different scales of the same general problem (serving financial data reliably).

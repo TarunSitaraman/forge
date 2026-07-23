@@ -67,11 +67,13 @@ Start with [Roadmap](./10-roadmap.md) → Week 1 onboarding plan.
 **If you're working on similar architecture:**
 - [`Technologies/Playbooks/deployment.md`](../../Technologies/Playbooks/deployment.md) — Deployment workflow (similar to SmartResQ's CI/CD).
 - [`Technologies/Docs/docker.md`](../../Technologies/Docs/docker.md) — Docker & Compose reference (SmartResQ uses docker-compose for local dev).
+- [`Technologies/Docs/postgresql.md`](../../Technologies/Docs/postgresql.md) — Postgres reference; SmartResQ stores encrypted vitals (BYTEA) and FHIR bundles here, see [Components](./08-components.md).
+- [`Technologies/Docs/redis.md`](../../Technologies/Docs/redis.md) — Redis reference; SmartResQ uses it for dedup (TTL keys), pub/sub and Streams event fan-out, and as the BullMQ queue backend, see [Components](./08-components.md).
+- [`Technologies/Docs/kubernetes.md`](../../Technologies/Docs/kubernetes.md) — Kubernetes reference; SmartResQ's production target is AKS, using readiness probes to gate traffic during degraded health, see [Monitoring](./07-monitoring.md).
+- [`Technologies/Docs/nodejs-express.md`](../../Technologies/Docs/nodejs-express.md) — Node.js & Express reference; most SmartResQ services (ingestor, dispatcher, orchestrator, integration services) are built on this stack.
 - [`Technologies/Docs/llms.md`](../../Technologies/Docs/llms.md) — LLM capabilities and pitfalls (relevant for future AI-driven dispatch optimization).
 - [`Technologies/Docs/ai-agents.md`](../../Technologies/Docs/ai-agents.md) — Agent architectures (relevant if dispatch orchestration ever moves to an agentic model).
 - [`Technologies/Templates/decision-log.md`](../../Technologies/Templates/decision-log.md) — Use for documenting architectural decisions (see ADR template below).
-
-*(Kubernetes and PostgreSQL don't have canonical `Technologies/Docs/` entries yet — add one if operational work on either goes deep enough to earn a standalone reference.)*
 
 **If you're interviewing or onboarding:**
 - [`INTERVIEW_GUIDE.md`](./INTERVIEW_GUIDE.md) — Reference material for technical interviews, difficult questions, design tradeoffs, and self-critique.

@@ -47,16 +47,37 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
-**Fixed this session** (previously flagged here as open issues — now
-resolved, kept as a record of the pattern to watch for):
-`Systems/`'s broken `../../Systems/Docs/...` links in
-`Projects/smartresq/_index.md` were repointed to `Technologies/Docs/...`
-(two entries — Kubernetes.md and PostgreSQL.md — were dropped entirely
-rather than repointed, since no canonical doc for either actually
-exists; don't recreate those links without first creating the docs).
-`README.md` was refreshed with accurate current counts, correct DSA
-subfolder names, and the missing Courses/AI-Agents-doc entries — see
-commit `218793a`. `GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
+**Fixed 2026-07-23 session:** re-audited every numeric claim in
+`README.md`, `GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
+`IMPROVEMENTS_SUMMARY.md` against actual filesystem counts. The
+recurring "70+ problems" claim across all four files was corrected to
+the accurate **85** (detailed problem pages in `DSA/04_Problems/`,
+excluding the 32 representative-problem indices and README). Also fixed:
+README's "Mistake Encyclopedia 12+" → exact 12; cheat sheet count made
+explicit as 39 (32 pattern + 7 auxiliary); CLAUDE.md's own "roughly a
+dozen" patterns-stuck-at-2 claim corrected to the verified exact count
+of 16, named individually. Also created **7 new canonical
+`Technologies/Docs/` entries** — PostgreSQL, Redis, Kubernetes,
+Node.js & Express, React, Supabase, FastAPI — closing the gap explicitly
+flagged in `Projects/smartresq/_index.md` ("Kubernetes and PostgreSQL
+don't have canonical entries yet") and covering the rest of the
+project-stack technologies referenced with real architectural depth
+across `Projects/*`. Cross-linked all five project `_index.md` files'
+"Related Systems / Reference" sections to the new docs, each annotated
+with which project doc demonstrates the real usage (not just a bare
+link). Kafka and the WhatsApp Business API were deliberately **not**
+added — smartresq's INTERVIEW_GUIDE.md discusses Kafka only as a
+hypothetical alternative to the actually-deployed Redis pub/sub/Streams,
+not a real dependency; WhatsApp Business API is more a product
+integration than an engineering paradigm on the level of the other
+docs. Revisit both if a project starts actually depending on either.
+
+**Previously fixed (earlier session, still resolved):** `Systems/`'s
+broken `../../Systems/Docs/...` links in `Projects/smartresq/_index.md`
+were repointed to `Technologies/Docs/...`. `README.md` was refreshed
+with accurate current counts, correct DSA subfolder names, and the
+missing Courses/AI-Agents-doc entries — see commit `218793a`.
+`GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
 `IMPROVEMENTS_SUMMARY.md` (found sitting uncommitted from a prior
 session) were corrected to matching numbers and committed.
 
@@ -118,23 +139,31 @@ table and quick nav; that's the load-bearing piece for fast retrieval.
 - 85 detailed problem pages — every pattern now has **at least 2**
   (previously 19 patterns were stuck at exactly 1); DFS and BFS remain
   deepest at 5 each. Highest-value further expansion targets: patterns
-  still at 2 (roughly a dozen of them — check file counts before
-  assuming which).
+  still at exactly 2 (verified 2026-07-23, 16 of them — Binary Lifting,
+  Bit Manipulation, Difference Array, Divide and Conquer, Fast & Slow
+  Pointers, Interval Processing, Matrix Traversal, Meet in the Middle,
+  Memoization, Monotonic Queue, Number Theory, Prefix Sum, Recursion,
+  Sorting, String Matching, Sweep Line).
 - 39 cheat sheets (32 pattern-specific + ~7 auxiliary reference sheets
   like Bisect, Complexities, Python Collections)
 - Status docs with full session history:
   `DSA_IMPLEMENTATION_PLAN.md`, `FORGE_COMPLETION_STATUS.md`,
   `FORGE_SESSION_2_SUMMARY.md`, `FORGE_SESSION_3_FINAL_SUMMARY.md`
 
-**Technologies/Docs/** — 11 canonical references: Azure, Databricks,
+**Technologies/Docs/** — 18 canonical references: Azure, Databricks,
 Docker, Git, LangChain, RAG, AI Agents (covers ReAct/Reflection/
 Reflexion, LangGraph, CrewAI/AutoGen/BeeAI, MCP), Vector Databases,
-LLMs, Prompt Engineering, Markdown.
+LLMs, Prompt Engineering, Markdown, PostgreSQL, Redis, Kubernetes,
+Node.js & Express, React, Supabase, FastAPI (the last 7 added
+2026-07-23 to cover technologies used with real depth across
+`Projects/*` — see Known Stale/Legacy Items above for why Kafka and
+WhatsApp Business API weren't included).
 
 **Courses/** — Competitive-Programming (skill tracker) and
 IBM-RAG-and-Agentic-AI (11-file knowledge pack, 0/10 courses complete
-as of creation — check `Courses/IBM-RAG-and-Agentic-AI/08-progress-tracker.md`
-for current status before assuming it's still at zero).
+as verified 2026-07-23 — check
+`Courses/IBM-RAG-and-Agentic-AI/08-progress-tracker.md` for current
+status before assuming it's still at zero).
 
 **Projects/** — 5 projects total:
 - `smartresq/` — the original reference implementation of the Knowledge
