@@ -21,6 +21,13 @@ note, or an appendix.*
 | LLMs | [`llms.md`](llms.md) |
 | Prompt Engineering | [`prompt-engineering.md`](prompt-engineering.md) |
 | Markdown | [`markdown.md`](markdown.md) |
+| PostgreSQL | [`postgresql.md`](postgresql.md) |
+| Redis | [`redis.md`](redis.md) |
+| Kubernetes | [`kubernetes.md`](kubernetes.md) |
+| Node.js & Express | [`nodejs-express.md`](nodejs-express.md) |
+| React | [`react.md`](react.md) |
+| Supabase | [`supabase.md`](supabase.md) |
+| FastAPI | [`fastapi.md`](fastapi.md) |
 
 ## Structure every doc follows
 

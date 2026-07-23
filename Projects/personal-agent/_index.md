@@ -69,6 +69,9 @@ Start with [Roadmap](./10-roadmap.md) to see known gaps (vision/whisper are stub
 - [`Technologies/Docs/ai-agents.md`](../../Technologies/Docs/ai-agents.md) — agent architecture patterns; compare Blu's single-agent tool-calling loop against the ReAct/multi-agent patterns documented there
 - [`Technologies/Docs/prompt-engineering.md`](../../Technologies/Docs/prompt-engineering.md) — the system prompt in `src/agent/brain.js` is a strong real-world example of few-shot + strict-output-format prompting
 - [`Technologies/Docs/vector-databases.md`](../../Technologies/Docs/vector-databases.md) — pgvector is used here rather than a dedicated vector DB; useful contrast
+- [`Technologies/Docs/postgresql.md`](../../Technologies/Docs/postgresql.md) — Postgres reference; the primary datastore here (including pgvector for memory embeddings)
+- [`Technologies/Docs/nodejs-express.md`](../../Technologies/Docs/nodejs-express.md) — Node.js & Express reference; the server stack this agent is built on, see [Architecture](./02-architecture.md)
+- [`Technologies/Docs/react.md`](../../Technologies/Docs/react.md) — React/React Native reference; the mobile and dashboard companion apps, see [Mobile & Dashboard](./09-mobile-and-dashboard.md)
 - [`Projects/smartresq/`](../smartresq/) — sibling project this agent's GitHub integration surfaces PR/issue status for
 
 **If this project ever needs deep interview-style talking points:**

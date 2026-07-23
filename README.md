@@ -21,13 +21,13 @@ The flagship section is a **comprehensive Data Structures and Algorithms knowled
 | Component | Count |
 |-----------|-------|
 | **Patterns** | 32 (Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming, Graph Traversal, Topological Sort, Union Find, Greedy, Backtracking, Memoization, and more) |
-| **Detailed Problems** | 70+ (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
+| **Detailed Problems** | 85 (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
 | **Pattern-Specific Interview Guides** | 32 (recognition criteria, communication templates, common mistakes) |
-| **Complexity Cheat Sheets** | 32 pattern-specific + auxiliary quick-reference sheets |
+| **Complexity Cheat Sheets** | 39 (32 pattern-specific + 7 auxiliary quick-reference sheets) |
 | **Python Templates** | 30 (production-quality implementations) |
 | **Algorithms** | 30 (named, reusable techniques) |
 | **Data Structures** | 18 (operation contracts, invariants, tradeoffs) |
-| **Mistake Encyclopedia** | 12+ common pitfalls with concrete examples |
+| **Mistake Encyclopedia** | 12 common pitfalls with concrete examples |
 
 Every problem page includes: complete problem statement with constraints, why the pattern applies (theory), a commented Python solution, complexity analysis with justification, edge cases, common mistakes, and an interview walkthrough dialogue.
 
@@ -79,7 +79,7 @@ forge/
 │   ├── 01_Patterns/        32 core patterns (Two Pointers, DFS, DP, etc.)
 │   ├── 02_Algorithms/      30 algorithm implementations
 │   ├── 03_DataStructures/  18 data structure implementations
-│   ├── 04_Problems/        70+ representative problems with solutions
+│   ├── 04_Problems/        85 detailed problems + 32 representative-problem indices
 │   ├── 05_Templates/       Python implementation templates
 │   ├── 06_Complexity/      Time/space complexity reference
 │   ├── 07_Interview/       Pattern-specific interview guides

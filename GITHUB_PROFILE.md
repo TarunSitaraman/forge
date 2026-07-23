@@ -5,12 +5,12 @@
 Use this for the GitHub repository description field (appears under repo name):
 
 ```
-Canonical DSA knowledge base: 32 patterns, 70+ problems, interview guides, 
+Canonical DSA knowledge base: 32 patterns, 85 problems, interview guides, 
 Python templates, and complexity cheat sheets. Production-grade explanations 
 for every algorithm and data structure. Git-first, Obsidian-compatible.
 ```
 
-**Character count:** 195 characters (GitHub allows up to 300)
+**Character count:** ~222 characters (GitHub allows up to 300)
 
 ---
 
@@ -34,7 +34,7 @@ Every pattern includes:
 BFS, Dynamic Programming, Graph Traversal, Topological Sort, Union Find, 
 Greedy, Backtracking, Memoization, and more.
 
-70+ problems with detailed walkthroughs, complexity analysis, edge cases, 
+85 problems with detailed walkthroughs, complexity analysis, edge cases, 
 and interview dialogues.
 
 Built as a git-first, Obsidian-compatible Markdown repository. No databases, 
@@ -78,7 +78,7 @@ https://github.com/TarunSitaraman/forge#readme
 2. Click **Settings** (top right)
 3. Scroll to **Repository details** section
 4. Update:
-   - **Description** — Use the short version above (195 chars)
+   - **Description** — Use the short version above (~222 chars)
    - **About** — Use the longer version above (can be edited in markdown)
    - **Topics** — Add the tags listed above
    - **Website** — Leave blank or add your personal site if applicable
@@ -90,11 +90,11 @@ https://github.com/TarunSitaraman/forge#readme
 If you want something shorter:
 
 ```
-Complete DSA knowledge base: 32 patterns, 70+ problems, interview guides, 
+Complete DSA knowledge base: 32 patterns, 85 problems, interview guides, 
 Python templates. Production-grade, git-first, Obsidian-compatible.
 ```
 
-**Character count:** 132 characters
+**Character count:** ~140 characters
 
 ---
 
@@ -103,7 +103,7 @@ Python templates. Production-grade, git-first, Obsidian-compatible.
 When sharing on social media, use:
 
 > **Forge** — A canonical Data Structures and Algorithms knowledge base with 
-> 32 core patterns, 70+ detailed problems, interview guides, and Python 
+> 32 core patterns, 85 detailed problems, interview guides, and Python 
 > templates. Everything you need to ace technical interviews and master DSA.
 
 ---
