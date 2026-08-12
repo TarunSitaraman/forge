@@ -81,11 +81,24 @@ in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
 at this scale. The engine's first job is to enforce mechanically what
 this repository already specifies.
 
-**Status: design complete, implementation not started.** See
-[`docs/`](docs/README.md) — start with the
-[current-state audit](docs/architecture/forge-current-state.md) and
-[ADR-001](docs/decisions/001-forge-knowledge-os.md), which lists the
-open decisions blocking implementation.
+**Status: Phase 1 complete — the canonical knowledge foundation is built.**
+The engine can index this corpus deterministically, report every metadata and
+link defect in it, and track its own derived state with enforced provenance —
+all locally, with no model and no paid API.
+
+```bash
+pip install -e ".[dev]"
+forge index          # deterministic index; reports "LLM calls: 0"
+forge diagnostics    # every frontmatter and link defect, with proposed fixes
+forge inspect "DSA/01_Patterns/DFS.md"
+```
+
+Nothing in the vault is ever written to. Repairs are *proposed*, never applied.
+
+Start with [`docs/`](docs/README.md): the
+[current-state audit](docs/architecture/forge-current-state.md),
+[ADR-001](docs/decisions/001-forge-knowledge-os.md), and the
+[Phase 1 implementation notes](docs/architecture/phase-1-implementation.md).
 
 ## What Forge is not
 
