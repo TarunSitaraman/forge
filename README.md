@@ -81,10 +81,11 @@ in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
 at this scale. The engine's first job is to enforce mechanically what
 this repository already specifies.
 
-**Status: Phases 1–2 complete.** The engine indexes this corpus
+**Status: Phases 1–3 complete.** The engine indexes this corpus
 deterministically, ingests external PDFs and Markdown with page- and
-section-level provenance, and turns everything it infers into proposals a human
-decides on — all locally, with no model and no paid API.
+section-level provenance, turns everything it infers into proposals a human
+decides on, and — once you approve one — activates it into canonical knowledge
+you can traverse and cite. All locally, with no model and no paid API.
 
 ```bash
 pip install -e ".[dev]"
@@ -94,18 +95,29 @@ forge diagnostics               # every frontmatter and link defect
 forge ingest paper.pdf          # spans with page + section provenance
 forge search "chunking"         # evidence with citations, not generated prose
 forge proposals list            # what Forge would change, awaiting your call
+forge activate                  # approved proposals -> canonical knowledge
+forge concept "RAG"             # what Forge knows, and which page proved it
+forge graph path A B            # how two concepts connect
+forge retrieval-eval            # measured retrieval quality, not a claim
 ```
 
 Nothing in the vault is written without an explicit `--apply`, and then only
 for deterministically-verified repairs, after a backup, one line at a time.
-Ambiguous concepts — this vault has three real ones — are never merged
-silently.
+Activating knowledge writes nothing to Markdown at all. Ambiguous concepts —
+this vault has four real ones — are never merged silently; Forge documents the
+collision and waits for your decision.
+
+Retrieval quality is measured against a labelled query set rather than
+asserted. The current answer: lexical search wins, embeddings did not help,
+and no vector database is justified —
+[the numbers](docs/research/retrieval-baseline.md).
 
 Start with [`docs/`](docs/README.md): the
 [current-state audit](docs/architecture/forge-current-state.md),
 [ADR-001](docs/decisions/001-forge-knowledge-os.md), and the implementation
-notes for [Phase 1](docs/architecture/phase-1-implementation.md) and
-[Phase 2](docs/architecture/phase-2-implementation.md).
+notes for [Phase 1](docs/architecture/phase-1-implementation.md),
+[Phase 2](docs/architecture/phase-2-implementation.md), and
+[Phase 3](docs/architecture/phase-3-implementation.md).
 
 ## What Forge is not
 
@@ -132,6 +144,8 @@ forge/
 ├── ROADMAP.md              Where Forge's *content* is headed.
 ├── docs/                   Engineering docs for the Forge engine (see below).
 ├── engine/                 The Forge engine (Python). Read-only w.r.t. the vault.
+├── config/                 Engine configuration versioned with the vault
+│                             (concept-identity.yaml — your collision decisions).
 ├── tests/  scripts/        Test suite and validation/demo scripts.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │

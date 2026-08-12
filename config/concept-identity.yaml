@@ -1,0 +1,54 @@
+# Forge — concept identity configuration
+#
+# Explicit user decisions about concept naming. Forge never writes a
+# resolution here on its own: an unresolved collision stays ambiguous
+# until a human decides, and that is a valid state to leave it in.
+#
+# Managed by `forge identity` — hand edits are fine and are preserved.
+#
+# `default` names which identity a bare, unqualified mention means.
+# Omitting it means "still ambiguous, deliberately".
+
+version: 1
+collisions:
+- name: Binary Search
+  identities:
+  - canonical_name: Binary Search
+    kind: pattern
+    namespace: pattern
+    vault_path: DSA/01_Patterns/Binary Search.md
+  - canonical_name: Binary Search
+    kind: algorithm
+    namespace: algorithm
+    vault_path: DSA/02_Algorithms/Binary Search.md
+- name: Heap
+  identities:
+  - canonical_name: Heap
+    kind: pattern
+    namespace: pattern
+    vault_path: DSA/01_Patterns/Heap.md
+  - canonical_name: Heap
+    kind: data_structure
+    namespace: data-structure
+    vault_path: DSA/03_DataStructures/Heap.md
+- name: Trie
+  identities:
+  - canonical_name: Trie
+    kind: pattern
+    namespace: pattern
+    vault_path: DSA/01_Patterns/Trie.md
+  - canonical_name: Trie
+    kind: data_structure
+    namespace: data-structure
+    vault_path: DSA/03_DataStructures/Trie.md
+- name: weekly-review
+  identities:
+  - canonical_name: weekly-review
+    kind: concept
+    namespace: competitiveprogramming
+    vault_path: Courses/Competitive-Programming/weekly-review.md
+  - canonical_name: weekly-review
+    kind: concept
+    namespace: templates
+    vault_path: Technologies/Templates/weekly-review.md
+aliases: {}
