@@ -81,24 +81,31 @@ in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
 at this scale. The engine's first job is to enforce mechanically what
 this repository already specifies.
 
-**Status: Phase 1 complete — the canonical knowledge foundation is built.**
-The engine can index this corpus deterministically, report every metadata and
-link defect in it, and track its own derived state with enforced provenance —
-all locally, with no model and no paid API.
+**Status: Phases 1–2 complete.** The engine indexes this corpus
+deterministically, ingests external PDFs and Markdown with page- and
+section-level provenance, and turns everything it infers into proposals a human
+decides on — all locally, with no model and no paid API.
 
 ```bash
 pip install -e ".[dev]"
-forge index          # deterministic index; reports "LLM calls: 0"
-forge diagnostics    # every frontmatter and link defect, with proposed fixes
-forge inspect "DSA/01_Patterns/DFS.md"
+
+forge index                     # deterministic index; reports "LLM calls: 0"
+forge diagnostics               # every frontmatter and link defect
+forge ingest paper.pdf          # spans with page + section provenance
+forge search "chunking"         # evidence with citations, not generated prose
+forge proposals list            # what Forge would change, awaiting your call
 ```
 
-Nothing in the vault is ever written to. Repairs are *proposed*, never applied.
+Nothing in the vault is written without an explicit `--apply`, and then only
+for deterministically-verified repairs, after a backup, one line at a time.
+Ambiguous concepts — this vault has three real ones — are never merged
+silently.
 
 Start with [`docs/`](docs/README.md): the
 [current-state audit](docs/architecture/forge-current-state.md),
-[ADR-001](docs/decisions/001-forge-knowledge-os.md), and the
-[Phase 1 implementation notes](docs/architecture/phase-1-implementation.md).
+[ADR-001](docs/decisions/001-forge-knowledge-os.md), and the implementation
+notes for [Phase 1](docs/architecture/phase-1-implementation.md) and
+[Phase 2](docs/architecture/phase-2-implementation.md).
 
 ## What Forge is not
 
@@ -124,6 +131,8 @@ forge/
 ├── WORKFLOW.md             Git workflow for using Forge day to day.
 ├── ROADMAP.md              Where Forge's *content* is headed.
 ├── docs/                   Engineering docs for the Forge engine (see below).
+├── engine/                 The Forge engine (Python). Read-only w.r.t. the vault.
+├── tests/  scripts/        Test suite and validation/demo scripts.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │
 ├── DSA/                    Data Structures & Algorithms (flagship section)
