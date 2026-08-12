@@ -21,7 +21,7 @@ The flagship section is a **comprehensive Data Structures and Algorithms knowled
 | Component | Count |
 |-----------|-------|
 | **Patterns** | 32 (Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming, Graph Traversal, Topological Sort, Union Find, Greedy, Backtracking, Memoization, and more) |
-| **Detailed Problems** | 70+ (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
+| **Detailed Problems** | 85 (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
 | **Pattern-Specific Interview Guides** | 32 (recognition criteria, communication templates, common mistakes) |
 | **Complexity Cheat Sheets** | 32 pattern-specific + auxiliary quick-reference sheets |
 | **Python Templates** | 30 (production-quality implementations) |
@@ -44,10 +44,48 @@ Every problem page includes: complete problem statement with constraints, why th
 
 - **Git-first.** The repository is the source of truth. History, branches, and diffs track change — not backlinks, plugin metadata, or a database.
 - **Obsidian-compatible.** Open as an Obsidian vault for graph view and backlinks, but every file works as plain Markdown in any editor, on GitHub, or via `grep`. Obsidian is optional tooling, not a dependency.
-- **Markdown only.** No databases, proprietary formats, or plugin lock-in. Content survives any tool change.
+- **Markdown only.** No proprietary formats, no plugin lock-in. Content survives any tool change. Derived indexes (search, graph) may exist, but nothing may live *only* in a database — delete every index and the knowledge is still here, in full, as Markdown.
 - **Minimal plugins.** See [`.obsidian-config/`](.obsidian-config) for the short, deliberate list. Every plugin must earn its place.
 - **Fast navigation.** Simple folder structure, consistent naming, no deep nesting. Finding what you need should be instant.
 - **No bloat.** One canonical home per concept. No duplicates, no orphaned files, no thought dumps. Quality over volume.
+
+## Where Forge is going: the Knowledge OS
+
+Forge today is a knowledge *base* — an excellent one, maintained by
+hand. The next phase is an engine that maintains it:
+
+> **Forge does not merely store information. Forge maintains
+> understanding.**
+
+The goal is a local-first, AI-native knowledge layer that ingests
+sources (Markdown, PDFs, papers, repos, docs, the web), extracts
+concepts and claims, links them into an evolving knowledge model, and —
+critically — **tells you when new evidence contradicts something you
+already believed, instead of silently overwriting it.** Obsidian stays
+an interface. A CLI, a web UI, and an MCP server become others. The
+engine owns the intelligence.
+
+Two commitments make this an evolution rather than a replacement:
+
+- **Markdown stays the source of truth.** Every index is derived and
+  rebuildable. Nothing here becomes hostage to a database.
+- **Nothing existing is deleted or rewritten.** This corpus becomes the
+  engine's first ingestion source and its primary evaluation set.
+
+Why bother, given how disciplined this vault already is? Because a
+[full audit](docs/architecture/forge-current-state.md) measured what a
+year of careful manual maintenance actually produced: 145 broken
+wikilinks, 42% of files with no machine-readable metadata, 283 malformed
+relationship fields, and stale counts in three separate files. The rules
+in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
+at this scale. The engine's first job is to enforce mechanically what
+this repository already specifies.
+
+**Status: design complete, implementation not started.** See
+[`docs/`](docs/README.md) — start with the
+[current-state audit](docs/architecture/forge-current-state.md) and
+[ADR-001](docs/decisions/001-forge-knowledge-os.md), which lists the
+open decisions blocking implementation.
 
 ## What Forge is not
 
@@ -71,7 +109,8 @@ forge/
 ├── START_HERE.md           Onboarding + daily entry point.
 ├── CONVENTIONS.md          Naming, Markdown, and tagging rules.
 ├── WORKFLOW.md             Git workflow for using Forge day to day.
-├── ROADMAP.md              Where Forge is headed.
+├── ROADMAP.md              Where Forge's *content* is headed.
+├── docs/                   Engineering docs for the Forge engine (see below).
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │
 ├── DSA/                    Data Structures & Algorithms (flagship section)
