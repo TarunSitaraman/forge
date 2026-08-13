@@ -81,11 +81,12 @@ in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
 at this scale. The engine's first job is to enforce mechanically what
 this repository already specifies.
 
-**Status: Phases 1–3 complete.** The engine indexes this corpus
+**Status: Phases 1–4 complete.** The engine indexes this corpus
 deterministically, ingests external PDFs and Markdown with page- and
 section-level provenance, turns everything it infers into proposals a human
-decides on, and — once you approve one — activates it into canonical knowledge
-you can traverse and cite. All locally, with no model and no paid API.
+decides on, activates approved ones into canonical knowledge you can traverse
+and cite — and now **evaluates how new evidence changes what it already
+knows**, pausing for your approval before anything changes.
 
 ```bash
 pip install -e ".[dev]"
@@ -99,6 +100,8 @@ forge activate                  # approved proposals -> canonical knowledge
 forge concept "RAG"             # what Forge knows, and which page proved it
 forge graph path A B            # how two concepts connect
 forge retrieval-eval            # measured retrieval quality, not a claim
+forge evolve paper-b.pdf        # how does this paper affect what I know?
+forge workflow inspect <id>     # why did Forge propose that?
 ```
 
 Nothing in the vault is written without an explicit `--apply`, and then only
@@ -107,17 +110,29 @@ Activating knowledge writes nothing to Markdown at all. Ambiguous concepts —
 this vault has four real ones — are never merged silently; Forge documents the
 collision and waits for your decision.
 
+When a new paper disagrees with something Forge already believes, it does not
+overwrite it and does not quietly accept it. It says *potential conflict*,
+shows you the page that prompted it, and waits. Approve, and the original claim
+is marked disputed with the new evidence attached — never rewritten, never
+retracted. The whole run is replayable afterwards with
+`forge workflow inspect`.
+
 Retrieval quality is measured against a labelled query set rather than
 asserted. The current answer: lexical search wins, embeddings did not help,
 and no vector database is justified —
-[the numbers](docs/research/retrieval-baseline.md).
+[the numbers](docs/research/retrieval-baseline.md). Where measurement was
+*not* possible, that is said plainly too: no local or cloud model could be
+reached during Phase 4 development, so the evolution pipeline is fully tested
+while model quality remains
+[unmeasured](docs/research/provider-availability.md).
 
 Start with [`docs/`](docs/README.md): the
 [current-state audit](docs/architecture/forge-current-state.md),
 [ADR-001](docs/decisions/001-forge-knowledge-os.md), and the implementation
 notes for [Phase 1](docs/architecture/phase-1-implementation.md),
-[Phase 2](docs/architecture/phase-2-implementation.md), and
-[Phase 3](docs/architecture/phase-3-implementation.md).
+[Phase 2](docs/architecture/phase-2-implementation.md),
+[Phase 3](docs/architecture/phase-3-implementation.md), and
+[Phase 4](docs/architecture/phase-4-implementation.md).
 
 ## What Forge is not
 
