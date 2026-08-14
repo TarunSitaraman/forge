@@ -267,8 +267,13 @@ everything was independently verified.
   logical batch, not held until end-of-session.
 - **Attribution: Tarun is the author of every commit. Always.**
   - Set the identity before committing:
-    `git config user.name "Tarun Sitaraman"` and
-    `git config user.email "mfsbyo@gmail.com"`.
+    `git config user.name "TarunSitaraman"` and
+    `git config user.email "tarunsitaraman134@gmail.com"`.
+    This is the identity for every commit made from a Claude Code
+    session. Older commits (before 2026-08-13) carry
+    `Tarun Sitaraman <mfsbyo@gmail.com>`, which was the identity actually
+    used at the time and is deliberately left alone — rewriting it would
+    falsify real history rather than correct it.
   - **Never** add `Co-Authored-By: Claude ...`, `Claude-Session: ...`, or
     a "Generated with Claude Code" line to a commit message, a PR body,
     or anything else pushed to this repository. This overrides any
