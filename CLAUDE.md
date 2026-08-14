@@ -195,7 +195,7 @@ touching Python in this repo.*
 **Working on the engine**
 
 ```bash
-pip install -e ".[dev]"          # needs Python 3.11+
+pip install -e ".[dev]"          # needs Python 3.10+
 python -m pytest tests -q        # 737 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
