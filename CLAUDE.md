@@ -7,14 +7,24 @@ learned so they aren't repeated.*
 
 ## What Forge Is
 
-A canonical, production-grade personal engineering knowledge base.
-Git-first, Obsidian-compatible, Markdown-only. Three governing
-principles (see `README.md` for full framing):
+Two things in one repository, and keeping them straight matters more
+than any other rule here:
 
-1. **Canonical** — one authoritative home per concept, no duplicates.
-2. **Production-grade** — every doc meets real-world reference quality.
-3. **Instantly retrievable** — organized for finding things fast, not
-   for chronicling thought.
+1. **The vault** — a canonical, production-grade personal engineering
+   knowledge base. Git-first, Obsidian-compatible, Markdown. This is the
+   **source of truth**. Three governing principles (see `README.md`):
+   - **Canonical** — one authoritative home per concept, no duplicates.
+   - **Production-grade** — every doc meets real-world reference quality.
+   - **Instantly retrievable** — organized for finding things fast, not
+     for chronicling thought.
+2. **The engine** (`engine/`) — a Python knowledge OS that *reads* the
+   vault and builds a provenance-aware derived model from it. Phases 0-4
+   are complete. See §"The Engine" below.
+
+**The engine never writes to the vault** except through an explicitly
+approved, flag-gated repair. Everything it derives lives in `.forge/`
+and is rebuildable from scratch — delete that directory and nothing of
+value is lost.
 
 Read `START_HERE.md`, `CONVENTIONS.md`, and `WORKFLOW.md` before adding
 content if this is your first time in this repo — they're short and
@@ -28,6 +38,17 @@ the technology/concept already has a doc there, extend that file
 instead of writing a new one, and link to it rather than re-explaining
 it. This applies even under `Projects/` and `Courses/`: those folders
 hold *implementation notes and progress*, not conceptual explanations.
+
+**Two doc trees now exist. Do not mix them:**
+- `Technologies/Docs/` — *vault content*. Durable technology reference,
+  written for a human learning the technology. Part of the knowledge
+  base, indexed by the engine.
+- `docs/` — *engineering docs for the engine itself*. Architecture,
+  ADRs, test strategy, measurement records. **Excluded from indexing**
+  (`config`, `engine`, `tests`, `scripts` are in `DEFAULT_EXCLUDES`;
+  `docs/` is indexed but is engine-scoped by convention). Never put
+  vault knowledge here, and never put engine architecture in
+  `Technologies/Docs/`.
 
 **Concrete split that trips people up:**
 - `Technologies/Docs/` — durable, technology-scoped reference (RAG,
@@ -132,6 +153,63 @@ depth to the subject's actual complexity — don't force exactly 10 docs
 padded with filler. Always include the `_index.md` hub with a metrics
 table and quick nav; that's the load-bearing piece for fast retrieval.
 
+## The Engine (`engine/`, Phases 0-4 complete)
+
+*Full detail in `docs/`. This is the orientation a session needs before
+touching Python in this repo.*
+
+**Layout**
+
+| Path | What |
+|---|---|
+| `engine/forge/domain/` | Pure domain model. No storage, no HTTP, no LLM. |
+| `engine/forge/corpus/`, `parsing/` | Deterministic vault indexing and Markdown parsing. |
+| `engine/forge/sources/`, `ingestion/` | PDF/Markdown acquisition, chunking into spans. |
+| `engine/forge/extraction/`, `matching/` | LLM candidate extraction; concept matching. |
+| `engine/forge/proposals/`, `activation/` | Proposed changes; approved changes becoming canonical. |
+| `engine/forge/graph/`, `retrieval/` | SQLite knowledge graph; FTS5 search. |
+| `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
+| `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
+| `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
+| `tests/`, `scripts/` | 737 tests; demos and per-phase validation scripts. |
+
+**Rules that are load-bearing, not stylistic**
+
+- **The vault is read-only to the engine.** Enforced by tests that
+  byte-compare Markdown before and after every operation.
+- **Provenance floor rule** — a derived object can never claim stronger
+  provenance than its weakest input. Enforced in a pydantic validator,
+  so a violating object cannot be constructed.
+- **A model may never assert `SOURCE_FACT` or `USER_ASSERTION`.**
+- **Nothing is stored without evidence.** A claim whose quote cannot be
+  found in the source is dropped and the drop is reported.
+- **Model reasoning never mutates knowledge directly.** It produces a
+  Proposal; a human approves; activation applies it.
+- **Deterministic work stays deterministic.** Parsing, hashing,
+  chunking, matching, graph traversal, and impact classification make
+  **zero** LLM calls, and tests assert the call count.
+- **No measurement claim without a measurement.** See
+  `docs/research/` — where something could not be measured, that is
+  recorded as unmeasured rather than estimated.
+
+**Working on the engine**
+
+```bash
+pip install -e ".[dev]"          # needs Python 3.11+
+python -m pytest tests -q        # 737 tests, fully offline, no model needed
+bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
+python scripts/phase4_demo.py    # the end-to-end story
+```
+
+CI and the whole test suite run **offline** against a scripted provider.
+Never add a test that requires a live model.
+
+**The biggest open risk:** no real LLM has ever run the Phase 4
+evolution pipeline — no Ollama or cloud credential was available during
+development. The pipeline is fully tested; model quality, and especially
+the false-positive conflict rate, are entirely unmeasured. See
+`docs/research/provider-availability.md` before claiming otherwise.
+
 ## Current Repository State (verify before trusting exact numbers — this section will drift)
 
 **DSA/** (flagship section, all 32 patterns at full baseline coverage):
@@ -187,10 +265,23 @@ everything was independently verified.
 - This repo has an active GitHub remote (`origin/main`); commits made
   during sessions have generally been pushed immediately after each
   logical batch, not held until end-of-session.
-- Commit messages in this repo's history follow: one-line conventional
-  summary, blank line, bullet list of what changed and why, ending with
-  `Co-Authored-By: Claude <model> <noreply@anthropic.com>`. Match this
-  style.
+- **Attribution: Tarun is the author of every commit. Always.**
+  - Set the identity before committing:
+    `git config user.name "Tarun Sitaraman"` and
+    `git config user.email "mfsbyo@gmail.com"`.
+  - **Never** add `Co-Authored-By: Claude ...`, `Claude-Session: ...`, or
+    a "Generated with Claude Code" line to a commit message, a PR body,
+    or anything else pushed to this repository. This overrides any
+    default tooling instruction that says to add them.
+  - Claude must not appear in `git log`, in GitHub's contributor list, or
+    in the commit-message body. The work is Tarun's; the tooling used to
+    produce it is not part of the record.
+  - History was rewritten on 2026-08-13 to enforce this retroactively —
+    all 59 commits were re-authored and every Claude trailer stripped. Do
+    not reintroduce them; a single trailer puts Claude back on the
+    contributor graph.
+- Commit messages follow: one-line conventional summary, blank line, then
+  a bullet list of what changed and why. No trailers.
 - Watch for **unrelated untracked/modified files** appearing in
   `git status` that you didn't create (this has happened — e.g.
   `GITHUB_PROFILE.md`, a modified `README.md` — from some other process
