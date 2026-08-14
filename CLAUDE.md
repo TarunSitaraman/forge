@@ -204,11 +204,15 @@ python scripts/phase4_demo.py    # the end-to-end story
 CI and the whole test suite run **offline** against a scripted provider.
 Never add a test that requires a live model.
 
-**The biggest open risk:** no real LLM has ever run the Phase 4
-evolution pipeline — no Ollama or cloud credential was available during
-development. The pipeline is fully tested; model quality, and especially
-the false-positive conflict rate, are entirely unmeasured. See
-`docs/research/provider-availability.md` before claiming otherwise.
+**Real-model status (2026-08-14):** Qwen3 8B via Ollama on the RTX 4050
+box scored 5/5 on the assessment set — schema-valid output and correct
+grounding on every case, including both adversarial ones, with zero
+false-positive conflicts. That is a smoke test that passed, **not** a
+characterisation: five cases cannot establish a rate. The cloud path is
+still unmeasured. Local latency is ~63 s/case and one call exceeded the
+default 120 s timeout, so set `FORGE_LLM_TIMEOUT=300` for long runs.
+Read `docs/research/provider-availability.md` §6 before quoting any of
+these numbers as a rate.
 
 ## Current Repository State (verify before trusting exact numbers — this section will drift)
 
