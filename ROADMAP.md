@@ -1,5 +1,8 @@
 # Roadmap
 
+*Where Forge's **content** is headed. The engine has its own roadmap with
+phase-level exit gates: [`docs/roadmap.md`](docs/roadmap.md).*
+
 Forge grows only when a new capability measurably speeds up execution.
 Nothing here is added preemptively.
 
@@ -20,9 +23,11 @@ Nothing here is added preemptively.
       prompts (see `Career/`).
 - [x] Project System — one engineering-notebook template every project
       scaffolds from (see `Technologies/Project-System/`).
-- [x] Docs module — 10 authoritative technology reference manuals (Azure,
-      Databricks, Docker, Git, LangChain, RAG, Vector Databases, LLMs,
-      Prompt Engineering, Markdown) (see `Technologies/Docs/`).
+- [x] Docs module — 18 authoritative technology reference manuals (Azure,
+      Databricks, Docker, FastAPI, Git, Kubernetes, LangChain, LLMs,
+      Markdown, Node.js & Express, PostgreSQL, Prompt Engineering, RAG,
+      React, Redis, Supabase, Vector Databases, AI Agents) (see
+      `Technologies/Docs/`).
 - [x] Resources module — curated (not exhaustive) external resources
       across 11 categories, each with a stated reason it earns its place
       (see `Resources/`).
@@ -41,8 +46,11 @@ Nothing here is added preemptively.
 
 ## Later, if justified
 
-- [ ] Cross-links audit tooling (script, not plugin) to catch orphaned
-      files.
+- [x] Cross-links audit tooling (script, not plugin) to catch orphaned
+      files — delivered by the engine as `forge diagnostics`, which
+      reports link and frontmatter defects without touching the vault.
+- [ ] Act on what `forge diagnostics` reports. The tooling now exists;
+      the backlog it surfaces has not been worked through.
 - [ ] Archive compaction pass once `Archive/` grows large enough that
       navigation slows down.
 

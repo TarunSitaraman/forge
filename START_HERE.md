@@ -10,7 +10,8 @@ once, then never again.
 | `Inbox/` | Fast capture. Anything unsorted lands here first. | "Have I filed this within a week?" |
 | `Projects/` | Active build work, one folder per project. | "Am I actively executing on this?" |
 | `Technologies/` | Reusable technical systems: prompts, templates, playbooks, docs. | "Will I reuse this on every future project?" |
-| `Courses/` | Structured learning for skill development. | "Is this deliberate skill growth, not a one-off note?" |`n| `DSA/` | Canonical algorithm and interview knowledge. | "Is this reusable DSA knowledge, not just one contest note?" |
+| `Courses/` | Structured learning for skill development. | "Is this deliberate skill growth, not a one-off note?" |
+| `DSA/` | Canonical algorithm and interview knowledge. | "Is this reusable DSA knowledge, not just one contest note?" |
 | `Career/` | Career development: actionable tools and planning. | "Does this help me move my career forward?" |
 | `Resources/` | Curated external resources I've validated and recommend. | "Have I personally used and verified this?" |
 | `Reference/` | Durable technical facts: APIs, configs, gotchas, cheat sheets. | "Is this true regardless of any project?" |

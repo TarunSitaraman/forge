@@ -1,99 +1,74 @@
 # Forge
 
-**A canonical, production-grade engineering knowledge base. Git-first, Obsidian-compatible, no fluff.**
+**A local-first knowledge OS that maintains understanding, not just files.**
 
-Forge is your searchable engineering brain built on three principles:
+Forge ingests sources, extracts claims with page-level provenance, links them
+into a knowledge graph — and when new evidence contradicts something it already
+believed, it *tells you* instead of silently overwriting it.
 
-1. **Canonical** — One authoritative home per concept. No duplicates, no scattered notes.
-2. **Production-grade** — Every explanation, solution, and interview guide meets real-world standards.
-3. **Instantly retrievable** — Built for execution: find what you need *right now*, or learn what you'll execute faster *next time*.
+It is two things in one repository, and the relationship between them is the
+point:
 
-Forge is *not* a notes vault, journal, or thought dump. Every file here either helps you execute immediately or captures something reusable for the next time. If a file does neither, it doesn't belong here.
+| | What it is |
+|---|---|
+| **The engine** (`engine/`) | A Python knowledge OS. ~18,000 lines, 744 offline tests. Reads the vault, derives a provenance-aware model from it, and never writes back without explicit approval. |
+| **The vault** (everything else) | A hand-authored engineering knowledge base — 646 Markdown files, ~57,600 lines. The engine's first ingestion source, its primary evaluation set, and the reason it exists. |
 
----
-
-## What's Inside: DSA Knowledge Base
-
-The flagship section is a **comprehensive Data Structures and Algorithms knowledge base** built for interview preparation and competitive programming.
-
-### DSA Coverage
-
-| Component | Count |
-|-----------|-------|
-| **Patterns** | 32 (Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming, Graph Traversal, Topological Sort, Union Find, Greedy, Backtracking, Memoization, and more) |
-| **Detailed Problems** | 85 (with solutions, complexity analysis, edge cases, and interview walkthroughs) |
-| **Pattern-Specific Interview Guides** | 32 (recognition criteria, communication templates, common mistakes) |
-| **Complexity Cheat Sheets** | 39 (32 pattern-specific + 7 auxiliary quick-reference sheets) |
-| **Python Templates** | 30 (production-quality implementations) |
-| **Algorithms** | 30 (named, reusable techniques) |
-| **Data Structures** | 18 (operation contracts, invariants, tradeoffs) |
-| **Mistake Encyclopedia** | 12 common pitfalls with concrete examples |
-
-Every problem page includes: complete problem statement with constraints, why the pattern applies (theory), a commented Python solution, complexity analysis with justification, edge cases, common mistakes, and an interview walkthrough dialogue.
-
-### Quick Start
-
-- **New to DSA?** Start at [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md)
-- **Interview prep?** Use the pattern-specific interview guides and representative problems
-- **Looking for a solution template?** Pattern pages link to well-commented Python code
-- **Stuck on a problem?** Check the representative problems section for your pattern
+The engine was not built against a toy corpus. It was built against a real one
+that had already drifted, and its correctness target is the set of rules that
+corpus was supposed to follow.
 
 ---
 
-## Design Principles
+## Why this exists
 
-- **Git-first.** The repository is the source of truth. History, branches, and diffs track change — not backlinks, plugin metadata, or a database.
-- **Obsidian-compatible.** Open as an Obsidian vault for graph view and backlinks, but every file works as plain Markdown in any editor, on GitHub, or via `grep`. Obsidian is optional tooling, not a dependency.
-- **Markdown only.** No proprietary formats, no plugin lock-in. Content survives any tool change. Derived indexes (search, graph) may exist, but nothing may live *only* in a database — delete every index and the knowledge is still here, in full, as Markdown.
-- **Minimal plugins.** See [`.obsidian-config/`](.obsidian-config) for the short, deliberate list. Every plugin must earn its place.
-- **Fast navigation.** Simple folder structure, consistent naming, no deep nesting. Finding what you need should be instant.
-- **No bloat.** One canonical home per concept. No duplicates, no orphaned files, no thought dumps. Quality over volume.
+Forge began as a disciplined Markdown vault: one canonical file per concept,
+enforced by hand. Then a [full audit](docs/architecture/forge-current-state.md)
+measured what a year of that discipline actually produced:
 
-## Where Forge is going: the Knowledge OS
+> 145 broken wikilinks · 42% of files with no machine-readable metadata ·
+> 283 malformed relationship fields · stale counts in three separate files
 
-Forge today is a knowledge *base* — an excellent one, maintained by
-hand. The next phase is an engine that maintains it:
+The rules in [`CONVENTIONS.md`](CONVENTIONS.md) were never wrong. They were
+**unenforceable by hand at that scale**. The engine's first job is to enforce
+mechanically what this repository already specifies — and its later jobs follow
+from the same premise: a knowledge base that cannot check itself will drift, and
+one that silently accepts every new source will rot faster than one that
+maintains nothing.
 
-> **Forge does not merely store information. Forge maintains
-> understanding.**
+## The rules the engine is built on
 
-The goal is a local-first, AI-native knowledge layer that ingests
-sources (Markdown, PDFs, papers, repos, docs, the web), extracts
-concepts and claims, links them into an evolving knowledge model, and —
-critically — **tells you when new evidence contradicts something you
-already believed, instead of silently overwriting it.** Obsidian stays
-an interface. A CLI, a web UI, and an MCP server become others. The
-engine owns the intelligence.
+These are enforced in code and asserted in tests, not stated as aspirations:
 
-Two commitments make this an evolution rather than a replacement:
+- **The vault is read-only to the engine.** Tests byte-compare every Markdown
+  file before and after every operation. Derived state lives in `.forge/` and is
+  rebuildable — delete it and nothing of value is lost.
+- **Provenance floor.** A derived object can never claim stronger provenance
+  than its weakest input. Enforced in a pydantic validator, so a violating
+  object *cannot be constructed*.
+- **A model may never assert `SOURCE_FACT` or `USER_ASSERTION`.** Those tiers
+  belong to sources and humans.
+- **Nothing is stored without evidence.** A claim whose quote cannot be found in
+  its source is dropped, and the drop is reported.
+- **Model reasoning never mutates knowledge directly.** It produces a proposal;
+  a human approves; activation applies it.
+- **Deterministic work stays deterministic.** Parsing, hashing, chunking,
+  matching, graph traversal, and impact classification make **zero** LLM calls —
+  and the tests assert the call count, so a future refactor cannot quietly
+  introduce one.
+- **No measurement claim without a measurement.** Where something could not be
+  measured, [`docs/research/`](docs/research/) records it as unmeasured rather
+  than estimating it.
 
-- **Markdown stays the source of truth.** Every index is derived and
-  rebuildable. Nothing here becomes hostage to a database.
-- **Nothing existing is deleted or rewritten.** This corpus becomes the
-  engine's first ingestion source and its primary evaluation set.
-
-Why bother, given how disciplined this vault already is? Because a
-[full audit](docs/architecture/forge-current-state.md) measured what a
-year of careful manual maintenance actually produced: 145 broken
-wikilinks, 42% of files with no machine-readable metadata, 283 malformed
-relationship fields, and stale counts in three separate files. The rules
-in `CONVENTIONS.md` were never wrong — they were unenforceable by hand
-at this scale. The engine's first job is to enforce mechanically what
-this repository already specifies.
-
-**Status: Phases 1–4 complete.** The engine indexes this corpus
-deterministically, ingests external PDFs and Markdown with page- and
-section-level provenance, turns everything it infers into proposals a human
-decides on, activates approved ones into canonical knowledge you can traverse
-and cite — and now **evaluates how new evidence changes what it already
-knows**, pausing for your approval before anything changes.
+## What it does
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev]"          # Python 3.10+
 
 forge index                     # deterministic index; reports "LLM calls: 0"
 forge diagnostics               # every frontmatter and link defect
-forge ingest paper.pdf          # spans with page + section provenance
+forge corpus-stats              # counts from the filesystem, never from a doc
+forge ingest paper.pdf          # spans carrying page + section provenance
 forge search "chunking"         # evidence with citations, not generated prose
 forge proposals list            # what Forge would change, awaiting your call
 forge activate                  # approved proposals -> canonical knowledge
@@ -104,83 +79,179 @@ forge evolve paper-b.pdf        # how does this paper affect what I know?
 forge workflow inspect <id>     # why did Forge propose that?
 ```
 
-Nothing in the vault is written without an explicit `--apply`, and then only
-for deterministically-verified repairs, after a backup, one line at a time.
-Activating knowledge writes nothing to Markdown at all. Ambiguous concepts —
-this vault has four real ones — are never merged silently; Forge documents the
-collision and waits for your decision.
+**Conflict handling is the load-bearing feature.** When a new paper disagrees
+with something Forge already believes, it does not overwrite it and does not
+quietly accept it. It reports a *potential conflict*, shows you the page that
+prompted it, and waits. Approve, and the original claim is marked disputed with
+the new evidence attached — never rewritten, never retracted. The whole run
+replays afterwards with `forge workflow inspect`.
 
-When a new paper disagrees with something Forge already believes, it does not
-overwrite it and does not quietly accept it. It says *potential conflict*,
-shows you the page that prompted it, and waits. Approve, and the original claim
-is marked disputed with the new evidence attached — never rewritten, never
-retracted. The whole run is replayable afterwards with
-`forge workflow inspect`.
+Ambiguous concepts are never merged silently either. This vault has four real
+collisions; Forge documents each one and waits for a decision, which is then
+persisted in [`config/concept-identity.yaml`](config/) and versioned alongside
+the vault.
 
-Retrieval quality is measured against a labelled query set rather than
-asserted. The current answer: lexical search wins, embeddings did not help,
-and no vector database is justified —
-[the numbers](docs/research/retrieval-baseline.md). Where measurement was
-*not* possible, that is said plainly too: no local or cloud model could be
-reached during Phase 4 development, so the evolution pipeline is fully tested
-while model quality remains
-[unmeasured](docs/research/provider-availability.md).
+### Measured, including the negative results
+
+Retrieval quality is evaluated against a labelled 24-query / 48-label set, not
+asserted:
+
+| Method | R@5 | R@10 | MRR | Latency |
+|---|---:|---:|---:|---:|
+| **lexical (FTS5/BM25)** | **0.406** | **0.608** | **0.471** | **18.7 ms/q** |
+
+Embeddings were built, measured, and **rejected**; hybrid fusion was swept
+across four weights and every one regressed. No vector database is justified —
+[the numbers](docs/research/retrieval-baseline.md).
+
+Model quality is reported the same way. A local Qwen3 8B via Ollama scored 5/5
+on the assessment set with valid schemas and correct grounding on every case,
+including both adversarial ones. That is **a smoke test that passed, not a
+characterisation** — five cases cannot establish a rate, and the cloud path
+remains entirely unmeasured. See
+[provider availability](docs/research/provider-availability.md) §6 before
+quoting either number.
+
+### Status
+
+**Phases 0–4 complete.** The engine indexes this corpus deterministically,
+ingests external PDFs and Markdown with page- and section-level provenance,
+turns everything it infers into proposals a human decides on, activates approved
+ones into canonical knowledge you can traverse and cite, and evaluates how new
+evidence changes what it already knows — pausing for approval before anything
+changes.
+
+```bash
+python -m pytest tests -q        # 744 tests, fully offline, no model needed
+bash scripts/validate_phase4.sh  # proves the phase's exit criteria by running them
+python scripts/phase4_demo.py    # the end-to-end story
+```
+
+CI and the entire suite run **offline** against a scripted provider. Phases 5–10
+are not started — see [`docs/roadmap.md`](docs/roadmap.md).
 
 Start with [`docs/`](docs/README.md): the
 [current-state audit](docs/architecture/forge-current-state.md),
-[ADR-001](docs/decisions/001-forge-knowledge-os.md), and the implementation
-notes for [Phase 1](docs/architecture/phase-1-implementation.md),
-[Phase 2](docs/architecture/phase-2-implementation.md),
-[Phase 3](docs/architecture/phase-3-implementation.md), and
-[Phase 4](docs/architecture/phase-4-implementation.md).
-
-## What Forge is not
-
-- Not a daily journal or thought dump.
-- Not a personal wiki of every idea you've ever had.
-- Not a task manager or calendar.
-- Not a database of half-formed notes waiting to "compost."
-
-Forge is where *finished thinking* becomes reusable engineering material. If you want to write freely, write elsewhere.
+[ADR-001](docs/decisions/001-forge-knowledge-os.md), and the per-phase
+implementation notes.
 
 ---
 
-## Repository Structure
+## The vault
 
-Organization is retrieval-first: folders represent where you *find* things based on your current context.
+Markdown is the source of truth. Every index is derived and rebuildable, and
+nothing here is hostage to a database. Open it as an Obsidian vault for graph
+view and backlinks, or read it as plain files on GitHub or through `grep` —
+Obsidian is optional tooling, not a dependency.
+
+Three principles govern what is allowed in:
+
+1. **Canonical** — one authoritative home per concept. No duplicates, no
+   scattered notes.
+2. **Production-grade** — every explanation, solution, and guide meets
+   real-world reference quality.
+3. **Instantly retrievable** — organized for finding things fast, not for
+   chronicling thought.
+
+Forge is *not* a journal, a personal wiki, a task manager, or a pile of
+half-formed notes waiting to compost. Every file either helps you execute
+immediately or captures something reusable for next time. If it does neither, it
+doesn't belong.
+
+### DSA — the flagship section
+
+A Data Structures and Algorithms knowledge base built for interview preparation
+and competitive programming.
+
+| Component | Count |
+|-----------|-------|
+| **Patterns** | 32 (Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming, Topological Sort, Union Find, Greedy, Backtracking, and more) |
+| **Detailed problems** | 85, plus 32 representative-problem indices |
+| **Pattern-specific interview guides** | 32 |
+| **Cheat sheets** | 39 (32 pattern-specific + 7 auxiliary) |
+| **Python templates** | 30 production-quality implementations |
+| **Algorithms** | 30 named, reusable techniques |
+| **Data structures** | 18 (operation contracts, invariants, tradeoffs) |
+| **Mistake encyclopedia** | 12 pitfalls with concrete wrong/right contrast |
+
+Every problem page carries the full statement with constraints, *why* the
+pattern applies before any code, a commented Python solution, complexity
+analysis with justification, edge cases, common mistakes, and an interview
+walkthrough dialogue.
+
+**Start at** [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md).
+
+### Technologies
+
+18 canonical technology references, one file per technology, each structured
+Overview → Mental Model → Architecture → Common Workflows → Common Mistakes →
+Best Practices → Cheatsheet → Interview Questions → Further Reading:
+
+Azure · Databricks · Docker · FastAPI · Git · Kubernetes · LangChain · LLMs ·
+Markdown · Node.js & Express · PostgreSQL · Prompt Engineering · RAG · React ·
+Redis · Supabase · Vector Databases · AI Agents
+
+Alongside them: a prompt library, execution playbooks with diagrams, reusable
+document templates, and the engineering-notebook template every project
+scaffolds from. See [`Technologies/_index.md`](Technologies/_index.md).
+
+### Projects
+
+Five projects documented as **knowledge packs** — numbered docs plus an
+`_index.md` hub with a metrics table and quick navigation:
+
+| Project | What |
+|---|---|
+| [`smartresq/`](Projects/smartresq) | Emergency dispatch platform; the reference implementation of the pattern |
+| [`personal-agent/`](Projects/personal-agent) | WhatsApp-native personal AI agent |
+| [`quickcover/`](Projects/quickcover) | Parametric income protection for gig workers |
+| [`macro-platform/`](Projects/macro-platform) | Agentic macroeconomic data platform with a nine-pillar trust framework |
+| [`institutional-dashboard/`](Projects/institutional-dashboard) | Personal trading terminal; deliberately the leanest pack |
+
+The four externally-researched packs were written by fetching and reading each
+live repository rather than from memory, and each **flags its own
+confirmed-vs-unconfirmed findings** rather than presenting uniform confidence.
+
+---
+
+## Repository structure
+
+Organization is retrieval-first: folders represent where you *find* things based
+on your current context.
 
 ```
 forge/
 ├── README.md               You are here.
-├── CLAUDE.md                Project context for Claude Code sessions.
 ├── START_HERE.md           Onboarding + daily entry point.
 ├── CONVENTIONS.md          Naming, Markdown, and tagging rules.
 ├── WORKFLOW.md             Git workflow for using Forge day to day.
 ├── ROADMAP.md              Where Forge's *content* is headed.
-├── docs/                   Engineering docs for the Forge engine (see below).
+├── CLAUDE.md               Project context for Claude Code sessions.
+│
 ├── engine/                 The Forge engine (Python). Read-only w.r.t. the vault.
-├── config/                 Engine configuration versioned with the vault
+├── docs/                   Engineering docs for the engine — not vault content.
+├── config/                 Engine config versioned with the vault
 │                             (concept-identity.yaml — your collision decisions).
-├── tests/  scripts/        Test suite and validation/demo scripts.
+├── tests/  scripts/        744 tests; demos and per-phase validation scripts.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │
 ├── DSA/                    Data Structures & Algorithms (flagship section)
 │   ├── 00_Index/           DSA Home, Learning Paths, Quick Reference
-│   ├── 01_Patterns/        32 core patterns (Two Pointers, DFS, DP, etc.)
+│   ├── 01_Patterns/        32 core patterns
 │   ├── 02_Algorithms/      30 algorithm implementations
 │   ├── 03_DataStructures/  18 data structure implementations
-│   ├── 04_Problems/        85 detailed problems + 32 representative-problem indices
-│   ├── 05_Templates/       Python implementation templates
+│   ├── 04_Problems/        85 detailed problems + 32 representative indices
+│   ├── 05_Templates/       30 Python templates + document templates
 │   ├── 06_Complexity/      Time/space complexity reference
-│   ├── 07_Interview/       Pattern-specific interview guides
-│   ├── 08_Mistakes/        Common pitfalls and how to avoid them
-│   └── 09_CheatSheets/     Quick reference guides per pattern
+│   ├── 07_Interview/       32 pattern-specific interview guides + 8 general
+│   ├── 08_Mistakes/        12 common pitfalls and how to avoid them
+│   └── 09_CheatSheets/     39 quick-reference sheets
 │
 ├── Technologies/           Reusable technical systems
-│   ├── Prompt-Library/     AI prompts organized by domain
+│   ├── Docs/               18 authoritative reference manuals
+│   ├── Prompt-Library/     Prompts organized by domain
 │   ├── Playbooks/          Execution workflows with diagrams
 │   ├── Templates/          Reusable Markdown document templates
-│   ├── Docs/               Authoritative reference manuals (one file per technology)
 │   └── Project-System/     Engineering notebook template
 │
 ├── Projects/               Active build work. One folder per project.
@@ -188,59 +259,39 @@ forge/
 ├── Career/                 Resume, LinkedIn, portfolio, interview, salary tools.
 ├── Resources/              Curated external resources across 11 categories.
 ├── Reference/              Durable technical facts: API notes, configs, gotchas.
-├── Inbox/                  Unsorted capture. Must be emptied on a cadence.
+├── Inbox/                  Unsorted capture. Emptied on a cadence.
 └── Archive/                Completed or dead projects.
 ```
 
-**Each folder has an `_index.md`** explaining its purpose, scope, and what doesn't belong. Read before adding files.
+**Each vault folder has an `_index.md`** stating its purpose, scope, and what
+doesn't belong. Read it before adding files.
 
-## Technologies Module
-
-Reusable engineering systems for building and shipping.
-
-| Module | Description |
-|--------|-------------|
-| **Prompt-Library/** | AI prompts across many categories (operating-procedure grade) |
-| **Playbooks/** | Execution workflows for recurring tasks, each with a Mermaid diagram |
-| **Templates/** | Production-quality Markdown document templates |
-| **Docs/** | Authoritative reference manuals: Azure, Databricks, Docker, Git, LangChain, RAG, AI Agents, Vector Databases, LLMs, Prompt Engineering, Markdown |
-| **Project-System/** | The engineering-notebook template every project scaffolds from |
-
-## Courses Module
-
-Structured learning for deliberate skill development — progress trackers and course-specific notes, not technical reference material (that lives in `Technologies/Docs/`).
-
-| Module | What it is |
-|---|---|
-| [`Competitive-Programming/`](Courses/Competitive-Programming) | Problem-solving skill trackers and coaching prompts |
-| [`IBM-RAG-and-Agentic-AI/`](Courses/IBM-RAG-and-Agentic-AI) | Knowledge-pack-style tracker for the IBM RAG and Agentic AI Professional Certificate (10 courses) |
-
-## Career Module
-
-Actionable career development tools: resume, LinkedIn, portfolio, interviews, salary negotiation, and planning.
-See [`Career/_index.md`](Career/_index.md) for details.
-
-## Resources Module
-
-Curated external resources across 11 categories (docs, repos, courses, blogs, papers, books).
-See [`Resources/_index.md`](Resources/_index.md) for the full index.
+Two documentation trees exist and are never mixed: `Technologies/Docs/` is
+*vault content* (durable technology reference, written for a human learning the
+technology), while `docs/` is *engineering documentation for the engine itself*.
 
 ---
 
-## Getting Started
+## Getting started
 
-### If you're here for DSA prep:
-1. Start at [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md)
-2. Pick a pattern that matches your current problem
-3. Read the pattern page, study the representative problems, and use the interview guide
+**Running the engine**
 
-### If you're new to Forge:
-1. Read [`START_HERE.md`](START_HERE.md) — your entry point
-2. Read [`CONVENTIONS.md`](CONVENTIONS.md) — naming, structure, and tagging rules
-3. Read [`WORKFLOW.md`](WORKFLOW.md) — how to commit and use Forge day to day
+```bash
+pip install -e ".[dev]"     # Python 3.10+
+forge index                 # then: forge diagnostics, forge corpus-stats
+python -m pytest tests -q   # 744 tests, offline
+```
 
-### If you're adding content:
-1. Read [`CONVENTIONS.md`](CONVENTIONS.md) first — consistency is enforced by discipline, not tooling
-2. Find the appropriate folder and read its `_index.md`
-3. Follow the structure and naming conventions for your folder
-4. Commit using the patterns in [`WORKFLOW.md`](WORKFLOW.md)
+Long local-model runs need `FORGE_LLM_TIMEOUT=300` — latency is ~63 s/case on
+the reference hardware and one call exceeded the 120 s default. Full command
+reference in [`docs/cli.md`](docs/cli.md).
+
+**Using the vault for DSA prep** — start at
+[`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md), pick the pattern matching
+your problem, then work the representative problems and the interview guide.
+
+**Adding content** — read [`CONVENTIONS.md`](CONVENTIONS.md), find the right
+folder and read its `_index.md`, follow the structure, and commit using
+[`WORKFLOW.md`](WORKFLOW.md). Check `Technologies/Docs/_index.md` before writing
+any technical explanation: if the concept already has a canonical home, extend
+it rather than starting a second one.

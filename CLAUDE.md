@@ -68,6 +68,34 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-16 session (repo presentation pass, for pinning on
+GitHub):** `README.md` was rewritten **engine-first** — the repo now
+leads with the Knowledge OS (the differentiating engineering artifact)
+and presents the vault as its corpus and evaluation set, rather than
+leading with DSA. Four files were **deleted**:
+`GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
+`IMPROVEMENTS_SUMMARY.md` (stale process artifacts from an earlier
+README session, all three still describing Forge as DSA-only and all
+three superseded by the rewrite), plus `Systems/_index.md` — the
+orphaned legacy stub whose seven links were all broken, which the
+current-state audit had flagged as "highest-signal debt" (§6.1, M7) and
+explicitly recommended deleting. `Systems/` is now gone entirely; the
+audit doc still describes it in the past tense as a point-in-time record
+and was deliberately not rewritten.
+
+Also corrected in that pass: the test count **737 → 744** (verified by
+`pytest --collect-only`, in `CLAUDE.md`, `docs/README.md`, and the
+READMEs); `ROADMAP.md`'s "Docs module — 10 manuals" → the accurate 18;
+`docs/README.md`'s Phase 4 status, which still claimed model quality was
+"entirely unmeasured" after the 2026-08-14 Qwen3 8B result partly closed
+that gap; `engine/README.md`, which still described itself as "Phase 1";
+the `forge --help` string and `forge.cli.main` docstring, both of which
+still said "(Phase 1)"; a stale `Systems/Docs/` reference in
+`Courses/IBM-RAG-and-Agentic-AI/06-capstone.md`; and a literal `` `n ``
+(an unexpanded PowerShell newline escape) in `START_HERE.md` that had
+collapsed the `Courses/` and `DSA/` rows of its folder table into one
+broken row.
+
 **Fixed 2026-07-23 session:** re-audited every numeric claim in
 `README.md`, `GITHUB_PROFILE.md`, `GITHUB_SETUP_CHECKLIST.md`, and
 `IMPROVEMENTS_SUMMARY.md` against actual filesystem counts. The
@@ -110,8 +138,10 @@ repo* (not this one) — that's a note for whoever next works on
 **Pattern to watch for generally:** this repo has repeatedly
 accumulated stale numbers/links in README-style files as content grew
 faster than those files were revisited. When touching any top-level
-`.md` file (README, GITHUB_PROFILE, etc.), spot-check its numeric claims
-against the filesystem before trusting them.
+`.md` file, spot-check its numeric claims against the filesystem before
+trusting them — `forge corpus-stats` and `pytest --collect-only` compute
+the vault and test numbers directly, so there is no longer any reason to
+copy a count from another document.
 
 ## The "Knowledge Pack" Pattern
 
@@ -171,7 +201,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 737 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 744 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -196,7 +226,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 737 tests, fully offline, no model needed
+python -m pytest tests -q        # 744 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
@@ -292,9 +322,9 @@ everything was independently verified.
 - Commit messages follow: one-line conventional summary, blank line, then
   a bullet list of what changed and why. No trailers.
 - Watch for **unrelated untracked/modified files** appearing in
-  `git status` that you didn't create (this has happened — e.g.
-  `GITHUB_PROFILE.md`, a modified `README.md` — from some other process
-  or session touching the repo). Don't sweep them into your commit;
+  `git status` that you didn't create (this has happened — e.g. a
+  since-deleted `GITHUB_PROFILE.md`, a modified `README.md` — from some
+  other process or session touching the repo). Don't sweep them into your commit;
   stage and commit only what you actually created/changed for the
   current task.
 - LF/CRLF warnings on `git add` are expected on this Windows checkout

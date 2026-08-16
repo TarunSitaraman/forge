@@ -72,7 +72,7 @@ Once implementation begins in earnest:
    numbered-doc pattern (01-overview, 02-architecture, etc.) — scaled to
    this project's actual complexity, not forced to fill 10 docs.
 2. Link back here from that project's `_index.md` under "Related
-   Systems" the same way `smartresq/_index.md` links to `Systems/Docs/`.
+   Systems" the same way `smartresq/_index.md` links to `Technologies/Docs/`.
 3. Reduce this file to a pointer: "See `Projects/<name>/` for the live
    project — this section preserved for planning history only."
 
