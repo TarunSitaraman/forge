@@ -68,6 +68,32 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-17 session (macOS CLI pass):** the engine is now
+installable as a global `forge` command. Two changes to the engine
+itself, not just docs:
+
+- **Vault resolution no longer falls back to the current directory.**
+  `_find_repo_root` walked up from `__file__` and returned `Path.cwd()`
+  when it found nothing. That is invisible under an editable install
+  (where `__file__` *is* in the repo) but wrong under a real install:
+  `forge index` in, say, `~/Downloads` treated that directory as the
+  vault, wrote a `.forge/` into it, and printed a success line. Replaced
+  by `_find_vault_root` (returns `Path | None`) plus `_resolve_vault_root`,
+  which tries the module location, then upward from cwd, then **raises
+  `ConfigError`** with an actionable message. The CLI already mapped
+  `ConfigError` to exit 2, so the UX came for free. Covered by
+  `tests/unit/test_config.py` (15 tests, new file).
+- **Tab completion enabled** (`add_completion=True`), so
+  `forge --install-completion` works. macOS defaults to zsh.
+
+Test count **744 → 759** on the new config tests. `docs/cli.md` gained a
+macOS install section (Homebrew Python + `pipx install --editable`, since
+system Python 3.9 is under the 3.10 floor and Homebrew's is PEP-668
+externally-managed), a vault-resolution-order subsection, and a
+troubleshooting table. Note `--vault` is a **per-command** option
+(`forge index --vault X`), not a global one — easy to get wrong when
+writing docs or error messages.
+
 **Fixed 2026-08-16 session (repo presentation pass, for pinning on
 GitHub):** `README.md` was rewritten **engine-first** — the repo now
 leads with the Knowledge OS (the differentiating engineering artifact)
@@ -201,7 +227,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 744 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 759 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -226,7 +252,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 744 tests, fully offline, no model needed
+python -m pytest tests -q        # 759 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```

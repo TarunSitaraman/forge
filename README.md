@@ -11,7 +11,7 @@ point:
 
 | | What it is |
 |---|---|
-| **The engine** (`engine/`) | A Python knowledge OS. ~18,000 lines, 744 offline tests. Reads the vault, derives a provenance-aware model from it, and never writes back without explicit approval. |
+| **The engine** (`engine/`) | A Python knowledge OS. ~18,000 lines, 759 offline tests. Reads the vault, derives a provenance-aware model from it, and never writes back without explicit approval. |
 | **The vault** (everything else) | A hand-authored engineering knowledge base — 646 Markdown files, ~57,600 lines. The engine's first ingestion source, its primary evaluation set, and the reason it exists. |
 
 The engine was not built against a toy corpus. It was built against a real one
@@ -122,7 +122,7 @@ evidence changes what it already knows — pausing for approval before anything
 changes.
 
 ```bash
-python -m pytest tests -q        # 744 tests, fully offline, no model needed
+python -m pytest tests -q        # 759 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by running them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
@@ -232,7 +232,7 @@ forge/
 ├── docs/                   Engineering docs for the engine — not vault content.
 ├── config/                 Engine config versioned with the vault
 │                             (concept-identity.yaml — your collision decisions).
-├── tests/  scripts/        744 tests; demos and per-phase validation scripts.
+├── tests/  scripts/        759 tests; demos and per-phase validation scripts.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │
 ├── DSA/                    Data Structures & Algorithms (flagship section)
@@ -279,12 +279,22 @@ technology), while `docs/` is *engineering documentation for the engine itself*.
 ```bash
 pip install -e ".[dev]"     # Python 3.10+
 forge index                 # then: forge diagnostics, forge corpus-stats
-python -m pytest tests -q   # 744 tests, offline
+python -m pytest tests -q   # 759 tests, offline
+```
+
+On macOS, install it as a global command instead — the system Python 3.9 is
+below the floor, and Homebrew's is externally-managed (PEP 668):
+
+```bash
+brew install python@3.12 pipx && pipx ensurepath
+cd ~/forge && pipx install --editable ".[dev]"
+forge --install-completion   # zsh tab completion
 ```
 
 Long local-model runs need `FORGE_LLM_TIMEOUT=300` — latency is ~63 s/case on
 the reference hardware and one call exceeded the 120 s default. Full command
-reference in [`docs/cli.md`](docs/cli.md).
+reference, vault resolution, and macOS troubleshooting in
+[`docs/cli.md`](docs/cli.md).
 
 **Using the vault for DSA prep** — start at
 [`DSA/00_Index/DSA Home`](DSA/00_Index/DSA%20Home.md), pick the pattern matching
