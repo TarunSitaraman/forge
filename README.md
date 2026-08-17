@@ -11,7 +11,7 @@ point:
 
 | | What it is |
 |---|---|
-| **The engine** (`engine/`) | A Python knowledge OS. ~18,000 lines, 759 offline tests. Reads the vault, derives a provenance-aware model from it, and never writes back without explicit approval. |
+| **The engine** (`engine/`) | A Python knowledge OS. ~18,000 lines, 763 offline tests. Reads the vault, derives a provenance-aware model from it, and never writes back without explicit approval. |
 | **The vault** (everything else) | A hand-authored engineering knowledge base — 646 Markdown files, ~57,600 lines. The engine's first ingestion source, its primary evaluation set, and the reason it exists. |
 
 The engine was not built against a toy corpus. It was built against a real one
@@ -112,6 +112,13 @@ remains entirely unmeasured. See
 [provider availability](docs/research/provider-availability.md) §6 before
 quoting either number.
 
+That document also records a
+[correction](docs/research/provider-availability.md) to its own earlier
+reasoning: a 401 probe was read as evidence that the cloud request shape was
+valid, which it could not be — authentication is checked before the body, and
+the body was in fact malformed. Being wrong in public, in the same file, is the
+point of writing the measurements down.
+
 ### Status
 
 **Phases 0–4 complete.** The engine indexes this corpus deterministically,
@@ -122,7 +129,7 @@ evidence changes what it already knows — pausing for approval before anything
 changes.
 
 ```bash
-python -m pytest tests -q        # 759 tests, fully offline, no model needed
+python -m pytest tests -q        # 763 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by running them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
@@ -232,7 +239,7 @@ forge/
 ├── docs/                   Engineering docs for the engine — not vault content.
 ├── config/                 Engine config versioned with the vault
 │                             (concept-identity.yaml — your collision decisions).
-├── tests/  scripts/        759 tests; demos and per-phase validation scripts.
+├── tests/  scripts/        763 tests; demos and per-phase validation scripts.
 ├── .obsidian-config/       Minimal, version-controlled Obsidian setup.
 │
 ├── DSA/                    Data Structures & Algorithms (flagship section)
@@ -279,7 +286,7 @@ technology), while `docs/` is *engineering documentation for the engine itself*.
 ```bash
 pip install -e ".[dev]"     # Python 3.10+
 forge index                 # then: forge diagnostics, forge corpus-stats
-python -m pytest tests -q   # 759 tests, offline
+python -m pytest tests -q   # 763 tests, offline
 ```
 
 On macOS, install it as a global command instead — the system Python 3.9 is

@@ -94,6 +94,39 @@ troubleshooting table. Note `--vault` is a **per-command** option
 (`forge index --vault X`), not a global one — easy to get wrong when
 writing docs or error messages.
 
+**Also 2026-08-17 (cloud provider, per-machine setup):** the intended
+deployment is now **cloud on the Mac, Ollama on the ASUS**. That is pure
+configuration (`FORGE_LLM_PROVIDER=cloud` + `ANTHROPIC_API_KEY` in
+`~/.zshrc`; the ASUS needs nothing since ollama is the default), but
+getting there exposed a bug that made the cloud path **impossible**, not
+merely unmeasured:
+
+- **`CloudProvider` sent `temperature` on the Anthropic wire format.**
+  Forge asks for `temperature=0.0` everywhere for determinism
+  (`extractor.py`, `assessor.py`, `spike/capability.py`), and current
+  Anthropic models reject non-default sampling parameters —
+  `temperature`/`top_p`/`top_k` are 400s on Opus 4.7+, and on the
+  configured `claude-sonnet-5` any non-default value is too. So every
+  cloud call would have failed on the body. Removed for Anthropic only;
+  the OpenAI-compatible path still sends it, since those gateways accept
+  it. **Do not add it back** — `tests/unit/test_providers.py` asserts the
+  whole `temperature`/`top_p`/`top_k` family is absent.
+- **`max_tokens` raised 2048 → 16000** (`CloudSettings` and
+  `CloudProvider`). Current models think by default and `max_tokens` caps
+  thinking *plus* response text, so 2048 could be consumed by reasoning
+  and truncate the JSON — surfacing as a structured-output failure rather
+  than the budget problem it is. An explicit per-request `max_tokens`
+  still wins.
+
+`docs/research/provider-availability.md` §3 got a **correction block**
+rather than a rewrite (per that document's own convention): its inference
+that "the request shape is well-formed enough to be authenticated" was
+wrong — auth is checked *before* body validation, so the 401 probe said
+nothing about the payload. General lesson recorded there: **a 401 cannot
+validate a request body.** The cloud path is still unmeasured; it has now
+simply never completed a call, which is a different and better-understood
+statement than before. Test count **759 → 763**.
+
 **Fixed 2026-08-16 session (repo presentation pass, for pinning on
 GitHub):** `README.md` was rewritten **engine-first** — the repo now
 leads with the Knowledge OS (the differentiating engineering artifact)
@@ -227,7 +260,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 759 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 763 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -252,7 +285,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 759 tests, fully offline, no model needed
+python -m pytest tests -q        # 763 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
