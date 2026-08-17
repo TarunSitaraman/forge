@@ -127,6 +127,39 @@ validate a request body.** The cloud path is still unmeasured; it has now
 simply never completed a call, which is a different and better-understood
 statement than before. Test count **759 → 763**.
 
+**Also 2026-08-17 (open-weights, no Anthropic key):** there is no
+Anthropic API key, so the deployment is now **ASUS primary + a hosted
+open-weights fallback**. No code was needed to *support* that — the cloud
+provider already had an `openai` vendor, which is a *wire format*, not a
+company, and is what Groq / OpenRouter / Together / vLLM / llama.cpp /
+LM Studio all speak. Two bugs on that path did need fixing:
+
+- **The OpenAI-compatible branch left system messages where they fell.**
+  `structured()` appends the schema instruction as a `role="system"`
+  message *after* the user turn; the Anthropic branch hoists every system
+  message into the top-level `system` field, so ordering never mattered
+  there. Through a gateway the messages are rendered by the model's own
+  chat template, and many templates assume a single *leading* system turn
+  — several drop a trailing one. That would have silently deleted the
+  schema instruction and failed every extraction with a 200 and
+  unparseable prose. System messages are now collapsed and hoisted to the
+  front for that vendor too, so both wire formats are semantically equal.
+- **`max_tokens` was not env-configurable**, and the 16000 default (sized
+  for a 128K-output frontier model) is rejected outright by gateways
+  serving models that cap at 4096-8192. Added `FORGE_CLOUD_MAX_TOKENS`.
+
+**When adding a provider or wire format, check the message *ordering*, not
+just the fields.** Both cloud bugs so far were shape bugs that unit tests
+with a stub transport still passed, because the stub does not run a chat
+template or validate against a real model's constraints.
+
+Docs record a **re-measure step**: the 5/5 belongs to Qwen3 8B on Ollama
+and does not transfer to any other model. `scripts/assessment_eval.py
+--provider cloud` and `forge model-test` both work against the
+OpenAI-compatible vendor (`run_spike` is provider-agnostic despite the
+"local-model" naming) and record which provider produced the result.
+Test count **763 → 768**.
+
 **Fixed 2026-08-16 session (repo presentation pass, for pinning on
 GitHub):** `README.md` was rewritten **engine-first** — the repo now
 leads with the Knowledge OS (the differentiating engineering artifact)
@@ -260,7 +293,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 763 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 768 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -285,7 +318,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 763 tests, fully offline, no model needed
+python -m pytest tests -q        # 768 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
