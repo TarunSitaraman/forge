@@ -11,3 +11,8 @@ __pycache__/
 htmlcov/
 *.egg-info/
 .venv/
+
+# Per-machine engine settings. Holds an API key; lives in ~/.config/forge/
+# by default, but ignored here too so a stray copy can never be committed.
+forge.env
+.forge.env

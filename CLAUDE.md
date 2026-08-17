@@ -160,6 +160,37 @@ OpenAI-compatible vendor (`run_spike` is provider-agnostic despite the
 "local-model" naming) and record which provider produced the result.
 Test count **763 → 768**.
 
+**Also 2026-08-17 (setup moved into the engine):** provider setup used to
+be a dozen `export` lines pasted into `~/.zshrc` on each machine. Three
+things now live in the repo instead:
+
+- **A per-machine settings file**, `~/.config/forge/forge.env`
+  (`$XDG_CONFIG_HOME` honoured; `FORGE_ENV_FILE` overrides). Resolution is
+  three layers, highest first: explicit argument → process environment →
+  file. `config/forge.env.example` is the template, with all three
+  profiles in it; a test asserts the shipped example still parses.
+  **Loading it never mutates `os.environ`** — that invariant already had a
+  test and had to be preserved, which is why the credential is resolved
+  through `config.env_value()` (process env, then file) at call time
+  rather than by exporting the file. `CloudProvider.api_key` uses it.
+  Parsing is deliberately not dotenv: no interpolation, no command
+  substitution, since the file holds a key.
+- **Cloud presets** (`FORGE_CLOUD_PRESET`) — a table in `config.py`
+  mapping a host name to `base_url` + `api_key_env` + `max_tokens`, for
+  groq, openrouter, together, cerebras, fireworks, lmstudio, llama-cpp,
+  vllm. A preset supplies **defaults only**; every field stays
+  overridable, an unknown name raises with the list rather than silently
+  using Anthropic's endpoint, and the *model* is never guessed — a preset
+  with no `FORGE_CLOUD_MODEL` is a startup error naming that variable.
+  Third-party URLs can change, so the explicit variables stay
+  authoritative; treat the table as a typo-guard, not an integration.
+- **`forge status` reports the settings file** and whether it loaded.
+
+Also: `Settings.load` now wraps `LLMSettings` construction so a bad
+provider knob is a `ConfigError` (clean exit 2) rather than a raw pydantic
+traceback, via `_first_message()` which pulls the human sentence out of a
+`ValidationError`. Test count **768 → 782**.
+
 **Fixed 2026-08-16 session (repo presentation pass, for pinning on
 GitHub):** `README.md` was rewritten **engine-first** — the repo now
 leads with the Knowledge OS (the differentiating engineering artifact)
@@ -293,7 +324,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 768 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 782 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -318,7 +349,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 768 tests, fully offline, no model needed
+python -m pytest tests -q        # 782 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
