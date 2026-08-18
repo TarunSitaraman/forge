@@ -299,10 +299,12 @@ python -m pytest tests -q   # 782 tests, offline
 ```
 
 On macOS, install it as a global command instead — the system Python 3.9 is
-below the floor, and Homebrew's is externally-managed (PEP 668):
+below the floor. Install Python 3.12 from
+[python.org](https://www.python.org/downloads/macos/) — a prebuilt `.pkg`, no
+build step — then:
 
 ```bash
-brew install python@3.12 pipx && pipx ensurepath
+python3.12 -m pip install --user pipx && python3.12 -m pipx ensurepath
 cd ~/forge && pipx install --editable ".[dev]"
 forge --install-completion   # zsh tab completion
 ```
