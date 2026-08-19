@@ -68,6 +68,22 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-19 session (first full extraction run):** the run cost **2.1×
+more model calls than necessary** because `forge index` and `forge ingest` write
+spans to the same table for different jobs — Phase 1 heading-delimited spans for
+retrieval, ingestion structural/sentence-split spans for evidence — sharing a
+document. The unchanged-source short-circuit compared only the content hash, so
+an indexed-then-ingested vault (the order the runbooks recommend) extracted over
+Phase 1's boundaries: **208 spans / 416 calls instead of 98 / 196**. Fixed by
+filtering `_spans_for_source` to the ingestion chunker; Phase 1's spans are kept,
+not deleted, since retrieval uses them. **Same class as the 2026-08-15 fix —
+"unchanged" describes the *source*, never the derived state.** Second
+occurrence, so treat any short-circuit here with suspicion. The CLI also printed
+`no work done` against all 19 sources while extraction ran, which is what hid it.
+Real measured latency: **5.66 h, 49.0 s/call** over ~1,100-char spans — 4.6×
+faster than the 455 s/span three-span sample implied, because span size differed.
+Test count **806 → 808**.
+
 **Fixed 2026-08-19 session (grounding pass, found while the ASUS was
 extracting):** `_grounded` — the function enforcing *"nothing is stored without
 evidence"* — compared **bag-of-words overlap** at a 0.6 threshold, ignoring word
@@ -362,7 +378,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 806 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 808 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -387,7 +403,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 806 tests, fully offline, no model needed
+python -m pytest tests -q        # 808 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
