@@ -368,7 +368,14 @@ adversarial case has exceeded both the 120 s default and a raised 300 s
 `FORGE_LLM_TIMEOUT` well past 300 for long runs. A 5-case *mean* is not a
 useful latency number here — one timeout moved it 78% while three of four
 measurable cases got faster.
-Read `docs/research/provider-availability.md` §6 before quoting any of
+`FORGE_OLLAMA_THINK=0` (reasoning off) was measured on 2026-08-19 and
+**rejected**: 2.5× faster on typical cases, but it turned partial overlap into a
+false-positive `POTENTIAL_CONFLICT`, dropping classification to 4/5. It stays
+opt-in and off. Its effect on *extraction* is unmeasured and unmeasurable today
+— there is no extraction-quality eval, only assessment and retrieval. Don't
+re-run this experiment expecting a different answer; build the extraction eval
+first.
+Read `docs/research/provider-availability.md` §6 and §8 before quoting any of
 these numbers as a rate.
 
 ## Current Repository State (verify before trusting exact numbers — this section will drift)
