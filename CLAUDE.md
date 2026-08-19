@@ -68,6 +68,20 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Measured 2026-08-19 (first quote-fidelity number):** the grounding audit over
+the run's 1,170 claims found **30 ungrounded = 2.56%**. Crucially these are
+**not hallucinations** — 29 of 30 are cheat-sheet *table rows rewritten as
+prose* ("The command `az login` is used to login." against a `| az login | Sign
+in |` row). Every fact is present; the *sentence* is not, so it is not a quote,
+and dropping it is correct. The 30th (`` `INNE key` `` where Redis says `INCR`)
+is a real fabrication and is the kind of thing hand-review would miss. Failures
+cluster entirely in the table-heavy docs (azure, docker, kubernetes, redis), so
+**this is an extraction-prompt problem, not a model problem** — asking for a
+verbatim quote from a table asks for a sentence the table does not contain. It
+is the concrete first case for the still-missing extraction-quality eval.
+`forge proposals audit-grounding --reject --no-dry-run` bulk-rejects them;
+already-decided proposals are skipped. Test count **810 → 813**.
+
 **Fixed 2026-08-19 session (audit reachability):** the grounding audit shipped
 as `scripts/audit_grounding.py`, which is the wrong shape for this project. The
 engine is installed with pipx, so the `python3` on PATH is **not** the
@@ -389,7 +403,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 810 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 813 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -414,7 +428,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 810 tests, fully offline, no model needed
+python -m pytest tests -q        # 813 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
