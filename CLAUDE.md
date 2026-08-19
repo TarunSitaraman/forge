@@ -68,6 +68,19 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-19 session (pre-extraction pass):** `forge proposals list
+--status PENDING` — the exact command `docs/research/extraction-cost.md` §4's
+runbook tells you to run after extraction — crashed with a raw `ValueError`
+traceback out of `enum`. `ProposalStatus` has upper-case *names* and lower-case
+*values*, and the CLI called `ProposalStatus(status)` directly. Fixed with an
+`_enum_option()` helper that lower-cases, and on failure exits 2 listing the
+valid set (matching the `SafetyClass` handling already in `approve-all`). The
+`--type` help string was also missing three real values (`claim_evidence`,
+`claim_refinement`, `claim_conflict`) and `--status` was missing `activated`.
+Worth noting *why* this survived: every proposal test drove the service layer
+directly, so no test ever passed a filter string through the CLI. Test count
+**782 → 792** on the new parsing tests.
+
 **Fixed 2026-08-17 session (macOS CLI pass):** the engine is now
 installable as a global `forge` command. Two changes to the engine
 itself, not just docs:
@@ -324,7 +337,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 782 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 792 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -349,7 +362,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 782 tests, fully offline, no model needed
+python -m pytest tests -q        # 792 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
