@@ -68,6 +68,31 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-19 session (grounding pass, found while the ASUS was
+extracting):** `_grounded` — the function enforcing *"nothing is stored without
+evidence"* — compared **bag-of-words overlap** at a 0.6 threshold, ignoring word
+order entirely. Any quote reassembled from the span's own vocabulary scored 1.0
+and was stored as evidence, **including one that inverted the span's meaning**
+("RAG does not improve accuracy" against a span saying it does). Only a quote
+using foreign vocabulary was caught — which is exactly the single negative case
+the existing test used, which is why this survived.
+
+Replaced with two order-preserving checks: a squashed-to-alphanumerics substring
+match (absorbs whitespace, curly quotes, hyphenation, punctuation; `...` elision
+supported), then a longest-common-subsequence ratio over words at **0.9**. The
+threshold was chosen from a measured margin, not by feel — every legitimate
+quote form scored **1.000**, every reassembled one **0.500-0.857**. Both sides
+are pinned by tests.
+
+**`EXTRACTOR_VERSION` was deliberately NOT bumped.** It is part of the
+derivation key, so bumping it invalidates every cached extraction result and
+forces a full re-run. Instead `scripts/audit_grounding.py` re-checks already
+stored proposals against the new rule at **zero LLM calls** — grounding is a
+deterministic string check, so it applies retroactively for free. Anything it
+reports was admitted under the old rule and should be rejected, not approved.
+Revisit the version bump once no uncached corpus is at stake. Test count
+**792 → 806**.
+
 **Fixed 2026-08-19 session (pre-extraction pass):** `forge proposals list
 --status PENDING` — the exact command `docs/research/extraction-cost.md` §4's
 runbook tells you to run after extraction — crashed with a raw `ValueError`
@@ -337,7 +362,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 792 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 806 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -362,7 +387,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 792 tests, fully offline, no model needed
+python -m pytest tests -q        # 806 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
