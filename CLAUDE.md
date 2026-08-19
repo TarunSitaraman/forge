@@ -403,7 +403,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 813 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 817 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -428,7 +428,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 813 tests, fully offline, no model needed
+python -m pytest tests -q        # 817 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
