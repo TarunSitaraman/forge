@@ -362,8 +362,12 @@ box scored 5/5 on the assessment set — schema-valid output and correct
 grounding on every case, including both adversarial ones, with zero
 false-positive conflicts. That is a smoke test that passed, **not** a
 characterisation: five cases cannot establish a rate. The cloud path is
-still unmeasured. Local latency is ~63 s/case and one call exceeded the
-default 120 s timeout, so set `FORGE_LLM_TIMEOUT=300` for long runs.
+still unmeasured. Local latency: typical cases 40-60 s, but the same
+adversarial case has exceeded both the 120 s default and a raised 300 s
+(2026-08-19 re-run), and a retry costs the whole timeout first. Raise
+`FORGE_LLM_TIMEOUT` well past 300 for long runs. A 5-case *mean* is not a
+useful latency number here — one timeout moved it 78% while three of four
+measurable cases got faster.
 Read `docs/research/provider-availability.md` §6 before quoting any of
 these numbers as a rate.
 

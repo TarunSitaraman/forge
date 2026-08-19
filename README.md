@@ -309,8 +309,9 @@ cd ~/forge && pipx install --editable ".[dev]"
 forge --install-completion   # zsh tab completion
 ```
 
-Long local-model runs need `FORGE_LLM_TIMEOUT=300` — latency is ~63 s/case on
-the reference hardware and one call exceeded the 120 s default. Full command
+Long local-model runs need a raised `FORGE_LLM_TIMEOUT` — typical cases finish
+in 40–60 s on the reference hardware, but one case has exceeded both 120 s and
+300 s, and each retry costs the full timeout before work resumes. Full command
 reference, vault resolution, and macOS troubleshooting in
 [`docs/cli.md`](docs/cli.md).
 
