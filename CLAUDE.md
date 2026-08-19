@@ -68,6 +68,17 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Fixed 2026-08-19 session (audit reachability):** the grounding audit shipped
+as `scripts/audit_grounding.py`, which is the wrong shape for this project. The
+engine is installed with pipx, so the `python3` on PATH is **not** the
+interpreter that owns its dependencies — running the script on the machine that
+actually held the store failed with `ModuleNotFoundError: No module named
+'pydantic'`. Logic moved to `forge/proposals/grounding_audit.py` and exposed as
+**`forge proposals audit-grounding`**; the script is now a thin wrapper.
+**General rule: an operational tool a user runs belongs on the `forge` command,
+not in `scripts/`.** `scripts/` is for development against a checkout. Test count
+**808 → 810**.
+
 **Fixed 2026-08-19 session (first full extraction run):** the run cost **2.1×
 more model calls than necessary** because `forge index` and `forge ingest` write
 spans to the same table for different jobs — Phase 1 heading-delimited spans for
@@ -378,7 +389,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 808 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 810 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -403,7 +414,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 808 tests, fully offline, no model needed
+python -m pytest tests -q        # 810 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
