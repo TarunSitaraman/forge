@@ -21,6 +21,9 @@ collisions:
     kind: algorithm
     namespace: algorithm
     vault_path: DSA/02_Algorithms/Binary Search.md
+  default: pattern/Binary Search
+  decided_by: cli
+  decided_at: '2026-08-19T07:51:00+00:00'
 - name: Heap
   identities:
   - canonical_name: Heap
@@ -31,6 +34,9 @@ collisions:
     kind: data_structure
     namespace: data-structure
     vault_path: DSA/03_DataStructures/Heap.md
+  default: pattern/Heap
+  decided_by: cli
+  decided_at: '2026-08-19T07:51:01+00:00'
 - name: Trie
   identities:
   - canonical_name: Trie
@@ -41,6 +47,9 @@ collisions:
     kind: data_structure
     namespace: data-structure
     vault_path: DSA/03_DataStructures/Trie.md
+  default: pattern/Trie
+  decided_by: cli
+  decided_at: '2026-08-19T07:51:01+00:00'
 - name: weekly-review
   identities:
   - canonical_name: weekly-review
@@ -51,4 +60,7 @@ collisions:
     kind: concept
     namespace: templates
     vault_path: Technologies/Templates/weekly-review.md
+  default: templates/weekly-review
+  decided_by: cli
+  decided_at: '2026-08-19T07:51:01+00:00'
 aliases: {}
