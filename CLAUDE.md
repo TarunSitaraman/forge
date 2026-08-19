@@ -68,6 +68,28 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Prompt rewrite 2026-08-19 (`extract-prompts/0.2.0` → `0.3.0`), driven by a
+25+25 random sample of the run's output.** Claims were ~60-70% usable; concepts
+were **~35-40%** — the sample returned `RAM`, `HTML`, `Answer`, `Vector`,
+`Fluency`, `maxmemory`, `VARCHAR(n)`, `git commit`, `.dockerignore` as
+"concepts". Approving those would have put junk in the graph *permanently*,
+against the vault's one-canonical-home principle. Four failure modes, each now
+addressed by an explicit prompt rule and pinned by a test in
+`TestPromptContract`:
+1. **Concept over-extraction** — no definition of what qualifies. Now: "would
+   deserve its own reference page", with explicit exclusions for generic words,
+   commands, flags, config keys, type names, file names, and `X and Y` pairs.
+2. **Document-referential claims** ("The text provides a link to...") — now
+   forbidden; state the underlying fact or omit.
+3. **Near-duplicate claims** — the sample had three phrasings of one pub/sub
+   fact in 25. Now explicitly deduplicated.
+4. **Table rows rewritten as prose** — the 2.56% grounding failure. Now: quote
+   the row exactly, pipes included, or make no claim.
+Bumping `PROMPT_VERSION` invalidates cached extractions **by design** — that is
+what makes a prompt edit safe, and a test asserts it. Re-running
+`Technologies/Docs` after the chunker fix is **196 calls, not 416**. Test count
+**817 → 824**.
+
 **Measured 2026-08-19 (first quote-fidelity number):** the grounding audit over
 the run's 1,170 claims found **30 ungrounded = 2.56%**. Crucially these are
 **not hallucinations** — 29 of 30 are cheat-sheet *table rows rewritten as
@@ -403,7 +425,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 817 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 824 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -428,7 +450,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 817 tests, fully offline, no model needed
+python -m pytest tests -q        # 824 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
