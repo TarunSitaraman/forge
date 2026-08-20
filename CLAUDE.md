@@ -68,6 +68,21 @@ hold *implementation notes and progress*, not conceptual explanations.
 
 ## Known Stale/Legacy Items
 
+**Found 2026-08-20 (`+nothink` ran an entire extraction unnoticed):**
+`FORGE_OLLAMA_THINK=0` was exported for the §8 experiment and **stayed set**, so
+the whole 5.66 h / 416-call `Technologies/Docs` run happened with reasoning off.
+It surfaced only by accident in a cache-hit log line showing
+`model_id=qwen3:8b+nothink`. **The caching layer was correct throughout** —
+`identity_variant()` kept the modes in separate derivation keys, exactly as
+designed. What was missing was any way to *see* the active mode: `forge status`
+showed the provider but never the model identity. Now fixed, with an explicit
+warning when reasoning is off.
+**Consequence: the 25+25 quality sample is confounded.** The `0.3.0` prompt
+rewrite still stands (the prompt genuinely never defined "concept"), but do NOT
+quote "~35-40% concept precision" as a property of the prompt — it is a property
+of one run in a mode nobody knew was on. Separating them needs a think-on run of
+the same scope. Test count **824 → 827**.
+
 **Prompt rewrite 2026-08-19 (`extract-prompts/0.2.0` → `0.3.0`), driven by a
 25+25 random sample of the run's output.** Claims were ~60-70% usable; concepts
 were **~35-40%** — the sample returned `RAM`, `HTML`, `Answer`, `Vector`,
@@ -425,7 +440,7 @@ touching Python in this repo.*
 | `engine/forge/evolution/` | Phase 4: LangGraph workflow that evaluates new evidence against existing knowledge. |
 | `engine/forge/llm/` | Provider abstraction: ollama / cloud / mock. |
 | `docs/` | Engineering docs for the engine — distinct from the vault's own content. |
-| `tests/`, `scripts/` | 824 tests; demos and per-phase validation scripts. |
+| `tests/`, `scripts/` | 827 tests; demos and per-phase validation scripts. |
 
 **Rules that are load-bearing, not stylistic**
 
@@ -450,7 +465,7 @@ touching Python in this repo.*
 
 ```bash
 pip install -e ".[dev]"          # needs Python 3.10+
-python -m pytest tests -q        # 824 tests, fully offline, no model needed
+python -m pytest tests -q        # 827 tests, fully offline, no model needed
 bash scripts/validate_phase4.sh  # proves the phase's exit criteria by executing them
 python scripts/phase4_demo.py    # the end-to-end story
 ```
